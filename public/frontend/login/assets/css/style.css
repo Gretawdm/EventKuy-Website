@@ -1,0 +1,145 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+:root {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Poppins";
+}
+
+:root {
+  --color-default: #2d2828;
+  --color-primary: #512e67;
+  --color-secondary: #ff6699;
+  --color-third: #c54c82;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #f6f9ff;
+  color: #444444;
+  /* background-image: url(../img/bg-login.png); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.bg-login {
+  height: 100vh;
+  width: 50%;
+  background-image: url(../img/bg-login.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #717ff5;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+
+
+
+
+
+/*--------------------------------------------------------------
+# Main
+--------------------------------------------------------------*/
+#main {
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+.btn-pink {
+  background-color: var(--color-secondary) !important;
+}
+
+.btn.btn-pink {
+  font-family: var(--font-secondary);
+  font-weight: 900;
+  color: #fff;
+}
+
+
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+
+.btn-primary {
+  background-color: #ff69b4;
+  /* Atur warna pink sesuai kebutuhan */
+}
+
+.form-label
+
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #4154f1;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
