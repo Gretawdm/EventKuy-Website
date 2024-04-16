@@ -176,26 +176,38 @@ var GallerySlider = new Swiper(".gallery-slider", {
 });
 
 //aktif navbar saat pindah halaman
-
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    // Function to toggle active class based on current URL
+    // Fungsi untuk menetapkan kelas aktif berdasarkan URL saat ini
     const setActiveNavItem = () => {
-        const currentUrl = window.location.href;
+        const currentUrl = window.location.pathname; // Ambil hanya bagian path dari URL
         const navLinks = document.querySelectorAll("#navbar a");
 
+        // Hapus kelas "active" dari semua tautan navbar
         navLinks.forEach((link) => {
-            if (link.href === currentUrl) {
+            link.classList.remove("active");
+        });
+
+        // Tetapkan kelas "active" untuk tautan navbar yang sesuai dengan URL saat ini
+        navLinks.forEach((link) => {
+            // Periksa apakah URL saat ini cocok dengan atribut href dari tautan
+            if (link.getAttribute("href") === currentUrl) {
                 link.classList.add("active");
-            } else {
-                link.classList.remove("active");
             }
         });
     };
-    // Call setActiveNavItem function when DOM is loaded
+
+    // Panggil fungsi setActiveNavItem saat DOM dimuat
     setActiveNavItem();
+
+    // Perbarui item navbar aktif saat tautan navbar diklik
+    document.querySelectorAll("#navbar a").forEach((link) => {
+        link.addEventListener("click", setActiveNavItem);
+    });
 });
+
+
 
 $(document).ready(function () {
     var buttonLogin = $(".btn-login");

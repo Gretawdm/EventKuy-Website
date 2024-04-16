@@ -11,14 +11,14 @@
         </div>
 
         <!-- Nav Item - Admin -->
-        @if (Auth::user()->jabatan == 'admin')
+        {{-- @if (Auth::user()->jabatan == 'admin') --}}
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Verifikasi Event</span>
                 </a>
             </li>
-        @else
+        {{-- @else --}}
             <!-- Nav Item - User -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
@@ -39,7 +39,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Profile</span></a>
             </li>
-        @endif
+        {{-- @endif --}}
 
         <!-- Garis -->
         <hr class="sidebar-divider d-none d-md-block">

@@ -8,6 +8,7 @@
 :root {
   --font-primary: "Inter", sans-serif;
   --font-secondary: "Poppins";
+  --font-third: "Nunito", sans-serif;
 }
 
 :root {
@@ -31,13 +32,74 @@ body {
   background-size: cover; */
 }
 
+.form-animation {
+  transition: transform 0.5s ease;
+}
+
+/* Gunakan CSS untuk menyembunyikan elemen form saat animasi */
+.form-hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+bg-login .login-container h2,
+bg-login .login-container h3 {
+  text-align: left !important;
+  font-family: var(--font-third);
+}
+
 .bg-login {
+  position: relative;
   height: 100vh;
   width: 50%;
-  background-image: url(../img/bg-login.png);
+  background-image: url(../img/bg-login-event.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.bg-login-knn {
+  position: relative;
+  height: 100vh;
+  width: 50%;
+  background-image: url(../img/bg-kanan-lgn.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-container {
+  font-family: var(--font-third);
+  font-weight: 500px;
+
+  place-items: center;
+  width: 65%;
+  height: 85%;
+  border-radius: 30px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* Menambahkan shadow */
+  padding: 20px;
+  position: absolute;
+  /* Menambahkan properti position */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  text-align: center;
+  /* Memposisikan gambar secara horizontal di tengah */
+}
+
+
 
 a {
   color: #4154f1;
@@ -55,7 +117,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-third);
 }
 
 
@@ -81,14 +143,21 @@ h6 {
 /*--------------------------------------------------------------
 # Page Title
 --------------------------------------------------------------*/
-.btn-pink {
-  background-color: var(--color-secondary) !important;
-}
 
 .btn.btn-pink {
-  font-family: var(--font-secondary);
-  font-weight: 900;
+  font-family: var(--font-third);
+  font-weight: 1000;
   color: #fff;
+}
+
+.btn-pink {
+  background: linear-gradient(90deg, #ff6699, #512e67);
+
+  border: none;
+}
+
+.btn-pink:hover {
+  background: linear-gradient(90deg, #512e67, #ff6699);
 }
 
 
@@ -108,8 +177,23 @@ h6 {
   /* Atur warna pink sesuai kebutuhan */
 }
 
-.form-label
+.form-label {
+  font-size: 16px;
+  font-family: var(--font-third);
+  font-weight: 600;
+}
 
+.form-check-label {
+  font-size: 16px;
+  font-family: var(--font-third);
+  font-weight: 600;
+}
+
+.forgot-password-link {
+  font-size: 16px;
+  font-family: var(--font-third);
+  font-weight: 600;
+}
 
 /*--------------------------------------------------------------
 # Back to top button

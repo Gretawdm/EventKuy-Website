@@ -1056,7 +1056,8 @@ section {
 # Features 
 --------------------------------------------------------------*/
 .features-services h3 {
-  
+  font-family: var(--font-third);
+  font-weight: 900;
 }
 
 .featured-services .service-item .icon {

@@ -48,7 +48,8 @@ Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'authenticate']);
 
 Route::resource('/admin', AdminCategoryController::class)->except('show')->middleware('admin');
-Route::get('/admin', [AdminCategoryController::class, 'index']);
+// Route::get('/admin', [AdminCategoryController::class, 'index']);
+Route::get('/detail_admin/{id}', [AdminCategoryController::class, 'show'])->name('events.show');
 
 Route::resource('/dashboard', DashboardController::class)->except('show')->middleware('auth');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
@@ -57,7 +58,7 @@ Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
 
 
-Route::get('/index.html',[HomeController::class,'index'])->name('home1');
+// Route::get('/index.html',[HomeController::class,'index'])->name('home1');
 
  Route::post('/logout', [LoginController::class,'logout'])->name('logout');
 

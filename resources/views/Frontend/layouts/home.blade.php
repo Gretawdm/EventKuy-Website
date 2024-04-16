@@ -8,8 +8,8 @@
                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
                        <h2 data-aos="fade-up" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                            Booking Event
-                           dengan mudah melalui <span style="text-decoration: underline;">My</span><span
-                               style="color: #FF6699; text-decoration: underline;">Event</span></h2>
+                           dengan mudah melalui <span style="color: #FF6699;text-decoration: underline;">Event</span><span
+                               style="color: #2d2828; text-decoration: underline;">Kuy</span></h2>
                        <style>
                            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
                        </style>
@@ -244,7 +244,8 @@
                                            <li><i class="fas fa-info-circle" style="color: white"></i> <a
                                                    href="about.html">About
                                                    us</a></li>
-                                           <li><i class="fas fa-cogs" style="color: white"></i> <a href="services.html">Our
+                                           <li><i class="fas fa-cogs" style="color: white"></i> <a
+                                                   href="services.html">Our
                                                    Services</a></li>
                                            <li><i class="fas fa-envelope" style="color: white"></i> <a
                                                    href="contact.html">Contact</a>

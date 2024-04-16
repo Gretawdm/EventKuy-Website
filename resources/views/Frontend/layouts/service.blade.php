@@ -82,8 +82,8 @@
                         <img src="{{ asset('frontend/assets/img/service2.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7">
-                        <h3>Mempublikasikan Acara Anda Kepada Layanan Publik </h3>
-                        <p class="fst-italic">
+                        <h3 style="font-weight: 700">Mempublikasikan Acara Anda Kepada Layanan Publik </h3>
+                        <p class="item">
                             Dengan dedikasi untuk menyediakan platform yang menyeluruh dan mudah
                             digunakan, kami di sini untuk mendukung Anda dalam proses mempublikasikan acara Anda kepada
                             layanan publik dengan cara yang efektif dan efisien. Melalui fitur-fitur kami yang inovatif
@@ -99,8 +99,9 @@
                         <img src="{{ asset('frontend/assets/img/service12.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7 order-2 order-md-1">
-                        <h3>Para Booth Tenant Dapat Dengan Mudah Mencari dan Menemukan Berbagai Event Yang Tersedia </h3>
-                        <p class="fst-italic">
+                        <h3 style="font-weight: 700">Para Booth Tenant Dapat Dengan Mudah Mencari dan Menemukan Berbagai
+                            Event Yang Tersedia </h3>
+                        <p class="item">
                             Dengan navigasi yang intuitif dan fitur pencarian yang canggih, kami memungkinkan para booth
                             tenant
                             untuk menelusuri daftar event yang relevan dengan cepat dan efektif. Setelah menemukan event
@@ -124,7 +125,7 @@
                         <img src="{{ asset('frontend/assets/img/barcodeservice.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7">
-                        <h3>Kode Unik Untuk Proses Check-in Atau Identifikasi Booth</h3>
+                        <h3 style="font-weight: 700">Kode Unik Untuk Proses Check-in Atau Identifikasi Booth</h3>
                         <p>Salah satu fitur unggulan yang kami tawarkan adalah kemampuan untuk
                             menghasilkan kode unik untuk proses check-in atau identifikasi booth saat acara telah tiba.
                             Dengan menggunakan alat yang mudah digunakan di dalam website kami, penyelenggara acara

@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>EventKuy - Login</title>
-    <link href="{{ asset('frontend/assets/img/MyEvent-logo.png') }}" rel="icon">
-    <link href="{{ asset('frontend/assets/img/MyEvent-logo.png') }}" rel="logo">
+    <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="icon">
+    <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="logo">
     <link href="{{ asset('frontend/login/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/login/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
 
 
 
@@ -19,79 +23,85 @@
 
 <body>
     <main>
-        <div class=" register min-vh-100 d-flex align-items-center justify-content-center ">
-            <div class="bg-login"style="">
-                <div class="deskripsi">
-                    <h1>Selamat Datang!</h1>
-                    <h2>Silahkan Masuk Untuk Melanjutkan</h2>
+
+        <div class=" login min-vh-100 d-flex align-items-center justify-content-center ">
+            <div class="bg-login"style="width: 50%">
+                <div class="login-container">
+                    <h2 style="font-weight: 1000; font-size:36px">Welcome To EventKuy</h2>
+                    <h4 style="font-weight: 600; font-size:30px">Public Your Event In Here!</h4>
+                    <img src="{{ asset('frontend/login/assets/img/human.png') }}" style="width: 65%; height:65%">
+
                 </div>
             </div>
 
-            <div class="" style="width: 50%">
-                <div class="d-flex justify-content-center">
-                    <div class="d-flex flex-column align-items-center justify-content-center" style="width: 500px">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="pt-4 pb-2">
-                                    <h3 class="card-title text-center pb-0 fs-4">Login to Your
-                                        Account</h3>
-                                    <p class="text-center small font-weight-bold">Enter your username & password
-                                        to
-                                        login</p>
-                                </div>
+            <div class="bg-login-knn" style="width: 50%">
+                <div class="form-container">
+                    <form action="/login" method="POST">
+                        @csrf
 
-
-                                <form action="/login" method="POST">
-                                    @csrf
-
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" id="email" placeholder="asd@gmail.com" name="email"
-                                            class="form-control" autofocus required value="{{ old('email') }}">
-                                        @error('email')
-                                            <small style="color: red">* {{ $message }}</small>
-                                        @enderror
-
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" id="password" placeholder="minimal 6 karakter"
-                                            name="password" class="form-control" required>
-                                        @error('password')
-                                            <small style="color: red">* {{ $message }}</small>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember"
-                                                value="true" id="rememberMe" />
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                                        </div>
-                                    </div>
-                                    <div class="mb-e d-grid">
-                                        <button class="btn btn-pink w-100" type="submit">
-                                            Login
-                                        </button>
-                                    </div>
-                                    @if (session()->has('loginError'))
-                                        <div class="alert alert-danger mt-2" role="alert">
-                                            {{ session()->get('loginError') }}
-                                        </div>
-                                    @endif
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <p>Lupa Password? <a href="#">Klik disini</a>
-                                        </p>
-                                        <p class="small mb-0">
-                                            Don't have account?
-                                            <a href="{{ route('register') }}">Create an account</a>
-                                        </p>
-                                    </div>
-                                </form>
-                            </div>
+                        <div class="logo">
+                            <img src="{{ asset('frontend/assets/img/logo-login.png') }}" alt="" width="200px">
                         </div>
-                    </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" placeholder="asd@gmail.com" name="email"
+                                class="form-control" autofocus required value="{{ old('email') }}">
+                            @error('email')
+                                <small style="color: red">* {{ $message }}</small>
+                            @enderror
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" placeholder="minimal 6 karakter" name="password"
+                                class="form-control" required>
+                            @error('password')
+                                <small style="color: red">* {{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" value="true"
+                                        id="rememberMe" />
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                            </div>
+                            <div class="col-auto text-right">
+                                <div class="forgot-password">
+                                    <label class="form-label">Forgot Password?</label>
+                                    <a href="#" class="forgot-password-link">Click here</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        <div class="col-12 mb-2">
+                            <button class="btn btn-pink w-100" type="submit">
+                                Login
+                            </button>
+                        </div>
+                        @if (session()->has('loginError'))
+                            <div class="alert alert-danger mt-2" role="alert">
+                                {{ session()->get('loginError') }}
+                            </div>
+                        @endif
+
+                        <div class="col-12 d-flex justify-content-center">
+                            <p class="form-label">Don't have an account? <a href="{{ route('register') }}">Register
+                                    Now</a>
+                            </p>
+                        </div>
+
+
+                    </form>
                 </div>
             </div>
 
