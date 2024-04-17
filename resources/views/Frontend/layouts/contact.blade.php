@@ -8,8 +8,9 @@
                 <div class="container position-relative">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center">
-                            <h2>Contact</h2>
-                            <p>Kami berkomitmen untuk menyediakan layanan yang berkualitas dan responsif kepada pelanggan
+                            <h2 style="font-weight: 1000">Contact</h2>
+                            <p style="font-weight: 600">Kami berkomitmen untuk menyediakan layanan yang berkualitas dan
+                                responsif kepada pelanggan
                                 kami.
                                 Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan lebih lanjut tentang
                                 layanan kami, ingin memulai proyek baru, atau ingin berdiskusi tentang potensi kerja sama
@@ -22,8 +23,8 @@
             <nav>
                 <div class="container">
                     <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li>Contact</li>
+                        <li><a href="index.html" style="font-weight: 1000">Home</a></li>
+                        <li style="font-weight: 1000">Contact</li>
                     </ol>
                 </div>
             </nav>

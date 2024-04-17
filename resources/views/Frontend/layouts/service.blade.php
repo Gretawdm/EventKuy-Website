@@ -8,8 +8,9 @@
                 <div class="container position-relative">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center">
-                            <h2>Our Services</h2>
-                            <p>Dengan Berbagai Layanan yang Komprehensif dan Solusi yang Disesuaikan, Kami Menawarkan
+                            <h2 style="font-weight: 1000">Our Services</h2>
+                            <p style="font-weight: 600">Dengan Berbagai Layanan yang Komprehensif dan Solusi yang
+                                Disesuaikan, Kami Menawarkan
                                 Pendekatan yang Holistik untuk Menyalurkan Event Anda yang Meriah, Meningkatkan
                                 Pengunjung Event Anda, dan Mengundang Para Booth Tenant Dalam Kemeriahan Acara Anda.</p>
                         </div>
@@ -19,8 +20,8 @@
             <nav>
                 <div class="container">
                     <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li>Our Services</li>
+                        <li><a href="index.html" style="font-weight: 1000">Home</a></li>
+                        <li style="font-weight: 1000">Our Services</li>
                     </ol>
                 </div>
             </nav>
@@ -35,8 +36,9 @@
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
                         <div class="icon flex-shrink-0"><i class="fa-solid fa-cart-flatbed"></i></div>
                         <div>
-                            <h4 class="title">Public Event</h4>
-                            <p class="description">Mempublikasikan Acara Anda Kepada Layanan Publik.</p>
+                            <h4 class="title" style="font-weight: 900">Public Event</h4>
+                            <p class="description" style="font-weight: 600">Mempublikasikan Acara Anda Kepada Layanan
+                                Publik.</p>
 
                         </div>
                     </div>
@@ -45,8 +47,9 @@
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon flex-shrink-0"><i class="fa-solid fa-truck"></i></div>
                         <div>
-                            <h4 class="title">Pendaftaran Booth Tenant</h4>
-                            <p class="description">Para Booth Tenant Dapat Dengan Mudah Mencari dan Menemukan Berbagai Event
+                            <h4 class="title" style="font-weight: 900">Pendaftaran Booth Tenant</h4>
+                            <p class="description" style="font-weight: 600">Para Booth Tenant Dapat Dengan Mudah Mencari dan
+                                Menemukan Berbagai Event
                                 Yang Tersedia.</p>
 
                         </div>
@@ -55,8 +58,9 @@
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon flex-shrink-0"><i class="fa-solid fa-truck-ramp-box"></i></div>
                         <div>
-                            <h4 class="title">Generated Code</h4>
-                            <p class="description">Kode Unik Untuk Proses Check-in Atau Identifikasi Booth
+                            <h4 class="title" style="font-weight: 900">Generated Code</h4>
+                            <p class="description" style="font-weight: 600">Kode Unik Untuk Proses Check-in Atau
+                                Identifikasi Booth
                             </p>
 
                         </div>
@@ -71,8 +75,8 @@
         <section id="features" class="features">
             <div class="container">
                 <div class="section-header">
-                    <span>Our Services</span>
-                    <h2>Our Services</h2>
+                    <span style="font-weight: 1000">Our Services</span>
+                    <h2 style="font-weight: 1000">Our Services</h2>
 
                 </div>
 
@@ -82,8 +86,8 @@
                         <img src="{{ asset('frontend/assets/img/service2.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7">
-                        <h3 style="font-weight: 700">Mempublikasikan Acara Anda Kepada Layanan Publik </h3>
-                        <p class="item">
+                        <h3 style="font-weight: 900">Mempublikasikan Acara Anda Kepada Layanan Publik </h3>
+                        <p class="item" style="font-weight: 600">
                             Dengan dedikasi untuk menyediakan platform yang menyeluruh dan mudah
                             digunakan, kami di sini untuk mendukung Anda dalam proses mempublikasikan acara Anda kepada
                             layanan publik dengan cara yang efektif dan efisien. Melalui fitur-fitur kami yang inovatif
@@ -99,16 +103,16 @@
                         <img src="{{ asset('frontend/assets/img/service12.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7 order-2 order-md-1">
-                        <h3 style="font-weight: 700">Para Booth Tenant Dapat Dengan Mudah Mencari dan Menemukan Berbagai
+                        <h3 style="font-weight: 900">Para Booth Tenant Dapat Dengan Mudah Mencari dan Menemukan Berbagai
                             Event Yang Tersedia </h3>
-                        <p class="item">
+                        <p class="item" style="font-weight: 600">
                             Dengan navigasi yang intuitif dan fitur pencarian yang canggih, kami memungkinkan para booth
                             tenant
                             untuk menelusuri daftar event yang relevan dengan cepat dan efektif. Setelah menemukan event
                             yang cocok, para booth tenant dapat mengisi formulir pendaftaran secara online dengan mudah
                             melalui platform kami.
                         </p>
-                        <p>
+                        <p style="font-weight: 600">
                             Fitur-fitur yang dapat disesuaikan dan fleksibel memungkinkan para
                             booth tenant untuk memberikan informasi yang diperlukan dengan detail lengkap, termasuk
                             profil perusahaan, produk atau layanan yang ditawarkan, serta preferensi lokasi dan ukuran
@@ -125,13 +129,14 @@
                         <img src="{{ asset('frontend/assets/img/barcodeservice.png') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-md-7">
-                        <h3 style="font-weight: 700">Kode Unik Untuk Proses Check-in Atau Identifikasi Booth</h3>
-                        <p>Salah satu fitur unggulan yang kami tawarkan adalah kemampuan untuk
+                        <h3 style="font-weight: 900">Kode Unik Untuk Proses Check-in Atau Identifikasi Booth</h3>
+                        <p style="font-weight: 600">Salah satu fitur unggulan yang kami tawarkan adalah kemampuan untuk
                             menghasilkan kode unik untuk proses check-in atau identifikasi booth saat acara telah tiba.
                             Dengan menggunakan alat yang mudah digunakan di dalam website kami, penyelenggara acara
                             dapat dengan cepat dan mudah membuat kode unik yang dapat dipersonalisasi sesuai dengan
                             preferensi mereka.</p>
-                        <p>Selain itu, para booth tenant juga dapat dengan mudah mengakses dan mengelola
+                        <p style="font-weight: 600">Selain itu, para booth tenant juga dapat dengan mudah mengakses dan
+                            mengelola
                             kode-kode mereka sendiri melalui platform kami, memungkinkan mereka untuk melakukan
                             persiapan yang diperlukan dan memastikan kesiapan booth mereka untuk acara yang akan datang.</p>
                     </div>

@@ -6,7 +6,7 @@
     "Montserrat";
   --font-primary: "Inter", sans-serif;
   --font-secondary: "Poppins";
-  --font-third: "Poppins", sans-serif;
+  --font-third: "Nunito", sans-serif;
 }
 
 /* Colors */
@@ -52,6 +52,8 @@ h5,
 h6 {
   font-family: var(--font-third);
 }
+
+
 
 /*--------------------------------------------------------------
 # Gallery
@@ -1114,6 +1116,8 @@ section {
 
 
 
+
+
 /*--------------------------------------------------------------
 # About Us Section
 --------------------------------------------------------------*/
@@ -1665,6 +1669,12 @@ section {
 .contact .php-email-form .form-group {
   padding-bottom: 8px;
 }
+
+.contact .php-email-form .form-group label {
+  font-weight: 1000;
+  font-family: var(--font-third);
+}
+
 
 .contact .php-email-form .validate {
   display: none;

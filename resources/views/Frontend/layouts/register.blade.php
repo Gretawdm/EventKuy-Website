@@ -3,33 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EventKuy - Register</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>EventKuy - Login</title>
+
     <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="icon">
     <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="logo">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
-
 
     <link href="{{ asset('frontend/login/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
     <link href="{{ asset('frontend/login/assets/css/style.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
     <main>
-        <div class="register min-vh-100 d-flex align-items-center justify-content-center ">
+        <div class="login min-vh-100 d-flex align-items-center justify-content-center ">
             <div class="bg-login"style="width: 50%">
                 <div class="login-container">
-                    <h2 style="font-weight: 1000; font-size:36px">Welcome To EventKuy</h2>
-                    <h4 style="font-weight: 600; font-size:30px">Public Your Event In Here!</h4>
+                    <h2 style="color:black; font-weight: 1000; font-size:36px">Welcome To EventKuy</h2>
+                    <h4 style="color:black; font-weight: 600; font-size:30px">Public Your Event In Here!</h4>
                     <img src="{{ asset('frontend/login/assets/img/human.png') }}" style="width: 65%; height:65%">
 
                 </div>
             </div>
 
             <div class="bg-login-knn" style="width: 50%">
+                <div class="circle-small2"></div>
+                <div class="circle-small"></div>
+                <div class="half-circle"></div>
+                <div class="circle"></div>
                 <div class="form-container">
                     <form class="row g-3 needs-validation" method="POST" action="/register">
                         @csrf

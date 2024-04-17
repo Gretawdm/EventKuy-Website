@@ -6,23 +6,23 @@
            <div class="container">
                <div class="row gy-4 d-flex justify-content-between">
                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                       <h2 data-aos="fade-up" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                       <h2 data-aos="fade-up" style="font-weight:1000; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                            Booking Event
                            dengan mudah melalui <span style="color: #FF6699;text-decoration: underline;">Event</span><span
                                style="color: #2d2828; text-decoration: underline;">Kuy</span></h2>
                        <style>
                            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
                        </style>
-                       <p data-aos="fade-up" data-aos-delay="100" style="font-size: 18px; font-weight: 300;">
+                       <p data-aos="fade-up" data-aos-delay="100" style="font-size: 18px; font-weight: 600;">
                            Dengan kemudahan pendaftaran online, kini proses mendaftarkan booth tenant semakin simpel dan
                            cepat. Tak
                            perlu repot-repot, cukup klik dan kirim formulir pendaftaranmu!</p>
 
                        <div class="hero-buttons">
-                           <a class="btn-download" href="#download">Download Aplikasi <i
+                           <a class="btn-download" href="#download" style="font-weight: 1000;">Download Aplikasi <i
                                    class="fa-solid fa-download ms-1"></i></a> <!-- memberi spasi pd icon -->
-                           <a class="btn-pembuat-event" href="{{ route('login') }}">Pembuat Event <i
-                                   class="fa-solid fa-house ms-1"></i></a>
+                           <a class="btn-pembuat-event" href="{{ route('login') }}" style="font-weight: 1000;">Pembuat Event
+                               <i class="fa-solid fa-house ms-1"></i></a>
 
                        </div>
 
@@ -47,8 +47,8 @@
                <div class="container" data-aos="fade-up">
 
                    <div class="section-header">
-                       <span>About Us</span>
-                       <h2>About Us</h2>
+                       <span style="font-weight: 1000;">About Us</span>
+                       <h2 style="font-weight: 1000;">About Us</h2>
                    </div>
 
                    <div class="d-flex" style="align-items: center;">
@@ -58,8 +58,10 @@
                        <div class="" data-aos="fade-up" data-aos-delay="300">
                            <div class="content ps-0 ps-lg-5" style="font-size: 18px; font-weight: 400;">
                                <p>
-                                   <span class="bold-text">Mengapa Harus Menggunakan EventKuy?</span>
-                                   <br>Di EventKuy, kami berkomitmen untuk menyediakan platform pendaftaran booth tenant
+                                   <span style="font-weight: 1000; font-size:36px">Mengapa Harus Menggunakan
+                                       EventKuy?</span>
+                                   <br style="font-weight: 600;">Di EventKuy, kami berkomitmen untuk menyediakan platform
+                                   pendaftaran booth tenant
                                    yang
                                    efisien dan mudah diakses melalui Mobile. Kami memahami pentingnya memfasilitasi
                                    interaksi
@@ -80,8 +82,8 @@
                <div class="container" data-aos="fade-up">
 
                    <div class="section-header">
-                       <span>Our Services</span>
-                       <h2>Our Services</h2>
+                       <span style="font-weight: 1000;">Our Services</span>
+                       <h2 style="font-weight: 1000;">Our Services</h2>
                    </div>
 
                    <div class="row gy-4">
@@ -91,8 +93,9 @@
                                <div class="card-img">
                                    <img src="{{ asset('frontend/assets/img/event.png') }}" alt="" class="img-fluid">
                                </div>
-                               <h3>Public Event</h3>
-                               <p style="color: #000000">Daftarkan Event Anda pada website kami,agar dapat dilihat oleh
+                               <h3 style="font-weight: 1000;">Public Event</h3>
+                               <p style="color: #000000; font-weight: 600;">Daftarkan Event Anda pada website kami,agar
+                                   dapat dilihat oleh
                                    seluruh tenant yang ada di
                                    Indonesia.</p>
                            </div>
@@ -104,9 +107,10 @@
                                    <img src="{{ asset('frontend/assets/img/tenant.png') }}" alt=""
                                        class="img-fluid">
                                </div>
-                               <h3>Pendaftaran Booth Tenant
+                               <h3 style="font-weight: 1000;">Pendaftaran Booth Tenant
                                </h3>
-                               <p style="color: #000000">Pada EventKuy Application,kami menyediakan layanan pendaftaran
+                               <p style="color: #000000; font-weight: 600;">Pada EventKuy Application,kami menyediakan
+                                   layanan pendaftaran
                                    Tenant pada Event
                                    diseluruh indonesia yang terdaftar diwebsite kami.</p>
                            </div>
@@ -118,8 +122,9 @@
                                    <img src="{{ asset('frontend/assets/img/generate-code.png') }}" alt=""
                                        class="img-fluid">
                                </div>
-                               <h3>Generate Code</h3>
-                               <p style="color: #000000">Buat QR Code anda untuk proses check-in atau identifikasi booth
+                               <h3 style="font-weight: 1000;">Generate Code</h3>
+                               <p style="color: #000000; font-weight: 600;">Buat QR Code anda untuk proses check-in atau
+                                   identifikasi booth
                                    saat event berlangsung.
                                </p>
                            </div>
@@ -134,8 +139,8 @@
            <section id="gallery">
                <div class="container" data-aos="fade-up">
                    <div class="section-header">
-                       <span>Gallery</span>
-                       <h2>Gallery</h2>
+                       <span style="font-weight: 1000;">Gallery</span>
+                       <h2 style="font-weight: 1000;">Gallery</h2>
                    </div>
 
                </div>
@@ -216,8 +221,8 @@
            <section id="contact" class="contact">
                <div class="container" data-aos="fade-up">
                    <div class="section-header">
-                       <span>Contact Us</span>
-                       <h2>Contact Us</h2>
+                       <span style="font-weight: 1000;">Contact Us</span>
+                       <h2 style="font-weight: 1000;">Contact Us</h2>
                    </div>
 
                    <div class="row">
@@ -227,7 +232,7 @@
                                <div class="col-md-11 footer-contact">
                                    <img src="{{ asset('frontend/assets/img/MyEventLogoFooter.png') }}"
                                        alt=""width="100">
-                                   <p style="color: #000000 ">
+                                   <p style="color: #000000; font-weight: 600; ">
                                        MyEvent hadir membantu Anda dalam mengelola event dengan mudah dan efisien. Dengan
                                        platform kami, Anda dapat mendaftarkan booth tenant Anda secara cepat dan praktis.
                                        Nikmati pengalaman
@@ -237,17 +242,18 @@
 
                                <div class="row">
                                    <div class="col-lg-6 col-md-6 footer-links">
-                                       <h4>Useful Links</h4>
+                                       <h4 style="font-weight: 1000;">Useful Links</h4>
                                        <ul>
-                                           <li><i class="fas fa-home" style="color: white"></i> <a
+                                           <li><i class="fas fa-home" style="color: white; font-weight: 600;"></i> <a
                                                    href="index.html">Home</a></li>
-                                           <li><i class="fas fa-info-circle" style="color: white"></i> <a
-                                                   href="about.html">About
-                                                   us</a></li>
-                                           <li><i class="fas fa-cogs" style="color: white"></i> <a
+                                           <li><i class="fas fa-info-circle" style="color: white; font-weight: 600;"></i>
+                                               <a href="about.html">About
+                                                   us</a>
+                                           </li>
+                                           <li><i class="fas fa-cogs" style="color: white; font-weight: 600;"></i> <a
                                                    href="services.html">Our
                                                    Services</a></li>
-                                           <li><i class="fas fa-envelope" style="color: white"></i> <a
+                                           <li><i class="fas fa-envelope" style="color: white; font-weight: 600;"></i> <a
                                                    href="contact.html">Contact</a>
                                            </li>
 
@@ -255,15 +261,16 @@
                                    </div>
 
                                    <div class="col-lg-6 col-md-6 footer-links">
-                                       <h4>Our Services</h4>
+                                       <h4 style="font-weight: 1000;">Our Services</h4>
                                        <ul>
-                                           <li><i class="fas fa-calendar-alt" style="color: white"></i> <a
-                                                   href="services.html">Public
-                                                   vent</a></li>
-                                           <li><i class="fas fa-clipboard" style="color: white"></i> <a
+                                           <li><i class="fas fa-calendar-alt" style="color: white; font-weight: 600;"></i>
+                                               <a href="services.html">Public
+                                                   vent</a>
+                                           </li>
+                                           <li><i class="fas fa-clipboard" style="color: white; font-weight: 600;"></i> <a
                                                    href="service.html">Pendaftaran Booth
                                                    Tenant</a></li>
-                                           <li><i class="fas fa-barcode" style="color: white"></i> <a
+                                           <li><i class="fas fa-barcode" style="color: white; font-weight: 600;"></i> <a
                                                    href="service.html">Generate Code</a>
                                            </li>
                                        </ul>
@@ -276,10 +283,10 @@
 
                        </div>
 
-                       <div class="col-lg-5 mt-5 mt-lg-0 d-flex align-items-stretch">
+                       <div class="contact col-lg-5 mt-5 mt-lg-0 d-flex align-items-stretch">
                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                                <div class="form-group">
-                                   <label for="name">Your Name</label>
+                                   <label for="name" style="font-weight: 1000;">Your Name</label>
                                    <input type="text" name="name" class="form-control" id="name" required>
                                </div>
                                <div class="form-group">
@@ -295,7 +302,9 @@
                                    <div class="error-message"></div>
                                    <div class="sent-message">Your message has been sent. Thank you!</div>
                                </div>
-                               <div class="text-center"><button type="submit">Send Message</button></div>
+                               <div class="text-center">
+                                   <button type="submit" style="font-weight: 900">Send Message</button>
+                               </div>
                            </form>
                        </div>
 
