@@ -1,52 +1,51 @@
 <aside id="sidebar" class="sidebar">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="{{ asset('frontend/assets/img/MyEventLogoFooter.png') }}" alt="" width="50px;">
-            <div class="sidebar-brand-text mx-3">Eventkuy</div>
+            <img src="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" alt="" width="50px;">
+            <div class="sidebar-brand-text mx-3" style="color: #512e67;">Eventkuy</div>
         </a>
 
-        <div class="sidebar-heading">
+        <div class="sidebar-heading" style="color: #512e67;">
             Menu
         </div>
 
         <!-- Nav Item - Admin -->
-        {{-- @if (Auth::user()->jabatan == 'admin') --}}
+        @if (Auth::user()->jabatan == 'admin')
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
                     <span>Verifikasi Event</span>
                 </a>
             </li>
-        {{-- @else --}}
+        @else
             <!-- Nav Item - User -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
                     <span>Event</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
                     <span>Tenant</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
                     <span>Profile</span></a>
             </li>
-        {{-- @endif --}}
+        @endif
 
         <!-- Garis -->
-        <hr class="sidebar-divider d-none d-md-block">
+        <hr class="sidebar-divider bg-primary d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            <button class="rounded-circle  border-0" id="sidebarToggle"></button>
         </div>
     </ul>
 

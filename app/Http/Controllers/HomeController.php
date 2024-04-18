@@ -10,4 +10,17 @@ class HomeController extends Controller
     {
         return view('frontend.layouts.home');
     }
+
+    public function about(){
+       return view('frontend.layouts.about');
+    }
+
+    public function service(){
+       return view('frontend.layouts.service');
+    }
+
+    public function contact(){
+        return view('frontend.layouts.contact');
+    }
+
 }

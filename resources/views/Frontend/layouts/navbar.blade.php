@@ -12,9 +12,9 @@
         <nav id="navbar" class="navbar">
             <ul id="navbar">
                 <li><a href="/" style="font-weight: 900">Home</a></li>
-                <li><a href="/about.html" style="font-weight: 900">About Us</a></li>
-                <li><a href="/services.html" style="font-weight: 900">Our Services</a></li>
-                <li><a href="/contact.html" style="font-weight: 900">Contact</a></li>
+                <li><a href="/about" style="font-weight: 900">About Us</a></li>
+                <li><a href="/our_services" style="font-weight: 900">Our Services</a></li>
+                <li><a href="/contact" style="font-weight: 900">Contact</a></li>
                 <div class="header-buttons" style="margin-left: 100px; margin-right: 100px;">
                     <a class="btn-login" href="{{ route('login') }}" style="font-weight: 900">Login</a>
                     <a class="btn-book-a-table" href="{{ route('register') }}" style="font-weight: 900">Register</a>

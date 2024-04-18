@@ -42,26 +42,19 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 
-Route::get('/',[HomeController::class,'index'])->name('home1');
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/about',[HomeController::class,'about'])->name('about');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::get('/our_services',[HomeController::class,'service']);
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'authenticate']);
-
-Route::resource('/admin', AdminCategoryController::class)->except('show')->middleware('admin');
-// Route::get('/admin', [AdminCategoryController::class, 'index']);
-Route::get('/detail_admin/{id}', [AdminCategoryController::class, 'show'])->name('events.show');
-
-Route::resource('/dashboard', DashboardController::class)->except('show')->middleware('auth');
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-
+Route::post('/logout', [LoginController::class,'logout'])->name('logout');
 Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
 
+Route::resource('/admin', AdminCategoryController::class)->except('show')->middleware('admin');
+// Route::get('/detail_admin/{id}', [AdminCategoryController::class, 'show'])->name('events.show');
 
-// Route::get('/index.html',[HomeController::class,'index'])->name('home1');
-
- Route::post('/logout', [LoginController::class,'logout'])->name('logout');
-
-Route::get('/about.html',[DashboardController::class,'about'])->name('about');
-Route::get('/contact.html',[DashboardController::class,'contact'])->name('contact');
-Route::get('/services.html',[DashboardController::class,'service']);
+Route::resource('/dashboard', DashboardController::class)->except('show')->middleware('auth');
+Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');

@@ -41,7 +41,7 @@
                 <div class="form-container">
 
 
-                    <form action="/login" method="POST">
+                    <form action="/login" method="POST" novalidate>
                         @csrf
 
                         <div class="logo">
