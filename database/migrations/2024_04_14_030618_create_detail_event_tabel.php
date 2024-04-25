@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('poster');
             $table->string('nama_event');
+            $table->string('ktp');
             $table->string('deskripsi_event');
             $table->string('contact_person');
             $table->string('event_organizer');

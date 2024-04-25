@@ -52,9 +52,11 @@ Route::post('/login',[LoginController::class,'authenticate']);
 Route::post('/logout', [LoginController::class,'logout'])->name('logout');
 Route::get('/register',[RegisterController::class,'index'])->name('register');
 Route::post('/register',[RegisterController::class,'register']);
+Route::get('/forgot_password',[LoginController::class,'forgot_pw'])->name('forgot_password');
 
 Route::resource('/admin', AdminCategoryController::class)->except('show')->middleware('admin');
-// Route::get('/detail_admin/{id}', [AdminCategoryController::class, 'show'])->name('events.show');
+Route::get('/detail_admin/{id}', [AdminCategoryController::class, 'show'])->name('events.show');
+Route::get('/detail_admin', [AdminCategoryController::class, 'index']);
 
 Route::resource('/dashboard', DashboardController::class)->except('show')->middleware('auth');
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');

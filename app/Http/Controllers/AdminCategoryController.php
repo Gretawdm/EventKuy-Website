@@ -13,7 +13,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('Backend.admin_form.admin');
+        $detailevent=Event::get();
+        return view ('Backend.admin_form.admin',compact('detailevent'));
+        // return view('Backend.admin_form.admin');
     }
 
     //  public function detail()

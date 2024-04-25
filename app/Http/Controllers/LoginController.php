@@ -18,6 +18,11 @@ class LoginController extends Controller
         return view('frontend/layouts.login');
     }
 
+     public function forgot_pw()
+    {
+        return view('frontend/layouts.forgotpassword');
+    }
+
     public function authenticate (Request $request){
         $credentials = $request->validate([
             'email'=> 'required|email:dns',
@@ -46,6 +51,9 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
          return redirect('/');
         }
+
+
+        
 
 
     public function unauthorized()

@@ -1783,6 +1783,30 @@ pre code {
     background-color: rgba(0, 0, 0, .075)
 }
 
+.table-primary tbody+tbody,
+.table-primary td,
+.table-primary th,
+.table-primary thead th {
+    border-color: #a3b6ee
+}
+
+.table-secondary tbody+tbody,
+.table-secondary td,
+.table-secondary th,
+.table-secondary thead th {
+    border-color: #c0c1c8
+}
+
+.table-success tbody+tbody,
+.table-success td,
+.table-success th,
+.table-success thead th {
+    border-color: #89e2c2
+}
+
+
+
+
 .table .thead-dark th {
     color: #fff;
     background-color: #5a5c69;

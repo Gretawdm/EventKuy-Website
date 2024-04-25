@@ -64,66 +64,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Coldplay</td>
-                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quia
-                                    deserunt velit nihil, non maxime? Porro consequatur saepe harum eveniet
-                                    totam pariatur numquam! Dolorum, ab iure? Alias, dicta. Sapiente, et?
-                                </td>
-                                <td>Sos Organization</td>
-                                <td>Junaeid</td>
-                                <td>2011/04/25</td>
-                                <td>52516366162616</td>
-                                <td>23551516663616</td>
-                                <td>
+                            @foreach ($detailevent as $item)
+                                <tr>
+                                    <td>{{ $item->nama_event }}</td>
+                                    <td>{{ $item->deskripsi_event }}</td>
+                                    <td>{{ $item->event_organizer }}</td>
+                                    <td>{{ $item->event_owner }}</td>
+                                    <td>{{ $item->tanggal_event }}</td>
+                                    <td>{{ $item->no_rek }}</td>
+                                    <td><img src="/image/{{ $item['ktp'] }}" alt="KTP"
+                                            style="width: 100px; height: auto;"></td>
 
-                                    <div class="btn-group">
-                                        <form action="" method="POST">
-                                            <button type="submit" style="margin-bottom: 5px; " class="btn btn-success"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-check-circle"></i>Setuju
-                                            </button>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-times-circle"></i>Tolak
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a class="btn-detail" href="/admin/detail_event/{{ $item['id'] }}"
+                                                style="font-weight: 800; margin-bottom: 5px; width:90%;">Detail</a>
+                                            <form action="" method="POST">
+                                                <button type="submit"
+                                                    style="margin-bottom: 5px; width:90%; font-weight:800"
+                                                    class="btn btn-success"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                    <i class="fas fa-check-circle"></i> Setuju
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            @endforeach
 
 
-                            <tr>
-                                <td>Coldplay</td>
-                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quia
-                                    deserunt velit nihil, non maxime? Porro consequatur saepe harum eveniet
-                                    totam pariatur numquam! Dolorum, ab iure? Alias, dicta. Sapiente, et?
-                                </td>
-                                <td>Sos Organization</td>
-                                <td>Junaeid</td>
-                                <td>2011/04/25</td>
-                                <td>52516366162616</td>
-                                <td>23551516663616</td>
-                                <td>
 
-                                    <div class="btn-group">
-                                        <form action="" method="POST">
-                                            <button type="submit" style="margin-bottom: 5px; " class="btn btn-success"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-check-circle"></i>Setuju
-                                            </button>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-times-circle"></i>Tolak
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
 
 
                         </tbody>

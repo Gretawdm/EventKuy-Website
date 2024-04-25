@@ -33,10 +33,10 @@
             <div class="bg-login-knn" style="width: 50%">
 
 
-                <div class="circle-small2"></div>
+                {{-- <div class="circle-small2"></div>
                 <div class="circle-small"></div>
                 <div class="half-circle"></div>
-                <div class="circle"></div>
+                <div class="circle"></div> --}}
 
                 <div class="form-container">
 
@@ -78,7 +78,7 @@
                             <div class="col-auto text-right">
                                 <div class="forgot-password">
                                     <label class="form-label">Forgot Password?</label>
-                                    <a href="#" class="forgot-password-link">Click here</a>
+                                    <a href="{{ route('forgot_password') }}" class="forgot-password-link">Click here</a>
                                 </div>
                             </div>
 

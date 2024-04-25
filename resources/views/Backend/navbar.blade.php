@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('backend/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this page -->
@@ -107,17 +107,13 @@
                         </ul>
                     </nav>
 
+
                     @yield('content')
+                   
     </header>
 
 
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; EventKuy2024</span>
-            </div>
-        </div>
-    </footer>
+
     <!-- End of Topbar -->
 
     </div>

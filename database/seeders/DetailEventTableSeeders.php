@@ -16,6 +16,7 @@ class DetailEventTableSeeders extends Seeder
         DB::table('detail_event_tabel')->insert([ 
             'poster' => 'poster.png',
             'nama_event' => 'ColdPlay',
+            'ktp' => 'ktp.jpg',
             'deskripsi_event' => 'lorem ipsum dolor sit amet.',
             'contact_person' => '0812345671717',
             'event_organizer' => 'Event_WD',

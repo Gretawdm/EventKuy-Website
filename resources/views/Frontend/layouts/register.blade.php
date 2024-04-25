@@ -29,10 +29,10 @@
             </div>
 
             <div class="bg-login-knn" style="width: 50%">
-                <div class="circle-small2"></div>
+                {{-- <div class="circle-small2"></div>
                 <div class="circle-small"></div>
                 <div class="half-circle"></div>
-                <div class="circle"></div>
+                <div class="circle"></div> --}}
                 <div class="form-container">
                     <form class="row g-3 needs-validation" method="POST" action="/register">
                         @csrf
