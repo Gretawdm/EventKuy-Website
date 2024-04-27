@@ -14,19 +14,14 @@ class AdminCategoryController extends Controller
     public function index()
     {
         $detailevent=Event::get();
-        return view ('Backend.admin_form.admin',compact('detailevent'));
+        return view ('Backend.admin_form.verifikasi_event',compact('detailevent'));
         // return view('Backend.admin_form.admin');
     }
 
-    //  public function detail()
-    // {
-    //     return view('Backend.admin_form.detail');
-    // }
-
     public function show($id)
     {
-        $event = Event::findOrFail($id); // Mengambil detail event berdasarkan ID
-        return view('Backend.admin_form.detail', compact('event')); // Menampilkan detail event di view
+        $detailevent = Event::findOrFail($id); // Mengambil detail event berdasarkan ID
+        return view('Backend.admin_form.detail', compact('detailevent')); // Menampilkan detail event di view
     }
 
     /**
@@ -68,8 +63,12 @@ class AdminCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+  
+        $event->delete();
+  
+        return redirect()->route('verfikasi_event')->with('success', 'product deleted successfully');
     }
 }

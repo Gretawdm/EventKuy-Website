@@ -1,4 +1,4 @@
-@extends('backend.navbar')
+@extends('backend.app')
 @section('content')
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Verifikasi Event</h1>
@@ -66,26 +66,32 @@
                         <tbody>
                             @foreach ($detailevent as $item)
                                 <tr>
-                                    <td>{{ $item->nama_event }}</td>
-                                    <td>{{ $item->deskripsi_event }}</td>
-                                    <td>{{ $item->event_organizer }}</td>
-                                    <td>{{ $item->event_owner }}</td>
-                                    <td>{{ $item->tanggal_event }}</td>
-                                    <td>{{ $item->no_rek }}</td>
-                                    <td><img src="/image/{{ $item['ktp'] }}" alt="KTP"
+                                    <td class="align-middle">{{ $item->nama_event }}</td>
+                                    <td class="align-middle">{{ $item->deskripsi_event }}</td>
+                                    <td class="align-middle">{{ $item->event_organizer }}</td>
+                                    <td class="align-middle">{{ $item->event_owner }}</td>
+                                    <td class="align-middle">{{ $item->tanggal_event }}</td>
+                                    <td class="align-middle">{{ $item->no_rek }}</td>
+                                    <td class="align-middle"><img src="/image/{{ $item['ktp'] }}" alt="KTP"
                                             style="width: 100px; height: auto;"></td>
 
-                                    <td>
-                                        <div class="btn-group">
-                                            <a class="btn-detail" href="/admin/detail_event/{{ $item['id'] }}"
-                                                style="font-weight: 800; margin-bottom: 5px; width:90%;">Detail</a>
-                                            <form action="" method="POST">
-                                                <button type="submit"
-                                                    style="margin-bottom: 5px; width:90%; font-weight:800"
-                                                    class="btn btn-success"
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                    <i class="fas fa-check-circle"></i> Setuju
-                                                </button>
+                                    <td class="align-middle">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('detail_event.show', $item->id) }}" type="button"
+                                                class="btn btn-secondary">Detail</a>
+                                            <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
+                                                type="button" class="btn btn-danger p-0"
+                                                onsubmit="return confirm('Tolak Event Ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger m-0">Tolak</button>
+                                            </form>
+                                            <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
+                                                type="button" class="btn btn-success p-0"
+                                                onsubmit="return confirm('Setujui Event Ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-success m-0">Setuju</button>
                                             </form>
                                         </div>
                                     </td>

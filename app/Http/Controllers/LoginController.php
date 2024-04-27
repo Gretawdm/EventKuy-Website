@@ -37,7 +37,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             if(Auth::user()->jabatan == 'admin'){
-                return redirect()->intended('admin');
+                return redirect()->intended('verifikasi_event');
             }else{
                 return redirect()->intended('dashboard');              
             }          

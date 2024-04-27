@@ -285,16 +285,25 @@
 
                        <div class="contact col-lg-5 mt-5 mt-lg-0 d-flex align-items-stretch">
                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                               <div class="form-group">
-                                   <label for="name" style="font-weight: 1000;">Your Name</label>
-                                   <input type="text" name="name" class="form-control" id="name" required>
+                               <div class="row">
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="name" style="font-weight: 1000;">Your Name</label>
+                                           <input type="text" name="name" class="form-control" id="name"
+                                               required>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <label for="email">Your Email</label>
+                                           <input type="email" class="form-control" name="email" id="email"
+                                               required>
+                                       </div>
+                                   </div>
                                </div>
+
                                <div class="form-group">
-                                   <label for="name">Your Email</label>
-                                   <input type="email" class="form-control" name="email" id="email" required>
-                               </div>
-                               <div class="form-group">
-                                   <label for="name">Message</label>
+                                   <label for="message">Message</label>
                                    <textarea class="form-control" name="message" rows="8" required></textarea>
                                </div>
                                <div class="my-3">

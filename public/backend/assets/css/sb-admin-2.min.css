@@ -1699,19 +1699,12 @@ pre code {
     color: #858796
 }
 
-.table td {
+.table td,
+.table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #e3e6f0;
-    color: rgb(13, 13, 13);
-    font-weight: 400;
-}
-
-.table th {
-    vertical-align: top;
-    border-top: 1px solid #e3e6f0;
     color: black;
-    font-weight: 800;
+    border-top: 1px solid #e3e6f0
 }
 
 .table thead th {
@@ -2002,7 +1995,9 @@ select.form-control:focus::-ms-value {
     padding-bottom: calc(.375rem + 1px);
     margin-bottom: 0;
     font-size: inherit;
-    line-height: 1.5
+    line-height: 1.5;
+    font-weight: 900;
+    color: #000;
 }
 
 .col-form-label-lg {
@@ -11583,6 +11578,7 @@ a:focus {
         text-align: center
     }
 }
+
 
 
 

@@ -19,74 +19,71 @@
 <body>
     <main>
         <div class="login min-vh-100 d-flex align-items-center justify-content-center ">
-            <div class="bg-login"style="width: 50%">
-                <div class="login-container">
-                    <h2 style="color:black; font-weight: 1000; font-size:36px">Welcome To EventKuy</h2>
-                    <h4 style="color:black; font-weight: 600; font-size:30px">Public Your Event In Here!</h4>
-                    <img src="{{ asset('frontend/login/assets/img/human.png') }}" style="width: 65%; height:65%">
+            <div class="login">
+                <div class="luar">
+                    <div class="box-luar mb-2">
+                        <div class="box-dalam">
+                            <h3 class="text mb-4" style="font-size: 25px">Create Your Account!</h3>
+                            <form class="row g-3 needs-validation" method="POST" action="/register">
+                                @csrf
+                                <div class="col-12">
+                                    <label for="yourName" class="form-label">Your Name</label>
+                                    <input type="text" name="nama" class="form-control" id="yourName"
+                                        value="{{ old('nama') }}" required>
+                                    <div class="invalid-feedback">Please, enter your name!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourEmail" class="form-label">Your Email</label>
+                                    <input type="email" name="email" class="form-control" id="yourEmail" required>
+                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourPassword" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" id="yourPassword"
+                                        required>
+                                    <div class="invalid-feedback">Please enter your password!</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="terms" type="checkbox" value=""
+                                            id="acceptTerms" required>
+                                        <label class="form-check-label" for="acceptTerms">I agree and accept the
+                                            <a href="#">terms and conditions</a></label>
+                                        <div class="invalid-feedback">You must agree before submitting.</div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-pink w-100" type="submit">Create Account</button>
+                                </div>
+                                @if (session()->has('succes'))
+                                    <div class="alert alert-success mt-2" role="alert">
+                                        {{ session()->get('succes') }}
+                                    </div>
+                                @endif
+
+
+                                <div class="col-12 d-flex justify-content-center">
+                                    <p class="form-label">Already have an account? <a href="{{ route('login') }}">Log
+                                            in</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="logo">
+                        <img src="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" alt=""
+                            width="100px">
+                    </div>
 
                 </div>
+
+
+
             </div>
-
-            <div class="bg-login-knn" style="width: 50%">
-                {{-- <div class="circle-small2"></div>
-                <div class="circle-small"></div>
-                <div class="half-circle"></div>
-                <div class="circle"></div> --}}
-                <div class="form-container">
-                    <form class="row g-3 needs-validation" method="POST" action="/register">
-                        @csrf
-                        <div class="logo">
-                            <img src="{{ asset('frontend/assets/img/logo-register.png') }}" alt=""
-                                width="200px">
-                        </div>
-                        <div class="col-12">
-                            <label for="yourName" class="form-label">Your Name</label>
-                            <input type="text" name="nama" class="form-control" id="yourName"
-                                value="{{ old('nama') }}" required>
-                            <div class="invalid-feedback">Please, enter your name!</div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="yourEmail" class="form-label">Your Email</label>
-                            <input type="email" name="email" class="form-control" id="yourEmail" required>
-                            <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                        </div>
-
-                        <div class="col-12">
-                            <label for="yourPassword" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="yourPassword" required>
-                            <div class="invalid-feedback">Please enter your password!</div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" name="terms" type="checkbox" value=""
-                                    id="acceptTerms" required>
-                                <label class="form-check-label" for="acceptTerms">I agree and accept the
-                                    <a href="#">terms and conditions</a></label>
-                                <div class="invalid-feedback">You must agree before submitting.</div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-pink w-100" type="submit">Create Account</button>
-                        </div>
-                        @if (session()->has('succes'))
-                            <div class="alert alert-success mt-2" role="alert">
-                                {{ session()->get('succes') }}
-                            </div>
-                        @endif
-
-
-                        <div class="col-12 d-flex justify-content-center">
-                            <p class="form-label">Already have an account? <a href="{{ route('login') }}">Log in</a></p>
-                        </div>
-
-
-                    </form>
-
-                </div>
-            </div>
+        </div>
         </div>
         </div>
         </div>
