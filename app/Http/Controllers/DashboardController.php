@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('Backend.dashboard');
+        return view('Backend.pemebuat_event.dashboard');
     }
 
    
