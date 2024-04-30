@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -22,6 +23,13 @@ class AdminCategoryController extends Controller
     {
         $detailevent = Event::findOrFail($id); // Mengambil detail event berdasarkan ID
         return view('Backend.admin_form.detail', compact('detailevent')); // Menampilkan detail event di view
+    }
+
+    public function akun(){
+        $users = User::get();
+        return view ('Backend.admin_form.verifikasi_akun',[
+         "users"=>$users
+        ]);
     }
 
     /**

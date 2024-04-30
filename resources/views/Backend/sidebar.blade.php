@@ -10,33 +10,39 @@
 
     <!-- Nav Item - Admin -->
     @if (Auth::user()->jabatan == 'admin')
-    <li class="nav-item active">
-        <a class="nav-link" href="/verifikasi_event">
-            <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
-            <span>Verifikasi Event</span>
-        </a>
-    </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/verifikasi_event">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <span>Verifikasi Event</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/verifikasi_akun">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <span>Verifikasi Akun</span>
+            </a>
+        </li>
     @else
-    <!-- Nav Item - User -->
-    <li class="nav-item active">
-        <a class="nav-link" href="/event">
-            <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
-            <span>Event</span>
-        </a>
-    </li>
+        <!-- Nav Item - User -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/event">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <span>Event</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
-            <span>Tenant</span>
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <span>Tenant</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
-            <span>Profile</span></a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <span>Profile</span></a>
+        </li>
     @endif
 
     <!-- Garis -->

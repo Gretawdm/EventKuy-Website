@@ -24,27 +24,70 @@
                     <div class="box-luar mb-2">
                         <div class="box-dalam">
                             <h3 class="text mb-4" style="font-size: 25px">Create Your Account!</h3>
-                            <form class="row g-3 needs-validation" method="POST" action="/register">
+                            <form method="POST" enctype="multipart/form-data" action="/register">
                                 @csrf
                                 <div class="col-12">
-                                    <label for="yourName" class="form-label">Your Name</label>
-                                    <input type="text" name="nama" class="form-control" id="yourName"
-                                        value="{{ old('nama') }}" required>
-                                    <div class="invalid-feedback">Please, enter your name!</div>
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                                        value="{{ old('nama_lengkap') }}" required>
+                                    @error('nama_lengkap')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourEmail" class="form-label">Your Email</label>
-                                    <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                    <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
+                                    <input type="text" class="form-control" id="nama_perusahaan"
+                                        name="nama_perusahaan" value="{{ old('nama_perusahaan') }}" required>
+                                    @error('nama_perusahaan')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourPassword" class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" id="yourPassword"
-                                        required>
-                                    <div class="invalid-feedback">Please enter your password!</div>
+                                    <label for="alamat_perusahaan" class="form-label">Alamat Perusahaan</label>
+                                    <input type="text" class="form-control" id="alamat_perusahaan"
+                                        name="alamat_perusahaan" value="{{ old('alamat_perusahaan') }}" required>
+                                    @error('alamat_perusahaan')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
+                                <div class="col-12">
+                                    <label for="no_telp" class="form-label">Nomor Telepon</label>
+                                    <input type="text" class="form-control" id="no_telp" name="no_telp"
+                                        value="{{ old('no_telp') }}" required>
+                                    @error('no_telp')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="ktp_pemilik" class="form-label">Foto KTP</label>
+                                    <input type="file" class="form-control" id="ktp_pemilik" name="ktp_pemilik"
+                                        accept="image/*" required>
+                                    @error('ktp_pemilik')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
 
                                 <div class="col-12">
                                     <div class="form-check">

@@ -13,25 +13,63 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            'nama'=> 'required',
+           'nama_lengkap' => 'required|string',
+            'nama_perusahaan' => 'required|string|unique:users,nama_perusahaan',
+            'alamat_perusahaan' => 'required|string',
+            'no_telp' => 'required',
+             'ktp_pemilik' => 'required|mimes:jpeg,png,jpg,gif|max:5120', //Maksimum 5MB (5 * 1024 KB)
             'email'=> 'required|string',
             'password'=>'required|string|min:6',
         ],[
-            'nama.required'=> 'Nama wajib diisi',
-            'email.required'=>'Email wajib diisi',
-            'password.required'=>'Password wajib diisi', 
-            'password.min'=>'Password diisi min 6 karakter',           
+            'nama_lengkap.required' => 'Nama lengkap wajib diisi',
+            'nama_perusahaan.required' => 'Nama perusahaan wajib diisi',
+            'nama_perusahaan.unique' => 'Nama perusahaan sudah digunakan',
+            'alamat_perusahaan.required' => 'Alamat perusahaan wajib diisi',
+            'no_telp.required' => 'Nomor telepon wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Email harus berformat email yang valid',
+            'email.unique' => 'Email sudah digunakan',
+            'ktp_pemilik.required' => 'KTP pemilik wajib diisi',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Password harus terdiri dari minimal 6 karakter',
         ]);
 
-        User::create([
-            'name'=> $request->nama,
-            'email'=> $request->email,
-            'password'=> Hash::make($request->password),
-            'jabatan'=> 'pembuat'
+      
+       $fileName = '';
+        if($request->hasFile('ktp_pemilik')){
+            $fileName = $request->file('ktp_pemilik')->store('uploads/ktp', 'public');
+        }
+         // Menyimpan data pengguna dalam database dengan status verifikasi "belum diverifikasi" dan jabatan null
+        $user = User::create([
+           'nama_lengkap' => $request->nama_lengkap,
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'alamat_perusahaan' => $request->alamat_perusahaan,
+            'no_telp' => $request->no_telp,
+            'email' => $request->email,
+            'ktp_pemilik' =>$fileName,
+            'password' => Hash::make($request->password),
+            'status_verifikasi' => false, // Atau Anda bisa menggunakan enum 'unverified'
+            'jabatan' => null,
         ]);
+        return redirect()->back()->with('succes','Data Berhasil Dibuat');    
+    }
 
-        return redirect()->back()->with('succes','Data Berhasil Dibuat');
-        
+    // Metode untuk admin memverifikasi akun pengguna
+    public function verifyAccount($id)
+    {
+        // Temukan pengguna berdasarkan ID
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
+        }
+
+        // Mengubah status verifikasi menjadi "sudah diverifikasi" dan jabatan menjadi "pembuat"
+        $user->status_verifikasi = true;
+        $user->jabatan = 'pembuat';
+        $user->save();
+
+        return redirect()->back()->with('success', 'Akun pengguna berhasil diverifikasi.');
     }
 
     

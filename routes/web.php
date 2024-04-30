@@ -58,6 +58,7 @@ Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('for
 Route::resource('/verifikasi_event', AdminCategoryController::class)->except('show')->middleware('admin');
 Route::get('/detail_event/{id}', [AdminCategoryController::class, 'show'])->name('detail_event.show');
 Route::get('/verifikasi_event/{id}', [AdminCategoryController::class, 'destroy'])->name('detail_event.destroy');
+Route::get('/verifikasi_akun', [AdminCategoryController::class, 'akun']);
 // Route::get('/event',[TambahEventController::class,'index'])->name('event');
 
 
