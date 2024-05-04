@@ -50,17 +50,25 @@ Route::get('/our_services', [HomeController::class, 'service']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/waiting_verified', [LoginController::class, 'unferivied'])->name('unferivied');
+
+
+
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('forgot_password');
 
 Route::resource('/verifikasi_event', AdminCategoryController::class)->except('show')->middleware('admin');
+
+
 Route::get('/detail_event/{id}', [AdminCategoryController::class, 'show'])->name('detail_event.show');
+// Route::get('/verifikasi_event', [AdminCategoryController::class, 'index'])->name('verifikasi_event');
 Route::get('/verifikasi_event/{id}', [AdminCategoryController::class, 'destroy'])->name('detail_event.destroy');
-Route::get('/verifikasi_akun', [AdminCategoryController::class, 'akun']);
+Route::get('/verifikasi_akun', [AdminCategoryController::class, 'akun'])->name('verifikasi_akun')->middleware('admin');
+Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikasi_akun'])->name('verifikasi_akun.update');
+// Route::get('/data', [AdminCategoryController::class, 'data']);
 // Route::get('/event',[TambahEventController::class,'index'])->name('event');
 
-
-Route::resource('/event', DashboardController::class)->except('show')->middleware('auth');
-Route::get('/event', [DashboardController::class, 'index'])->name('event');
+Route::resource('/event', DashboardController::class)->except('show')->middleware('admin');
+Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');

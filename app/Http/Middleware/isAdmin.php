@@ -13,11 +13,12 @@ class isAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+   public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check() || auth()->user()->jabatan !== 'admin'){
-             return redirect()->route('login');
-        }
+        if (!auth()->check() || !(auth()->user()->jabatan === 'admin' || auth()->user()->jabatan === 'pembuat')) {
+        return redirect()->route('login');
+    }
+
         return $next($request);
     }
 }

@@ -40,7 +40,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline small"
-                    style="font-weight: 700; color:black">{{ Auth::user()->name }}</span>
+                    style="font-weight: 700; color:black">{{ Auth::user()->nama_lengkap }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset('backend/assets/img/undraw_profile.svg') }}" />
             </a>
             <!-- Dropdown - User Information -->

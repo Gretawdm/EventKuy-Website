@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\User;
+use App\Models\Data;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -25,6 +26,13 @@ class AdminCategoryController extends Controller
         return view('Backend.admin_form.detail', compact('detailevent')); // Menampilkan detail event di view
     }
 
+     //  public function data(){
+    //     $data_tabel = Data::get();
+    //     return view ('Backend.admin_form.data',[
+    //      "data_tabel"=>$data_tabel
+    //     ]);
+    // }
+
     public function akun(){
         $users = User::get();
         return view ('Backend.admin_form.verifikasi_akun',[
@@ -32,10 +40,24 @@ class AdminCategoryController extends Controller
         ]);
     }
 
+    public function verifikasi_akun($id){
+    // Temukan user berdasarkan ID
+    $user = User::findOrFail($id);
+    if (!$user) {
+        // jika user tidak ditemukan
+        return redirect()->back()->with('error', 'User tidak ditemukan.');
+    }
+    $user->jabatan = 'pembuat';
+    $user->status_verifikasi = 'verified';
+    $user->save();
+    return redirect()->route('verifikasi_akun')->with('Akun berhasil disetujui.');
+ 
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
+    
     {
         //
     }
@@ -63,10 +85,7 @@ class AdminCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
+   
 
     /**
      * Remove the specified resource from storage.

@@ -127,13 +127,8 @@
 
             </div>
         </div>
-        </div>
-        </div>
-        </div>
-
-        </section>
-
-        </div>
+      
+       
     </main>
 
     <script src="{{ asset('frontend/login/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

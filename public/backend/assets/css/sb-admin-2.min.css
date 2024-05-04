@@ -43,6 +43,22 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
+/* Definisikan gaya untuk baris yang belum diverifikasi */
+.unverified-row {
+    background-color: var(--red);
+    /* Atau warna merah lainnya */
+    color: white;
+    /* Warna teks untuk kontras */
+}
+
+.unverified-row:hover {
+    background-color: var(--red) !important;
+    /* Atau warna merah lainnya */
+    color: white;
+    /* Warna teks untuk kontras */
+}
+
+
 article,
 aside,
 figcaption,
@@ -2781,6 +2797,48 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #2e59d9;
     border-color: #2653d4
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #2e59d9;
+    border-color: #2653d4;
+    box-shadow: 0 0 0 .2rem rgba(105, 136, 228, .5)
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+    color: #fff;
+    background-color: #4e73df;
+    border-color: #4e73df
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #2653d4;
+    border-color: #244ec9
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(105, 136, 228, .5)
+}
+
+
+.btn-purple {
+    color: #fff;
+    background-color: #7e4a9e;
+    border-color: #7e4a9e
+}
+
+.btn-purple:hover {
+    color: #fff;
+    background-color: #512e67;
+    border-color: #512e67
 }
 
 .btn-primary.focus,
@@ -11548,6 +11606,19 @@ a:focus {
 
 
 }
+
+/* CSS untuk mengatur tampilan sidebar item */
+.nav-item {
+    font-weight: normal;
+    /* Mengatur font-weight menjadi normal secara default */
+}
+
+.nav-item.active {
+    font-weight: 1000;
+
+    /* Mengatur font-weight menjadi bold ketika item aktif */
+}
+
 
 .sidebar .nav-item {
     position: relative

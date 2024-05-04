@@ -6,14 +6,15 @@
            <div class="container">
                <div class="row gy-4 d-flex justify-content-between">
                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                       <h2 data-aos="fade-up" style="font-weight:1000; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+                       <h2 data-aos="fade-up"
+                           style="font-weight:1000; font-size:42px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                            Booking Event
                            dengan mudah melalui <span style="color: #FF6699;text-decoration: underline;">Event</span><span
                                style="color: #2d2828; text-decoration: underline;">Kuy</span></h2>
                        <style>
                            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
                        </style>
-                       <p data-aos="fade-up" data-aos-delay="100" style="font-size: 18px; font-weight: 600;">
+                       <p data-aos="fade-up" data-aos-delay="100" style="font-size: 17px; font-weight: 600;">
                            Dengan kemudahan pendaftaran online, kini proses mendaftarkan booth tenant semakin simpel dan
                            cepat. Tak
                            perlu repot-repot, cukup klik dan kirim formulir pendaftaranmu!</p>

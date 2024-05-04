@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --font-primary: "Inter", sans-serif;
+    --font-secondary: "Poppins";
+    --font-third: "Nunito", sans-serif;
+}
+
+:root {
+    --color-default: #2d2828;
+    --color-primary: #512e67;
+    --color-secondary: #ff6699;
+    --color-third: #c54c82;
+}
+
+.waiting {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    /* Mengatur lebar menyesuaikan, tinggi 80% dari tinggi layar */
+}
+
+.text-center {
+    justify-content: center;
+    display: flex;
+}
+
+.chat-bubble {
+
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    padding: 10px 15px;
+    width: 800px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-bubble::before,
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-primary);
+    /* Warna sama dengan latar belakang chat bubble */
+    border-radius: 50%;
+    /* Membuat ujung berbentuk lingkaran */
+    transform: rotate(45deg);
+    /* Mengubah orientasi lingkaran */
+}
+
+
+#myElement {
+    width: 500px;
+    font-family: var(--font-third);
+    font-weight: 900;
+    color: #ffffff;
+}

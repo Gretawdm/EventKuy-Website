@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_lengkap');
-            $table->string('nama_perusahaan')->unique('');
+            $table->string('nama_perusahaan')->unique();
             $table->string('alamat_perusahaan');
             $table->string('no_telp');
             $table->string('email')->unique();
             $table->string('ktp_pemilik');
-             $table->string('password');
-            $table->boolean('status_verifikasi')->default(false);
+            $table->string('password');
+            $table->enum('status_verifikasi', ['unverified', 'verified'])->default('unverified')->nullable();
             $table->string('jabatan')->nullable();
             $table->rememberToken();
             $table->timestamps();

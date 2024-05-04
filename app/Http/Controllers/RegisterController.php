@@ -17,8 +17,8 @@ class RegisterController extends Controller
             'nama_perusahaan' => 'required|string|unique:users,nama_perusahaan',
             'alamat_perusahaan' => 'required|string',
             'no_telp' => 'required',
-             'ktp_pemilik' => 'required|mimes:jpeg,png,jpg,gif|max:5120', //Maksimum 5MB (5 * 1024 KB)
-            'email'=> 'required|string',
+            'ktp_pemilik' => 'required|mimes:jpeg,png,jpg,gif|max:5120', //Maksimum 5MB (5 * 1024 KB)
+            'email'=> 'required|string|unique:users,email',
             'password'=>'required|string|min:6',
         ],[
             'nama_lengkap.required' => 'Nama lengkap wajib diisi',
@@ -48,29 +48,14 @@ class RegisterController extends Controller
             'email' => $request->email,
             'ktp_pemilik' =>$fileName,
             'password' => Hash::make($request->password),
-            'status_verifikasi' => false, // Atau Anda bisa menggunakan enum 'unverified'
+            'status_verifikasi' => 'unverified', // Atau Anda bisa menggunakan enum 'unverified'
             'jabatan' => null,
         ]);
         return redirect()->back()->with('succes','Data Berhasil Dibuat');    
     }
 
     // Metode untuk admin memverifikasi akun pengguna
-    public function verifyAccount($id)
-    {
-        // Temukan pengguna berdasarkan ID
-        $user = User::find($id);
-
-        if (!$user) {
-            return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
-        }
-
-        // Mengubah status verifikasi menjadi "sudah diverifikasi" dan jabatan menjadi "pembuat"
-        $user->status_verifikasi = true;
-        $user->jabatan = 'pembuat';
-        $user->save();
-
-        return redirect()->back()->with('success', 'Akun pengguna berhasil diverifikasi.');
-    }
+  
 
     
 }

@@ -40,7 +40,11 @@ class LoginController extends Controller
             if (Auth::user()->jabatan == 'admin') {
                 return redirect()->intended('verifikasi_event');
             } else {
-                return redirect()->intended('event');
+                if(Auth::user()->jabatan == 'pembuat'){
+                    return redirect()->intended('event');
+                }else{
+                     return redirect()->intended('waiting_verified');
+                }    
             }
         }
         return redirect()->route('login')->with('loginError', 'Login Gagal!');
@@ -55,12 +59,14 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-
-
-
-
     public function unauthorized()
     {
         return view("eror-unauthorized");
+    }
+
+
+    public function unferivied()
+    {
+       return view("Frontend/layouts.waiting_verifikasi");
     }
 }
