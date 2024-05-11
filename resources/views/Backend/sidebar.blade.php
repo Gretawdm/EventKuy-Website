@@ -16,12 +16,12 @@
                 <span>Verifikasi Event</span>
             </a>
         </li>
-        <li class="nav-item {{ Request::is('verifikasi_akun') ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::is('verifikasi_akun') ? 'active' : '' }}">
             <a class="nav-link" href="/verifikasi_akun">
                 <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
                 <span>Verifikasi Akun</span>
             </a>
-        </li>
+        </li> --}}
     @else
         <li class="nav-item {{ Request::is('event') ? 'active' : '' }}">
             <a class="nav-link" href="/event">

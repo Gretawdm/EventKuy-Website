@@ -49,8 +49,12 @@
                                 {{ $detailevent->event_owner }}
                             </div>
                         </div>
-
-
+                        <div class="row mb-3">
+                            <div class="col-sm-4 col-form-label">KTP :</div>
+                            <div class="col-sm-10" style="width: 300px; height: auto;">
+                                <img src="/image/{{ $detailevent['ktp'] }}" alt="Poster" style="max-width: 300px" />
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <div class="col-sm-4 col-form-label">Tanggal Event :</div>
                             <div class="col-sm-10">

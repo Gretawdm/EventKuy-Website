@@ -11,26 +11,17 @@
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">1+</span>
+                <span id="notificationCounter" class="badge badge-danger badge-counter">0</span>
             </a>
             <!-- Dropdown - Alerts -->
+
+            <!-- Di dalam dropdown menu -->
+            <!-- Di dalam dropdown menu -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">Alerts Center</h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">Cold Play</div>
-                        <span class="font-weight-bold">Event Ini akan Diadakan pada
-                            tanggal.....</span>
-                    </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                    Alerts</a>
+                aria-labelledby="alertsDropdown" id="notificationContainer">
+                <!-- Notifikasi akan ditambahkan di sini -->
+                <a class="dropdown-item text-center small text-gray-500" href="#" id="showAllAlerts"
+                    style="display: none;">Show All Alerts</a>
             </div>
         </li>
 
@@ -86,6 +77,10 @@
             </div>
         </div>
     </form>
+
+    <!-- Tambahkan script JavaScript di bagian bawah halaman Anda -->
+
+
 
 
 

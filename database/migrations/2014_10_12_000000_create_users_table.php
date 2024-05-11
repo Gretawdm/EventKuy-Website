@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('alamat_perusahaan');
             $table->string('no_telp');
             $table->string('email')->unique();
-            $table->string('ktp_pemilik');
             $table->string('password');
-            $table->enum('status_verifikasi', ['unverified', 'verified'])->default('unverified')->nullable();
-            $table->string('jabatan')->nullable();
+            // $table->enum('status_verifikasi', ['unverified', 'verified'])->default('unverified')->nullable();
+            $table->enum('jabatan', ['admin', 'pembuat'])->default('pembuat')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

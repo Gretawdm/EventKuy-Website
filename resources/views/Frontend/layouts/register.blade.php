@@ -26,35 +26,39 @@
                             <h3 class="text mb-4" style="font-size: 25px">Create Your Account!</h3>
                             <form method="POST" enctype="multipart/form-data" action="/register">
                                 @csrf
-                                <div class="col-12">
-                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                <div class="col-12 mb-2">
+                                    <label for="nama_lengkap" class="form-label" style="font-weight: 800;">Nama
+                                        Lengkap</label>
                                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
                                         value="{{ old('nama_lengkap') }}" required>
                                     @error('nama_lengkap')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-
-                                <div class="col-12">
-                                    <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
-                                    <input type="text" class="form-control" id="nama_perusahaan"
-                                        name="nama_perusahaan" value="{{ old('nama_perusahaan') }}" required>
-                                    @error('nama_perusahaan')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group row mb-2">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="nama_perusahaan" class="form-label" style="font-weight: 800;">Nama
+                                            Perusahaan</label>
+                                        <input type="text" class="form-control" id="nama_perusahaan"
+                                            name="nama_perusahaan" value="{{ old('nama_perusahaan') }}" required>
+                                        @error('nama_perusahaan')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="alamat_perusahaan" class="form-label"
+                                            style="font-weight: 800;">Alamat Perusahaan</label>
+                                        <input type="text" class="form-control" id="alamat_perusahaan"
+                                            name="alamat_perusahaan" value="{{ old('alamat_perusahaan') }}" required>
+                                        @error('alamat_perusahaan')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
 
-                                <div class="col-12">
-                                    <label for="alamat_perusahaan" class="form-label">Alamat Perusahaan</label>
-                                    <input type="text" class="form-control" id="alamat_perusahaan"
-                                        name="alamat_perusahaan" value="{{ old('alamat_perusahaan') }}" required>
-                                    @error('alamat_perusahaan')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="no_telp" class="form-label">Nomor Telepon</label>
+                                <div class="col-12 mb-2">
+                                    <label for="no_telp" class="form-label" style="font-weight: 800;">Nomor
+                                        Telepon</label>
                                     <input type="text" class="form-control" id="no_telp" name="no_telp"
                                         value="{{ old('no_telp') }}" required>
                                     @error('no_telp')
@@ -62,17 +66,8 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12">
-                                    <label for="ktp_pemilik" class="form-label">Foto KTP</label>
-                                    <input type="file" class="form-control" id="ktp_pemilik" name="ktp_pemilik"
-                                        accept="image/*" required>
-                                    @error('ktp_pemilik')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="email" class="form-label">Email</label>
+                                <div class="col-12 mb-2">
+                                    <label for="email" class="form-label" style="font-weight: 800;">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
                                         value="{{ old('email') }}" required>
                                     @error('email')
@@ -80,16 +75,31 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
-                                    @error('password')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
+                                <div class="form-group row mb-2">
+                                    <div class="col-sm-6">
+                                        <label for="password" class="form-label" style="font-weight: 800;">
+                                            Password</label>
+                                        <input name="password_confirmation" type="password"
+                                            class="form-control form-control-user @error('password_confirmation')is-invalid @enderror"
+                                            id="exampleRepeatPassword">
+                                        @error('password_confirmation')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label for="password" class="form-label" style="font-weight: 800;">Repeat
+                                            Password</label>
+                                        <input name="password" type="password"
+                                            class="form-control form-control-user @error('password')is-invalid @enderror"
+                                            id="exampleInputPassword">
+                                        @error('password')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
 
 
-                                <div class="col-12">
+                                <div class="col-12 mb-2">
                                     <div class="form-check">
                                         <input class="form-check-input" name="terms" type="checkbox" value=""
                                             id="acceptTerms" required>
@@ -98,7 +108,7 @@
                                         <div class="invalid-feedback">You must agree before submitting.</div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mb-2">
                                     <button class="btn btn-pink w-100" type="submit">Create Account</button>
                                 </div>
                                 @if (session()->has('succes'))
@@ -127,8 +137,8 @@
 
             </div>
         </div>
-      
-       
+
+
     </main>
 
     <script src="{{ asset('frontend/login/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>

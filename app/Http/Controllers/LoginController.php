@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\ResetToken;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -23,13 +24,43 @@ class LoginController extends Controller
         return view('frontend/layouts.forgotpassword');
     }
 
+    
+
+    // public function forgot_pw_send(Request $request){
+    //     $customMessageError = [
+    //         'email.required' => 'Email wajib diisi',
+    //         'email.email' => 'Email tidak valid',
+    //         'email.exsits' => 'Email tidak terdaftar di database',
+    //     ];
+        
+    //     $request->validate([
+    //         'email' => 'required|email|exists:users,email'
+    //     ],$customMessageError);
+
+    //     ResetToken::updateOrCreate(
+    //         [
+    //             'email' => $request->email
+    //         ],[
+    //         'email' => $request->email,
+    //         'token' => \Str::random(60),
+    //         'created_at' => now(),
+    //         ]
+    //     );
+        
+    //     $data = [
+    //          'email' => $request->email
+    //     ];
+    //     return redirect()->route('forgot_password')->with('succes', 'Kami telah mengirimkan link reset password ke email anda!');
+    // }
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required|string|min:6',
         ], [
             'email.required' => 'Email wajib diisi',
+            'email.exsits' => 'Email tidak terdaftar di database',
             'password.required' => 'Password wajib diisi',
             'password.min' => 'Password diisi min 6 karakter',
 
@@ -62,11 +93,5 @@ class LoginController extends Controller
     public function unauthorized()
     {
         return view("eror-unauthorized");
-    }
-
-
-    public function unferivied()
-    {
-       return view("Frontend/layouts.waiting_verifikasi");
     }
 }

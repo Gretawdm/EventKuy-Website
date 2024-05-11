@@ -25,12 +25,13 @@
                 <div class="luar">
                     <div class="box-luar mb-2">
                         <div class="box-dalam">
-                            <h3 class="text mb-4" style="font-size: 25px">Login To Your Account!</h3>
+                            <h3 class="text mb-2" style="font-size: 25px">Login To Your Account!</h3>
+                            <h5 class="text mb-4" style="font-size: 16px">Input Your Email and Password!</h5>
                             <form action="/login" method="POST" novalidate>
                                 @csrf
                                 <div class="mb-2">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" placeholder="asd@gmail.com" name="email"
+                                    <label for="email" class="form-label" style="font-weight: 800;">Email</label>
+                                    <input type="email" id="email" name="email"
                                         class="form-control" autofocus required value="{{ old('email') }}">
                                     @error('email')
                                         <small style="color: red">* {{ $message }}</small>
@@ -39,7 +40,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password" class="form-label" style="font-weight: 800;">Password</label>
                                     <input type="password" id="password" placeholder="minimal 6 karakter"
                                         name="password" class="form-control" required>
                                     @error('password')

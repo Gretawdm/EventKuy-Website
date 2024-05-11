@@ -26,6 +26,24 @@ class AdminCategoryController extends Controller
         return view('Backend.admin_form.detail', compact('detailevent')); // Menampilkan detail event di view
     }
 
+    public function verify($id){
+    // Temukan user berdasarkan ID
+    $detailevent = Event::findOrFail($id);
+    $detailevent->status_verifikasi = 'verified';
+    $detailevent->save();
+    return redirect()->back()->with('succes','Event berhasil disetujui.');
+    }
+
+    public function unverify($id)
+    {
+    $detailevent = Event::findOrFail($id);
+    $detailevent->status_verifikasi = 'unverified';
+    $detailevent->save();
+    return redirect()->back()->with('success', 'Event berhasil ditolak.');
+    }
+    
+
+
      //  public function data(){
     //     $data_tabel = Data::get();
     //     return view ('Backend.admin_form.data',[
@@ -33,26 +51,37 @@ class AdminCategoryController extends Controller
     //     ]);
     // }
 
-    public function akun(){
-        $users = User::get();
-        return view ('Backend.admin_form.verifikasi_akun',[
-         "users"=>$users
-        ]);
+    // public function akun(){
+    //     $users = User::get();
+    //     return view ('Backend.admin_form.verifikasi_akun',[
+    //      "users"=>$users
+    //     ]);
+    // }
+
+    // public function verifikasi_akun($id){
+    // // Temukan user berdasarkan ID
+    // $user = User::findOrFail($id);
+    // if (!$user) {
+    //     // jika user tidak ditemukan
+    //     return redirect()->back()->with('error', 'User tidak ditemukan.');
+    // }
+    // $user->jabatan = 'pembuat';
+    // $user->status_verifikasi = 'verified';
+    // $user->save();
+    // return redirect()->route('verifikasi_akun')->with('Akun berhasil disetujui.');
+ 
+    // }
+
+    
+   
+    public function destroy($id) {
+    $event = Event::findOrFail($id);
+    $event->delete();
+    return redirect()->route('verifikasi_event.index')
+        ->with('success', 'Event berhasil dihapus.');
     }
 
-    public function verifikasi_akun($id){
-    // Temukan user berdasarkan ID
-    $user = User::findOrFail($id);
-    if (!$user) {
-        // jika user tidak ditemukan
-        return redirect()->back()->with('error', 'User tidak ditemukan.');
-    }
-    $user->jabatan = 'pembuat';
-    $user->status_verifikasi = 'verified';
-    $user->save();
-    return redirect()->route('verifikasi_akun')->with('Akun berhasil disetujui.');
- 
-    }
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -90,12 +119,8 @@ class AdminCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        $event = Event::findOrFail($id);
+
+     
   
-        $event->delete();
-  
-        return redirect()->route('verfikasi_event')->with('success', 'product deleted successfully');
-    }
+
 }

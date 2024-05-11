@@ -28,6 +28,7 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/assets/scss/styles.scss') }}" rel="stylesheet">
 
 </head>
 

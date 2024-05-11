@@ -53,46 +53,63 @@
                         <thead>
                             <tr>
                                 <th>Nama Event</th>
-                                <th>Deskripsi Event</th>
                                 <th>Event Organizer</th>
                                 <th>Event Owner</th>
                                 <th>Tanggal Event</th>
                                 <th>No Rek</th>
                                 <th>KTP</th>
+                                <th>Status</th>
                                 <th>Action</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($detailevent as $item)
-                                <tr>
+                                @php
+                                    $tanggal_event = strtotime($item->tanggal_event);
+                                    $today = strtotime(date('Y-m-d'));
+                                    $class = $tanggal_event < $today ? 'expired-event' : '';
+
+                                    if ($item->status_verifikasi === 'waiting') {
+                                        $class .= ' waiting-event';
+                                    }
+                                @endphp
+                                <tr class="{{ $class }}">
                                     <td class="align-middle">{{ $item->nama_event }}</td>
-                                    <td class="align-middle">{{ $item->deskripsi_event }}</td>
+
                                     <td class="align-middle">{{ $item->event_organizer }}</td>
                                     <td class="align-middle">{{ $item->event_owner }}</td>
                                     <td class="align-middle">{{ $item->tanggal_event }}</td>
                                     <td class="align-middle">{{ $item->no_rek }}</td>
                                     <td class="align-middle"><img src="/image/{{ $item['ktp'] }}" alt="KTP"
                                             style="width: 100px; height: auto;"></td>
-
+                                    <td class="align-middle">{{ $item->status_verifikasi }}</td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('detail_event.show', $item->id) }}" type="button"
-                                                class="btn btn-secondary">Detail</a>
-                                            <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
-                                                type="button" class="btn btn-danger p-0"
-                                                onsubmit="return confirm('Tolak Event Ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger m-0">Tolak</button>
-                                            </form>
-                                            <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
+                                            <a style="font-weight: 800;" href="{{ route('detail_event.show', $item->id) }}"
+                                                type="button" class="btn btn-warning">Detail</a>
+                                            <form action="{{ route('verifikasi_event.verify', $item->id) }}" method="POST"
                                                 type="button" class="btn btn-success p-0"
                                                 onsubmit="return confirm('Setujui Event Ini?')">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-success m-0">Setuju</button>
+                                                <button style="font-weight: 800" class="btn btn-success m-0">Setuju</button>
                                             </form>
+                                            <form action="{{ route('verifikasi_event.unverify', $item->id) }}"
+                                                method="POST" type="button" class="btn btn-danger p-0"
+                                                onsubmit="return confirm('Tolak Event Ini?')">
+                                                @csrf
+                                                <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
+                                            </form>
+                                            <form action="{{ route('verifikasi_event.destroy', $item->id) }}"
+                                                method="POST" class="btn btn-secondary p-0"
+                                                onsubmit="return confirm('Apakah anda yakin ingin menghapus event ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button style="font-weight: 800" class="btn btn-secondary m-0">
+                                                    <i class="fas fa-trash ml-2"></i>
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </td>
 
@@ -109,5 +126,211 @@
             </div>
         </div>
     </div>
+
+    <!-- Di dalam dropdown menu -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+        <!-- Kontainer untuk notifikasi -->
+        <div id="notificationContainer">
+            <!-- Notifikasi akan ditambahkan di sini -->
+        </div>
+    </div>
+
+    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Detail Notifikasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Konten notifikasi akan ditampilkan di sini -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .event-name {
+            font-weight: bold;
+        }
+
+        .event-description {
+            font-weight: lighter;
+        }
+
+        #notificationContainer .dropdown-item:last-child {
+            border-top: 1px solid #dee2e6;
+            top: -2px;
+            padding-top: 10px;
+        }
+
+        .unread-notification {
+            background-color: #606881;
+            /* Warna latar belakang untuk notifikasi yang belum dibaca */
+        }
+    </style>
+
+
+    <!-- JavaScript untuk menambahkan notifikasi -->
+    <script>
+        // Fungsi untuk menambahkan notifikasi baru ke dalam dropdown
+        function addNotification(eventName, eventDescription, eventDate, isRead) {
+            // Tentukan kelas CSS untuk notifikasi berdasarkan status pembacaan
+            var notificationClass = isRead ? '' : 'unread-notification';
+
+            // Buat objek Date untuk tanggal dan waktu saat ini
+            var currentDate = new Date();
+            var currentDateString = currentDate.toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+            var currentTimeString = currentDate.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Format tanggal notifikasi
+            var notificationDate = new Date(eventDate).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+            });
+
+            // Buat pesan notifikasi baru dengan kelas CSS yang sesuai
+            var newNotification = `
+        <a class="dropdown-item d-flex align-items-center notification-item ${notificationClass}" href="#" data-toggle="modal" data-target="#notificationModal">
+            <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                    <i class="fas fa-file-alt text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500 event-name">${eventName}</div>
+                <div class="font-weight-bold event-description ${isRead ? 'text-gray-600' : ''}">${eventDescription}</div>
+                <div class="small text-gray-500">Sent: ${currentDateString} ${currentTimeString}</div>
+                <div class="small text-gray-500">Event Date: ${notificationDate}</div>
+            </div>
+        </a>
+    `;
+
+            // Tambahkan pesan notifikasi baru ke dalam kontainer notifikasi
+            var notificationContainer = document.getElementById('notificationContainer');
+            notificationContainer.insertAdjacentHTML('beforeend', newNotification);
+
+            // Perbarui jumlah notifikasi
+            var notificationCounter = document.getElementById('notificationCounter');
+            var currentCount = parseInt(notificationCounter.innerText);
+            if (currentCount + 1 > 3) {
+                notificationCounter.innerHTML = '3<span class="badge badge-danger badge-counter">+</span>';
+                document.getElementById('showAllAlerts').style.display = 'block';
+            } else {
+                notificationCounter.innerText = currentCount + 1;
+            }
+        }
+
+        // Panggil fungsi addNotification untuk setiap event dari $detailevent
+        @foreach ($detailevent as $event)
+            addNotification("{{ $event->nama_event }}", "{{ $event->deskripsi_event }}", "{{ $event->tanggal_event }}",
+                {{ $event->is_read ? 'true' : 'false' }});
+        @endforeach
+
+
+
+        // Event listener untuk notifikasi yang diklik
+        document.querySelectorAll('.notification-item').forEach(item => {
+            item.addEventListener('click', event => {
+                // Hapus kelas unread-notification dari notifikasi yang dibuka
+                item.classList.remove('unread-notification');
+
+                // Ambil judul dan deskripsi notifikasi
+                var eventName = item.querySelector('.event-name').innerText;
+                var eventDescription = item.querySelector('.event-description').innerText;
+
+                // Tampilkan modal dengan detail notifikasi
+                var modalTitle = document.getElementById('notificationModalLabel');
+                var modalBody = document.querySelector('.modal-body');
+                modalTitle.innerText = eventName;
+                modalBody.innerHTML = eventDescription;
+            });
+        });
+
+        function markNotificationAsRead(notificationItem) {
+            // Hapus kelas unread-notification dari notifikasi
+            notificationItem.classList.remove('unread-notification');
+            // Update tampilan notifikasi yang belum dibaca
+            var unreadNotifications = document.querySelectorAll('.unread-notification');
+            var notificationCounter = document.getElementById('notificationCounter');
+            var currentCount = parseInt(notificationCounter.innerText);
+
+            // Kurangi jumlah notifikasi yang belum dibaca
+            if (unreadNotifications.length < currentCount) {
+                var newCount = currentCount - 1;
+                notificationCounter.innerText = newCount;
+                notificationCounter.innerHTML = newCount > 3 ? '3<span class="badge badge-danger badge-counter">+</span>' :
+                    newCount;
+            }
+        }
+
+        // Event listener untuk notifikasi yang diklik
+        document.querySelectorAll('.notification-item').forEach(item => {
+            item.addEventListener('click', event => {
+                // Cek apakah notifikasi belum dibaca
+                if (item.classList.contains('unread-notification')) {
+                    // Tandai notifikasi sebagai sudah dibaca
+                    markNotificationAsRead(item);
+                }
+
+                // Ambil judul dan deskripsi notifikasi
+                var eventName = item.querySelector('.event-name').innerText;
+                var eventDescription = item.querySelector('.event-description').innerText;
+
+                // Tampilkan modal dengan detail notifikasi
+                var modalTitle = document.getElementById('notificationModalLabel');
+                var modalBody = document.querySelector('.modal-body');
+                modalTitle.innerText = eventName;
+                modalBody.innerHTML = eventDescription;
+            });
+        });
+
+
+        // Fungsi untuk menampilkan semua notifikasi
+        function showAllAlerts() {
+            // Tampilkan semua notifikasi
+            var notifications = document.querySelectorAll('.dropdown-item');
+            notifications.forEach(function(notification) {
+                notification.style.display = 'block';
+            });
+
+            // Sembunyikan tombol "Show All Alerts"
+            document.getElementById('showAllAlerts').style.display = 'none';
+        }
+
+        // Panggil fungsi addNotification untuk setiap event dari $detailevent
+        @foreach ($detailevent as $event)
+            addNotification("{{ $event->nama_event }}", "{{ $event->deskripsi_event }}",
+                {{ $event->is_read ? 'true' : 'false' }});
+        @endforeach
+
+        // Tambahkan event listener untuk tombol "Show All Alerts"
+        document.getElementById('showAllAlerts').addEventListener('click', function(event) {
+            event.preventDefault();
+            showAllAlerts();
+        });
+    </script>
+
+
+
+
+
     <!-- /.container-fluid -->
+
+    <!-- Tambahkan script JavaScript di bagian bawah halaman Anda -->
 @endsection

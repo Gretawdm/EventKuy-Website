@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('no_rek');
             $table->string('nama_rekening');
             $table->string('alamat_event');
+          $table->enum('status_verifikasi', ['waiting', 'unverified', 'verified'])->default('waiting');
             $table->date('tanggal_pendaftaran_booth_tenant');
             $table->string('booth');
             $table->string('denah');

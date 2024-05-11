@@ -36,17 +36,69 @@ body {
   transition: transform 0.5s ease;
 }
 
+.form-step:not(.active) {
+  display: none;
+}
+
 /* Gunakan CSS untuk menyembunyikan elemen form saat animasi */
-.form-hidden {
+User .form-hidden {
   transform: translateX(-100%);
   opacity: 0;
 }
 
-.login h3 {
-  font-weight: 900;
+#progressbar {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
+#progressbar li {
+  list-style-type: none;
+  width: 33.33%;
+  float: left;
+  position: relative;
+  text-align: center;
+}
 
+#progressbar li.active {
+  color: green;
+}
+
+#progressbar li::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  line-height: 30px;
+  border: 2px solid #bebebe;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+}
+
+#progressbar li.active::before {
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+/* Style untuk teks di bawah progress bar */
+#progressbar span {
+  display: block;
+  color: #555;
+  /* warna teks di bawah progress bar */
+  font-size: 12px;
+  margin-top: 5px;
+  /* jarak antara progress bar dan teks di bawahnya */
+}
+
+.login h3 {
+  background: linear-gradient(45deg, #C54C82, #A84A80, #512E67);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
 
 .circle-small {
   position: absolute;
@@ -110,7 +162,7 @@ body {
 
 .login .box-luar {
   border-radius: 10px;
-  padding: 60px;
+  padding: 50px;
   background-color: rgb(255, 255, 255, .4);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
@@ -210,7 +262,7 @@ h6 {
 
 .btn.btn-pink {
   font-family: var(--font-third);
-  font-weight: 1000;
+  font-weight: 800;
   color: #fff;
 }
 

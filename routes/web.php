@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\TambahEventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -60,11 +61,12 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('forgot_password');
 
 Route::resource('/verifikasi_event', AdminCategoryController::class)->except('show')->middleware('admin');
-
-
+Route::delete('/verifikasi_event/{id}', [AdminCategoryController::class, 'destroy'])->name('verifikasi_event.destroy');
+Route::delete('/verifikasi_event/{id}', [AdminCategoryController::class, 'update'])->name('verifikasi_event.update');
+Route::post('/verifikasi_event/{id}/verify', [AdminCategoryController::class, 'verify'])->name('verifikasi_event.verify');
+Route::post('/verifikasi_event/{id}/unverify', [AdminCategoryController::class, 'unverify'])->name('verifikasi_event.unverify');
 Route::get('/detail_event/{id}', [AdminCategoryController::class, 'show'])->name('detail_event.show');
-// Route::get('/verifikasi_event', [AdminCategoryController::class, 'index'])->name('verifikasi_event');
-Route::get('/verifikasi_event/{id}', [AdminCategoryController::class, 'destroy'])->name('detail_event.destroy');
+
 Route::get('/verifikasi_akun', [AdminCategoryController::class, 'akun'])->name('verifikasi_akun')->middleware('admin');
 Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikasi_akun'])->name('verifikasi_akun.update');
 // Route::get('/data', [AdminCategoryController::class, 'data']);
@@ -72,3 +74,5 @@ Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikas
 
 Route::resource('/event', DashboardController::class)->except('show')->middleware('admin');
 Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');
+Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
+Route::get('/detail_tenant/{id}', [DashboardController::class, 'show'])->name('detail_tenant.show');
