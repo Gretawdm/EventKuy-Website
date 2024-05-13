@@ -7,24 +7,40 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-   protected $table = 'detail_event_tabel';
+    protected $table = 'events';
+
+    protected $primaryKey = 'id_event';
 
     protected $fillable = [
-        'poster',
         'nama_event',
-        'deskripsi_event',
-        'contact_person',
-        'event_organizer',
-        'event_owner',
+        'penyelenggara_event',
+        'upload_ktp',
+        'kategori_event',
         'tanggal_event',
-        'no_rek',
+        'jam_event',
+        'tanggal_pendaftaran',
+        'tanggal_penutupan',
+        'deskripsi',
+        'alamat',
+        'longitude',
+        'latitude',
+        'upload_denah',
+        'upload_pamflet',
+        'no_rekening',
         'nama_rekening',
-        'alamat_event',
-        'tanggal_pendaftaran_booth_tenant',
-        'booth',
-        'denah'
+        'nama_bank',
+        'email',
+        'instagram',
+        'whatsapp',
+        'user_id'
     ];
-
-    protected $dates = ['tanggal_event', 'tanggal_pendaftaran_booth_tenant'];
+    public function booths()
+    {
+        return $this->hasMany(Booth::class, 'id_event', 'id_event');
+    }
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
 }
