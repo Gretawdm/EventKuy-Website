@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+
+    protected $primaryKey = 'id';
     protected $fillable = [
         'nama_lengkap',
         'nama_perusahaan',
@@ -48,4 +51,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'id', 'id');
+    }
 }

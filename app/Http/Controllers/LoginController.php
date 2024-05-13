@@ -24,7 +24,7 @@ class LoginController extends Controller
         return view('frontend/layouts.forgotpassword');
     }
 
-    
+
 
     // public function forgot_pw_send(Request $request){
     //     $customMessageError = [
@@ -32,7 +32,7 @@ class LoginController extends Controller
     //         'email.email' => 'Email tidak valid',
     //         'email.exsits' => 'Email tidak terdaftar di database',
     //     ];
-        
+
     //     $request->validate([
     //         'email' => 'required|email|exists:users,email'
     //     ],$customMessageError);
@@ -46,7 +46,7 @@ class LoginController extends Controller
     //         'created_at' => now(),
     //         ]
     //     );
-        
+
     //     $data = [
     //          'email' => $request->email
     //     ];
@@ -71,11 +71,9 @@ class LoginController extends Controller
             if (Auth::user()->jabatan == 'admin') {
                 return redirect()->intended('verifikasi_event');
             } else {
-                if(Auth::user()->jabatan == 'pembuat'){
+                if (Auth::user()->jabatan == 'pembuat') {
                     return redirect()->intended('event');
-                }else{
-                     return redirect()->intended('waiting_verified');
-                }    
+                }
             }
         }
         return redirect()->route('login')->with('loginError', 'Login Gagal!');

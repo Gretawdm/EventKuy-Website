@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             // $table->enum('status_verifikasi', ['unverified', 'verified'])->default('unverified')->nullable();
-            $table->enum('jabatan', ['admin', 'pembuat'])->default('pembuat')->nullable();
+            $table->enum('jabatan', ['admin', 'pembuat'])->default('pembuat');
             $table->rememberToken();
             $table->timestamps();
         });

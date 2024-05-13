@@ -5,6 +5,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
@@ -13,6 +15,7 @@ use App\Http\Controllers\TambahEventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +79,11 @@ Route::resource('/event', DashboardController::class)->except('show')->middlewar
 Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');
 Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
 Route::get('/detail_tenant/{id}', [DashboardController::class, 'show'])->name('detail_tenant.show');
+
+Route::get('/event/tambah_event', [TambahEventController::class, 'index'])->name('tambah_event');
+Route::post('/event/tambah_event/store', [TambahEventController::class, 'store'])->name('tambah_event.store');
+
+Route::get('/event', [EventController::class, 'index'])->name('event');
+Route::get('/event/detail/{id_event}', [EventController::class, 'show'])->name('event.show');
+
+Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
