@@ -26,15 +26,6 @@
                             <h3 class="text mb-4" style="font-size: 25px">Create Your Account!</h3>
                             <form method="POST" enctype="multipart/form-data" action="/register">
                                 @csrf
-                                <div class="col-12 mb-2">
-                                    <label for="nama_lengkap" class="form-label" style="font-weight: 800;">Nama
-                                        Lengkap</label>
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
-                                        value="{{ old('nama_lengkap') }}" required>
-                                    @error('nama_lengkap')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
                                 <div class="form-group row mb-2">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label for="nama_perusahaan" class="form-label" style="font-weight: 800;">Nama

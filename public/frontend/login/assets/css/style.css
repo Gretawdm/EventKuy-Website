@@ -156,28 +156,25 @@ User .form-hidden {
   justify-content: center;
   align-items: center;
   background-image: url(../img/background-login.png);
-  background-size: 100% 100%;
-  /* Mengatur lebar menyesuaikan, tinggi 80% dari tinggi layar */
+  background-size: cover;
 }
 
 .login .box-luar {
   border-radius: 10px;
-  padding: 50px;
-  background-color: rgb(255, 255, 255, .4);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(0.5px);
+  padding: 3vw;
+  margin-top: 20%;
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(1vw);
+  box-shadow: 1vw 1vw 2vw rgba(0, 0, 0, 0.1);
 }
 
 .login .box-luar .box-dalam {
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 40px;
-  width: 450px;
-  max-height: 500px;
-  overflow-y: auto;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-
+  padding: 2vw;
+  width: 40vw;
+  max-width: 450px;
+  box-shadow: 1vw 1vw 2vw rgba(0, 0, 0, 0.1);
 }
 
 

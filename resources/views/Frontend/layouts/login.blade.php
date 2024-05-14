@@ -25,8 +25,8 @@
                 <div class="luar">
                     <div class="box-luar mb-2">
                         <div class="box-dalam">
-                            <h3 class="text mb-2" style="font-size: 25px">Login To Your Account!</h3>
-                            <h5 class="text mb-4" style="font-size: 16px">Input Your Email and Password!</h5>
+                            <h3 class="text mb-3" style="font-size: 25px">Login To Your Account!</h3>
+                        
                             <form action="/login" method="POST" novalidate>
                                 @csrf
                                 <div class="mb-2">

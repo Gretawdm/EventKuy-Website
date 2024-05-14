@@ -13,14 +13,12 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         $request->validate([
-           'nama_lengkap' => 'required|string',
             'nama_perusahaan' => 'required|string|unique:users,nama_perusahaan',
             'alamat_perusahaan' => 'required|string',
             'no_telp' => 'required',
             'email'=> 'required|string|unique:users,email',
             'password'=>'required|string|min:6|confirmed',
         ],[
-            'nama_lengkap.required' => 'Nama lengkap wajib diisi',
             'nama_perusahaan.required' => 'Nama perusahaan wajib diisi',
             'nama_perusahaan.unique' => 'Nama perusahaan sudah digunakan',
             'alamat_perusahaan.required' => 'Alamat perusahaan wajib diisi',
@@ -40,7 +38,6 @@ class RegisterController extends Controller
     //     }
     
         $user = User::create([
-           'nama_lengkap' => $request->nama_lengkap,
             'nama_perusahaan' => $request->nama_perusahaan,
             'alamat_perusahaan' => $request->alamat_perusahaan,
             'no_telp' => $request->no_telp,

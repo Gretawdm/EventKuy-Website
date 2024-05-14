@@ -53,18 +53,17 @@
                         <thead>
                             <tr>
                                 <th>Nama Event</th>
-                                <th>Event Organizer</th>
-                                <th>Event Owner</th>
+                                <th>Nama Penyelenggara</th>
+                                <th>Alamat Event</th>
+                                <th>Kategori Event</th>
                                 <th>Tanggal Event</th>
-                                <th>No Rek</th>
                                 <th>KTP</th>
-                                <th>Status</th>
+                                <th>Status Verifikasi</th>
                                 <th>Action</th>
-
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($detailevent as $item)
+                            @foreach ($detail_event as $item)
                                 @php
                                     $tanggal_event = strtotime($item->tanggal_event);
                                     $today = strtotime(date('Y-m-d'));
@@ -76,31 +75,31 @@
                                 @endphp
                                 <tr class="{{ $class }}">
                                     <td class="align-middle">{{ $item->nama_event }}</td>
-
-                                    <td class="align-middle">{{ $item->event_organizer }}</td>
-                                    <td class="align-middle">{{ $item->event_owner }}</td>
+                                    <td class="align-middle">{{ $item->penyelenggara_event }}</td>
+                                    <td class="align-middle">{{ $item->alamat }}</td>
+                                    <td class="align-middle">{{ $item->kategori_event }}</td>
                                     <td class="align-middle">{{ $item->tanggal_event }}</td>
-                                    <td class="align-middle">{{ $item->no_rek }}</td>
-                                    <td class="align-middle"><img src="/image/{{ $item['ktp'] }}" alt="KTP"
-                                            style="width: 100px; height: auto;"></td>
-                                    <td class="align-middle">{{ $item->status_verifikasi }}</td>
+                                    <td class="align-middle"><img src="{{ asset("ktp_event/$item->upload_ktp") }}"
+                                            alt="KTP" style="width: 100px; height: auto;"></td>
+                                    <td class="align-middle">{{ $item->status }}</td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a style="font-weight: 800;" href="{{ route('detail_event.show', $item->id) }}"
-                                                type="button" class="btn btn-warning">Detail</a>
-                                            <form action="{{ route('verifikasi_event.verify', $item->id) }}" method="POST"
-                                                type="button" class="btn btn-success p-0"
+                                            <a style="font-weight: 800;"
+                                                href="{{ route('detail_event.show', $item->id_event) }}" type="button"
+                                                class="btn btn-warning">Detail</a>
+                                            <form action="{{ route('verifikasi_event.verify', $item->id_event) }}"
+                                                method="POST" type="button" class="btn btn-success p-0"
                                                 onsubmit="return confirm('Setujui Event Ini?')">
                                                 @csrf
                                                 <button style="font-weight: 800" class="btn btn-success m-0">Setuju</button>
                                             </form>
-                                            <form action="{{ route('verifikasi_event.unverify', $item->id) }}"
+                                            <form action="{{ route('verifikasi_event.unverify', $item->id_event) }}"
                                                 method="POST" type="button" class="btn btn-danger p-0"
                                                 onsubmit="return confirm('Tolak Event Ini?')">
                                                 @csrf
                                                 <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
                                             </form>
-                                            <form action="{{ route('verifikasi_event.destroy', $item->id) }}"
+                                            <form action="{{ route('verifikasi_event.destroy', $item->id_event) }}"
                                                 method="POST" class="btn btn-secondary p-0"
                                                 onsubmit="return confirm('Apakah anda yakin ingin menghapus event ini?')">
                                                 @csrf
@@ -237,7 +236,7 @@
         }
 
         // Panggil fungsi addNotification untuk setiap event dari $detailevent
-        @foreach ($detailevent as $event)
+        @foreach ($detail_event as $event)
             addNotification("{{ $event->nama_event }}", "{{ $event->deskripsi_event }}", "{{ $event->tanggal_event }}",
                 {{ $event->is_read ? 'true' : 'false' }});
         @endforeach
@@ -314,7 +313,7 @@
         }
 
         // Panggil fungsi addNotification untuk setiap event dari $detailevent
-        @foreach ($detailevent as $event)
+        @foreach ($detail_event as $event)
             addNotification("{{ $event->nama_event }}", "{{ $event->deskripsi_event }}",
                 {{ $event->is_read ? 'true' : 'false' }});
         @endforeach

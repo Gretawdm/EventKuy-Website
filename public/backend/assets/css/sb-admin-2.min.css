@@ -100,150 +100,121 @@ body {
 }
 
 /* lubna */
-:root {
-    --primary-color: rgb(11, 78, 179);
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-  }
-  h3{
-    display: flex;
-    margin-right: auto;
-    margin-left: 140px;
-  }
-  
-  /* CSS yang tidak berubah */
-  
-  /* Tambahkan media query di sini */
-  @media screen and (max-width: 768px) {
-  /* Atur properti CSS untuk layar dengan lebar maksimum 768px */
-  h3 {
-    margin-left: 20px; /* Atur margin kiri untuk judul */
-  }
-  
-  #tgl{
-    max-width: 240px;
-  }
-  /* #dob{
+.btn-event {
+    display: inline-block;
+    padding: 8px 16px !important;
+    border-radius: 3px;
+    width: 175px !important;
+    background-color: var(--purple);
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-event:hover {
+    background-color: var(--purple);
+    color: white;
+    /* Warna latar belakang tombol saat dihover */
+}
+
+.btn-event .fas {
+    margin-left: 15px;
+    /* Memberi jarak antara ikon dan teks */
+    font-size: 15px;
+    /* Menyesuaikan ukuran ikon */
+}
+
+.btn-event span {
+    font-size: 1em;
+    /* Menyesuaikan ukuran teks */
+}
+
+/* Tambahkan media query di sini */
+@media screen and (max-width: 768px) {
+
+    /* Atur properti CSS untuk layar dengan lebar maksimum 768px */
+    h3 {
+        margin-left: 20px;
+        /* Atur margin kiri untuk judul */
+    }
+
+    #tgl {
+        max-width: 240px;
+    }
+
+    /* #dob{
     max-width: 240px;
   } */
-  #dobi{
-    margin-left: 0%;
-  }
-  iframe{
-    max-width: 240px;
-    max-height: 150px;
-  }
-  
-  .form {
-    width: 90%; /* Diubah menjadi persentase untuk responsivitas */
-    max-width: 400px; /* Dikurangi lebar maksimum untuk tampilan yang lebih kecil */
-  }
-  
-  .btns-group {
-    gap: calc(50%); /* Kurangi jarak antar tombol untuk layar yang lebih kecil */
-  }
-  }
-  
-  
-  .judul1{
+    #dobi {
+        margin-left: 0%;
+    }
+
+    iframe {
+        max-width: 240px;
+        max-height: 150px;
+    }
+
+    .form {
+        width: 90%;
+        /* Diubah menjadi persentase untuk responsivitas */
+        max-width: 400px;
+        /* Dikurangi lebar maksimum untuk tampilan yang lebih kecil */
+    }
+
+    .btns-group {
+        gap: calc(50%);
+        /* Kurangi jarak antar tombol untuk layar yang lebih kecil */
+    }
+}
+
+
+/* Clearfix untuk membersihkan float */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.judul1 {
     margin-left: 0%;
     color: #512E67;
-  }
-  
-  /* Global Stylings */
-  label {
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.garis-pemisah {
+    border-top: 2px solid var(--purple);
+    /* Garis tipis */
+    margin-top: 10px;
+    /* Atur jarak atas garis */
+    margin-bottom: 10px;
+    /* Atur jarak bawah garis */
+}
+
+label {
     display: block;
     margin-bottom: 0.5rem;
     justify-content: center;
-  }
-  
-  input {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+input {
     display: block;
     border: 1px solid black;
     border-radius: 0.25rem;
-  }
-  
-  .input-group {
-    display: inline-block;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  .input-group textarea {
-    resize: vertical; 
-    width: calc(100% - 105px); 
-    min-height: 100px;
-    margin-left: 0%;
-    font-size: medium;
-  }
-  .input-group-tanggal{
-  display: block;
-  }
-  
-  .input-group label {
-    display: inline-block;
-    width: 300px;
-  }
-  
-  input[type="text"]{
-      display: inline-block ;
-        width: calc(100% - 110px); 
-        height: 5vh;
-    }
-    input[type="date"]{
-      display: inline-block;
-        width: calc(100% - 50px);
-        height: 5vh;
-    }
-    input[type="time"]{
-      display: inline-block;
-        width: calc(100% - 50px);
-        height: 5vh;
-    }
-  
-    /* #jam{
-      margin-left: 16%;
-    } */
-    #tgl{
-      margin-top: 2px;
-      display: block;
-      width: 857px;
-    }
-  
-  .width-50 {
-    width: 50%;
-  }
-  
-  .ml-auto {
-    margin-left: auto;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  /* Progressbar */
-  .progressbar {
+}
+
+.progressbar {
     position: relative;
     display: flex;
     justify-content: space-between;
     counter-reset: step;
     margin: 2rem 0 4rem;
-  }
-  
-  .progressbar::before,
-  .progress {
+}
+
+.progressbar::before,
+.progress {
     content: "";
     position: absolute;
     top: 50%;
@@ -252,15 +223,15 @@ body {
     width: 100%;
     background-color: #dcdcdc;
     z-index: -1;
-  }
-  
-  .progress {
+}
+
+.progress {
     background-color: #512E67;
     width: 0%;
     transition: 0.3s;
-  }
-  
-  .progress-step {
+}
+
+.progress-step {
     width: 2.1875rem;
     height: 2.1875rem;
     background-color: #dcdcdc;
@@ -268,330 +239,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .progress-step::before {
+}
+
+.progress-step::before {
     counter-increment: step;
     content: counter(step);
-  }
-  
-  .progress-step::after {
+}
+
+.progress-step::after {
     content: attr(data-title);
     position: absolute;
     top: calc(100% + 0.5rem);
     font-size: 0.85rem;
     color: #666;
-  }
-  
-  .progress-step-active {
+}
+
+.progress-step-active {
     background-color: #512E67;
     color: #f3f3f3;
-  }
-  
-  /* Form */
-  .form {
+}
+
+.form {
     width: 150vh;
     /* margin: 0 auto; */
     border: 1px solid #ccc;
     border-radius: 0.35rem;
     padding: 1.5rem;
     justify-content: center;
-  }
-  
-  .form-step {
+}
+
+.form-step {
     display: none;
     transform-origin: top;
     animation: animate 0.5s;
-  }
-  
-  .form-step-active {
+}
+
+.form-step-active {
     display: block;
-  }
-  
-  .input-group {
-    margin: 2rem 2;
-  }
-  
-  @keyframes animate {
-    from {
-      transform: scale(1, 0);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1, 1);
-      opacity: 1;
-    }
-  }
-  
-  /* Button */
-  .btns-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 34rem;
-  }
-  
-  .btn {
-    padding: 0.75rem;
-    display: block;
-    text-decoration: none;
-    background-color: #512E67;
-    color: #f3f3f3;
-    text-align: center;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 20vh;
-  }
-  .btn:hover {
-    box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
-  }
-  
-  
-  body {
-    font-family: sans-serif;
-    background-color: #eeeeee;
-  }
-  
-  .file-upload {
-    background-color: #ffffff;
-    width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .file-upload-btn {
-    width: 100%;
-    margin: 0;
-    color: #fff;
-    background: #512E67;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    border-bottom: 4px solid #512E67;
-    transition: all .2s ease;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  
-  .file-upload-btn:hover {
-    background: #512E67;
-    color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
-  }
-  
-  .file-upload-btn:active {
-    border: 0;
-    transition: all .2s ease;
-  }
-  
-  .file-upload-content {
-    display: none;
-    text-align: center;
-  }
-  
-  .file-upload-input {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  .image-upload-wrap {
-    margin-top: 20px;
-    border: 4px dashed #512E67;
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .image-dropping,
-  .image-upload-wrap:hover {
-    background-color: #512E67;
-    border: 4px dashed #ffffff;
-  }
-  
-  .image-title-wrap {
-    padding: 0 15px 15px 15px;
-    color: #222;
-  }
-  
-  .drag-text {
-    text-align: center;
-  }
-  
-  .drag-text h3 {
-    font-weight: 100;
-    text-transform: uppercase;
-    color: #512E67;
-    padding: 60px 0;
-  }
-  
-  .file-upload-image {
-    max-height: 200px;
-    max-width: 200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .remove-image {
-    width: 200px;
-    margin: 0;
-    color: #fff;
-    background: #cd4535;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    border-bottom: 4px solid #b02818;
-    transition: all .2s ease;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  
-  .remove-image:hover {
-    background: #c13b2a;
-    color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
-  }
-  
-  .remove-image:active {
-    border: 0;
-    transition: all .2s ease;
-  }
-  /* css file input pamflet */
-  .file-upload-pamflet {
-    background-color: #ffffff;
-    width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .file-upload-pamflet-btn {
-    width: 100%;
-    margin: 0;
-    color: #fff;
-    background: #512E67;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    border-bottom: 4px solid #512E67;
-    transition: all .2s ease;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  
-  .file-upload-pamflet-btn:hover {
-    background: #512E67;
-    color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
-  }
-  
-  .file-upload-pamflet-btn:active {
-    border: 0;
-    transition: all .2s ease;
-  }
-  
-  .file-upload-content-pamflet {
-    display: none;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .file-upload-input-pamflet {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  .image-upload-wrap-pamflet {
-    margin-top: 20px;
-    border: 4px dashed #512E67;
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  .image-dropping,
-  .image-upload-wrap-pamflet:hover {
-    
-    border: 4px dashed #512E67;
-    
-  }
-  
-  .image-title-wrap-pamflet {
-    padding: 0 15px 15px 15px;
-    color: #222;
-  }
-  
-  .drag-text-pamflet {
-    text-align: center;
-  }
-  
-  .drag-text-pamflet h3 {
-    font-weight: 100;
-    text-transform: uppercase;
-    color: #512E67;
-    padding: 60px 0;
-  }
-  
-  .file-upload-image-pamflet {
-    max-height: 200px;
-    max-width: 200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .remove-image-pamflet {
-    width: 200px;
-    margin: 0;
-    color: #fff;
-    background: #cd4535;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    border-bottom: 4px solid #b02818;
-    transition: all .2s ease;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  
-  .remove-image-pamflet:hover {
-    background: #c13b2a;
-    color: #ffffff;
-    transition: all .2s ease;
-    cursor: pointer;
-  }
-  
-  .remove-image-pamflet:active {
-    border: 0;
-    transition: all .2s ease;
-  }
-
-.width-50 {
-    width: 50%;
 }
 
-.ml-auto {
-    margin-left: auto;
-}
 
-.text-center {
-    text-align: center;
-}
 
+/*end lubna */
 
 
 /*Tab */

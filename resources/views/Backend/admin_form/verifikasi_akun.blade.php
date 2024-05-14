@@ -1,7 +1,7 @@
 @extends('backend.app')
 @section('content')
     <div class="container-fluid">
-        <h1 class="h3 mb-2 text-gray-800">Verifikasi Akun</h1>
+        <h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Verifikasi Akun</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -12,11 +12,12 @@
                     <table class="table table-advance table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Nama Lengkap</th>
-                                <th>Nama Perusahaan</th>
-                                <th>Alamat Perusahaan</th>
-                                <th>No Telp</th>
-                                <th>Email</th>
+                                <th>Nama Event</th>
+                                <th>Nama Penyelenggara</th>
+                                <th>Alamat Event</th>
+                                <th>Kategori Event</th>
+                                <th>Tanggal Event</th>
+
                                 <th>KTP</th>
                                 <th>Status Akun</th>
                                 {{-- <th>Role</th> --}}
@@ -28,12 +29,12 @@
                                 @if ($item->jabatan !== 'admin')
                                     <tr class="{{ $item->status_verifikasi === 'unverified' ? 'unverified-row' : '' }}">
 
-                                        <td class="align-middle">{{ $item->nama_lengkap }}</td>
-                                        <td class="align-middle">{{ $item->nama_perusahaan }}</td>
-                                        <td class="align-middle">{{ $item->alamat_perusahaan }}</td>
-                                        <td class="align-middle">{{ $item->no_telp }}</td>
-                                        <td class="align-middle">{{ $item->email }}</td>
-                                        <td class="align-middle"><img src="{{ asset("storage/$item->ktp_pemilik") }}"
+                                        <td class="align-middle">{{ $item->nama_event }}</td>
+                                        <td class="align-middle">{{ $item->penyelenggara_event }}</td>
+                                        <td class="align-middle">{{ $item->alamat }}</td>
+                                        <td class="align-middle">{{ $item->kategori_event }}</td>
+                                        <td class="align-middle">{{ $item->tanggal_event }}</td>
+                                        <td class="align-middle"><img src="{{ asset("foto_ktp/$item->upload_ktp") }}"
                                                 alt="KTP" style="width: 100px; height: auto;"></td>
                                         <td class="align-middle">{{ $item->status_verifikasi }}</td>
                                         {{-- <td class="align-middle">{{ $item->jabatan }}</td> --}}

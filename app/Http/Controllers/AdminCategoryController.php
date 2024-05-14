@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\User;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Booth;
 use App\Models\Data;
 use Illuminate\Http\Request;
 
@@ -15,21 +17,25 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $detailevent=Event::get();
-        return view ('Backend.admin_form.verifikasi_event',compact('detailevent'));
+        $detail_event=Event::get();
+        return view ('Backend.admin_form.verifikasi_event',compact('detail_event'));
         // return view('Backend.admin_form.admin');
     }
 
-    public function show($id)
+    public function show($id_event)
     {
-        $detailevent = Event::findOrFail($id); // Mengambil detail event berdasarkan ID
-        return view('Backend.admin_form.detail', compact('detailevent')); // Menampilkan detail event di view
+        // $id_user = Auth::id();
+        $detail_event = Event::findOrFail($id_event);
+        $url = route('event.show', ['id_event' => $id_event]); // Mendapatkan URL route
+        $qrCodes['simple'] = QrCode::size(150)->generate($url);
+        $booths = Booth::where('id_event', $id_event)->get();
+        return view('Backend.admin_form.detail', compact('detail_event', 'qrCodes', 'booths'));
     }
 
-    public function verify($id){
+    public function verify($id_event){
     // Temukan user berdasarkan ID
-    $detailevent = Event::findOrFail($id);
-    $detailevent->status_verifikasi = 'verified';
+    $detailevent = Event::findOrFail($id_event);
+    $detailevent->status= 'verified';
     $detailevent->save();
     return redirect()->back()->with('succes','Event berhasil disetujui.');
     }

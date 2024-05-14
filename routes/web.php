@@ -68,7 +68,7 @@ Route::delete('/verifikasi_event/{id}', [AdminCategoryController::class, 'destro
 Route::delete('/verifikasi_event/{id}', [AdminCategoryController::class, 'update'])->name('verifikasi_event.update');
 Route::post('/verifikasi_event/{id}/verify', [AdminCategoryController::class, 'verify'])->name('verifikasi_event.verify');
 Route::post('/verifikasi_event/{id}/unverify', [AdminCategoryController::class, 'unverify'])->name('verifikasi_event.unverify');
-Route::get('/detail_event/{id}', [AdminCategoryController::class, 'show'])->name('detail_event.show');
+Route::get('/detail_event/{id_event}', [AdminCategoryController::class, 'show'])->name('detail_event.show');
 
 Route::get('/verifikasi_akun', [AdminCategoryController::class, 'akun'])->name('verifikasi_akun')->middleware('admin');
 Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikasi_akun'])->name('verifikasi_akun.update');
