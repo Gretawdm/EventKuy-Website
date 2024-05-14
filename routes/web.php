@@ -86,4 +86,8 @@ Route::post('/event/tambah_event/store', [TambahEventController::class, 'store']
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/detail/{id_event}', [EventController::class, 'show'])->name('event.show');
 
-Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
+Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
+Route::get('/edit_profile',[ProfileController::class, 'edit_profile'])->name('edit_profile');
+Route::put('edit_profile/update',[ProfileController::class,'update_profile'])->name('update_profile');
+Route::get('/ubah_password',[ProfileController::class, 'ubah_password'])->name('ubah_password');
+Route::put('/ubah_password/update',[ProfileController::class, 'update_password'])->name('update_password');
