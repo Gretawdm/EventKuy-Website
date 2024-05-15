@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Simpan Profile</button>
+                    <button type="submit" class="btn btn-purple" style="font-weight: 700">Simpan Profile</button>
                 </div>
                 <div id="loading-overlay" style="display: none;">
                     <div class="spinner-border text-primary" role="status">

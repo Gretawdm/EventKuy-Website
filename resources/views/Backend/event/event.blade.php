@@ -4,9 +4,9 @@
     <a href="/event/tambah_event" class="btn-event mb-3"><span style="font-size: 15px; font-weight:800">Tambah
             Event</span><i class="fas fa-plus"></i></a>
 
-    <div class="container-wrapper">
+    <div class="container-wrapper d-flex" style="gap: 10px">
         @foreach ($detail_event as $event)
-            <div class="card shadow mb-4" style="width: 31%; height:25%; border-radius:5px">
+            <div class="card shadow mb-4" style="width:27%; height:27%; border-radius:5px">
                 <div class="card-body" style="display: flex;">
                     <div style="flex: 0 0 100px; margin-right: 13px;">
                         <img src="/pamflet_event/{{ $event['upload_pamflet'] }}" alt="Gambar"

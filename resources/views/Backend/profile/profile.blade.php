@@ -1,34 +1,36 @@
 @extends('backend.app')
 @section('content')
-@include('backend.profile.index')
-<div class="card">
-    <div class="card-body pt-3">
-        <div class="tab-content pt-2">
+    @include('backend.profile.index')
+    <div class="card">
+        <div class="card-body pt-3">
+            <div class="tab-content">
 
-            <div class="tab-pane fade show active profile-overview" id="profile-overview" style="width: 76vw;">
+                <div class="tab-pane fade show active profile-overview" id="profile-overview" style="width: 76vw;">
 
-                <h5 class="card-title">Profile Details</h5>
+                    <h5 class="card-title" style="font-weight: 900; font-size:18px">Detail Profile</h5>
 
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Nama Perusahaan</div>
-                    <div class="col-lg-9 col-md-8">{{$user->nama_perusahaan}}</div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label" style="font-weight: 800">Nama Perusahaan</div>
+                        <div class="col-lg-9 col-md-8">: {{ $user->nama_perusahaan }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label" style="font-weight: 800">Alamat</div>
+                        <div class="col-lg-9 col-md-8">: {{ $user->alamat_perusahaan }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label" style="font-weight: 800">No Telepon</div>
+                        <div class="col-lg-9 col-md-8">: {{ $user->no_telp }}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 label" style="font-weight: 800">Email</div>
+                        <div class="col-lg-9 col-md-8">: {{ $user->email }}</div>
+                    </div>
+
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat</div>
-                    <div class="col-lg-9 col-md-8">{{$user->alamat_perusahaan}}</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 label">No Telepon</div>
-                    <div class="col-lg-9 col-md-8">{{$user->no_telp}}</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">{{$user->email}}</div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -36,6 +38,8 @@
         .profile .profile-card img {
             max-width: 120px;
         }
+
+
 
         .profile .profile-card h2 {
             font-size: 24px;
@@ -84,4 +88,4 @@
             max-width: 120px;
         }
     </style>
-    @endsection
+@endsection

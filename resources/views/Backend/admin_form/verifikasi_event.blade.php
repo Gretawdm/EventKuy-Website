@@ -114,11 +114,6 @@
 
                                 </tr>
                             @endforeach
-
-
-
-
-
                         </tbody>
                     </table>
                 </div>
@@ -154,8 +149,29 @@
         </div>
     </div>
 
+    <!-- DataTables CSS -->
+    <link href="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+    <!-- DataTables JavaScript -->
+    <script src="{{ asset('backend/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
+
+
 
     <style>
+        table.dataTable thead .sorting::after,
+        table.dataTable thead .sorting_asc::after,
+        table.dataTable thead .sorting_desc::after {
+            content: "" !important;
+        }
+
+
+
         .event-name {
             font-weight: bold;
         }

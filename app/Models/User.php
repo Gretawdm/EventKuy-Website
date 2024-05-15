@@ -25,7 +25,6 @@ class User extends Authenticatable
         'alamat_perusahaan',
         'no_telp',
         'email',
-        'ktp_pemilik',
         'password',
         'status_verifikasi',
         'jabatan',

@@ -12,7 +12,7 @@
     @if (Auth::user()->jabatan == 'admin')
         <li class="nav-item {{ Request::is('verifikasi_event') ? 'active' : '' }}">
             <a class="nav-link" href="/verifikasi_event">
-                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <i class="fas fa-check-circle" style="color: #512e67;"></i>
                 <span>Verifikasi Event</span>
             </a>
         </li>
@@ -25,19 +25,19 @@
     @else
         <li class="nav-item {{ Request::is('event') ? 'active' : '' }}">
             <a class="nav-link" href="/event">
-                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <i class="fas fa-ticket-alt" style="color: #512e67;"></i>
                 <span>Event</span>
             </a>
         </li>
         <li class="nav-item {{ Request::is('tenant') ? 'active' : '' }}">
             <a class="nav-link" href="/tenant">
-                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <i class="fas fa-store-alt" style="color: #512e67;"></i>
                 <span>Tenant</span>
             </a>
         </li>
         <li class="nav-item {{ Request::is('profile') ? 'active' : '' }}">
             <a class="nav-link" href="/profile">
-                <i class="fas fa-fw fa-tachometer-alt" style="color: #512e67;"></i>
+                <i class="fas fa-user-alt" style="color: #512e67;"></i>
                 <span>Profile</span>
             </a>
         </li>

@@ -167,6 +167,62 @@ body {
     }
 }
 
+/* progressbar */
+.urutan {
+    width: 100%;
+    height: 50px;
+}
+
+.urutan .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.urutan .box .line {
+    width: 20px;
+    height: 1px;
+    background-color: #414765;
+}
+
+.urutan .box p {
+    margin: 0;
+    display: flex;
+    color: #666;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-active {
+    background-color: #512E67;
+    /* Warna latar belakang yang menunjukkan langkah yang aktif */
+    color: #fff;
+    /* Warna teks untuk penanda langkah yang aktif */
+    width: calc((100% / 3) - 20px);
+    /* Sesuaikan lebar agar cocok dengan jumlah langkah yang ada */
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    /* Menambahkan border radius agar tampilan lebih menarik */
+}
+
+
+.urutan .box p span {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    border: 1px solid #888;
+
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+
+}
+
+
+
 
 /* Clearfix untuk membersihkan float */
 .clearfix::after {
@@ -191,6 +247,15 @@ body {
     /* Atur jarak bawah garis */
 }
 
+.garis-pemisah2 {
+    border-top: 2px solid var(--pink);
+    /* Garis tipis */
+    margin-top: 10px;
+    /* Atur jarak atas garis */
+    margin-bottom: 10px;
+    /* Atur jarak bawah garis */
+}
+
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -201,10 +266,89 @@ label {
 
 input {
     display: block;
-    border: 1px solid black;
+    border: 1px solid var(--purple);
     border-radius: 0.25rem;
 }
 
+
+
+/* .progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 4rem;
+} */
+
+/* .progressbar::before,
+.progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+    z-index: -1;
+}
+
+.progress {
+    background-color: #512E67;
+    width: 0%;
+    transition: 0.3s;
+}
+
+.progress-step {
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.progress-step-active {
+    background-color: #512E67;
+    color: #f3f3f3;
+} */
+
+.form {
+    width: 150vh;
+    /* margin: 0 auto; */
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    padding: 1.5rem;
+    justify-content: center;
+}
+
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.form-step-active {
+    display: block;
+}
+
+
+
+
+/* Progressbar
 .progressbar {
     position: relative;
     display: flex;
@@ -257,27 +401,273 @@ input {
 .progress-step-active {
     background-color: #512E67;
     color: #f3f3f3;
+} */
+
+m-btn {
+    background-color: #512E67;
+    /* Warna latar belakang */
+    border-color: #512E67;
+    /* Warna border */
+    color: #ffffff;
+    /* Warna teks */
 }
 
-.form {
-    width: 150vh;
-    /* margin: 0 auto; */
-    border: 1px solid #ccc;
-    border-radius: 0.35rem;
-    padding: 1.5rem;
+.custom-btn:hover {
+    background-color: #512E67;
+    /* Warna latar belakang saat hover */
+    border-color: #000000;
+    /* Warna border saat hover */
+}
+
+.file-upload {
+    background-color: #ffffff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #512E67;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #512E67;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.file-upload-btn:hover {
+    background: #512E67;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.file-upload-btn:active {
+    border: 0;
+    transition: all .2s ease;
+}
+
+.file-upload-content {
+    display: none;
+    text-align: center;
+}
+
+.file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.image-upload-wrap {
+    margin-top: 20px;
+    border: 4px dashed #512E67;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+    border: 4px dashed #512E67;
+}
+
+.image-title-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+}
+
+.drag-text {
+    text-align: center;
+    align-items: center;
     justify-content: center;
 }
 
-.form-step {
+.drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #512E67;
+
+}
+
+.file-upload-image {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.remove-image {
+    width: 200px;
+    margin: 0;
+    color: #fff;
+    background: #cd4535;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #b02818;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.remove-image:hover {
+    background: #c13b2a;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.remove-image:active {
+    border: 0;
+    transition: all .2s ease;
+}
+
+/* css file input pamflet */
+.file-upload-pamflet {
+    background-color: #ffffff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.file-upload-pamflet-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #512E67;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #512E67;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.file-upload-pamflet-btn:hover {
+    background: #512E67;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.file-upload-pamflet-btn:active {
+    border: 0;
+    transition: all .2s ease;
+}
+
+.file-upload-content-pamflet {
     display: none;
-    transform-origin: top;
-    animation: animate 0.5s;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.form-step-active {
-    display: block;
+.file-upload-input-pamflet {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
 }
 
+.image-upload-wrap-pamflet {
+    margin-top: 5px;
+    border: 4px dashed #512E67;
+    position: relative;
+    margin-bottom: 20px;
+    height: 300px;
+    /* Tetapkan tinggi sesuai kebutuhan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-text-pamflet {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.drag-text-pamflet h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #512E67;
+}
+
+.image-dropping,
+.image-upload-wrap-pamflet:hover {
+
+    border: 4px dashed #512E67;
+
+}
+
+.image-title-wrap-pamflet {
+    padding: 0 15px 15px 15px;
+    color: #222;
+}
+
+/* .drag-text-pamflet {
+    text-align: center;
+}
+
+.drag-text-pamflet h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #512E67;
+    padding: 60px 0;
+} */
+
+.file-upload-image-pamflet {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.remove-image-pamflet {
+    width: 200px;
+    margin: 0;
+    color: #fff;
+    background: #cd4535;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #b02818;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.remove-image-pamflet:hover {
+    background: #c13b2a;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.remove-image-pamflet:active {
+    border: 0;
+    transition: all .2s ease;
+}
 
 
 /*end lubna */
@@ -3390,6 +3780,18 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #512e67;
     border-color: #512e67
+}
+
+.btn-pink {
+    color: #fff;
+    background-color: #eb7099;
+    border-color: #eb7099
+}
+
+.btn-pink:hover {
+    color: #fff;
+    background-color: #FF6699;
+    border-color: #FF6699;
 }
 
 .btn-primary.focus,

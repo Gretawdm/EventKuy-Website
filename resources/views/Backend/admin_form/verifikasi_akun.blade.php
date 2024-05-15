@@ -18,8 +18,7 @@
                                 <th>Kategori Event</th>
                                 <th>Tanggal Event</th>
 
-                                <th>KTP</th>
-                                <th>Status Akun</th>
+
                                 {{-- <th>Role</th> --}}
                                 <th>Action</th>
                             </tr>
@@ -29,14 +28,13 @@
                                 @if ($item->jabatan !== 'admin')
                                     <tr class="{{ $item->status_verifikasi === 'unverified' ? 'unverified-row' : '' }}">
 
-                                        <td class="align-middle">{{ $item->nama_event }}</td>
-                                        <td class="align-middle">{{ $item->penyelenggara_event }}</td>
-                                        <td class="align-middle">{{ $item->alamat }}</td>
-                                        <td class="align-middle">{{ $item->kategori_event }}</td>
-                                        <td class="align-middle">{{ $item->tanggal_event }}</td>
-                                        <td class="align-middle"><img src="{{ asset("foto_ktp/$item->upload_ktp") }}"
-                                                alt="KTP" style="width: 100px; height: auto;"></td>
-                                        <td class="align-middle">{{ $item->status_verifikasi }}</td>
+                                        <td class="align-middle">nama</td>
+                                        <td class="align-middle">nama</td>
+                                        <td class="align-middle">nama</td>
+                                        <td class="align-middle">nam</td>
+                                        <td class="align-middle">nma</td>
+
+
                                         {{-- <td class="align-middle">{{ $item->jabatan }}</td> --}}
 
                                         <td class="align-middle">
