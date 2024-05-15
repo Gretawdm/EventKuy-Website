@@ -10,11 +10,13 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class EventController extends Controller
 {
-    public function index()
-    {
-        $detail_event = Event::get();
-        return view('Backend.event.event', compact('detail_event'));
-    }
+  public function index()
+{
+    $id_user = auth()->user()->id;
+    $detail_event = Event::where('user_id', $id_user)->get();
+    return view('Backend.event.event', compact('detail_event'));
+}
+
     public function show($id_event)
     {
         // $id_user = Auth::id();
