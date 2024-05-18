@@ -4,7 +4,9 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailEventController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -75,10 +77,10 @@ Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikas
 // Route::get('/data', [AdminCategoryController::class, 'data']);
 // Route::get('/event',[TambahEventController::class,'index'])->name('event');
 
-Route::resource('/event', DashboardController::class)->except('show')->middleware('admin');
-Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');
-Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
-Route::get('/detail_tenant/{id}', [DashboardController::class, 'show'])->name('detail_tenant.show');
+// Route::resource('/event', DashboardController::class)->except('show')->middleware('admin');
+// Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');
+// Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
+// Route::get('/detail_tenant/{id}', [DashboardController::class, 'show'])->name('detail_tenant.show');
 
 Route::get('/event/tambah_event', [TambahEventController::class, 'index'])->name('tambah_event');
 Route::post('/event/tambah_event/store', [TambahEventController::class, 'store'])->name('tambah_event.store');
@@ -86,8 +88,20 @@ Route::post('/event/tambah_event/store', [TambahEventController::class, 'store']
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/detail/{id_event}', [EventController::class, 'show'])->name('event.show');
 
+Route::get('/event/{id}', [DetailEventController::class, 'edit_event'])->name('event.edit');
+Route::put('/event/{id}', [DetailEventController::class, 'update_event'])->name('event.update');
+
+Route::get('/booth/{id}', [DetailEventController::class, 'edit_booth'])->name('booth.edit');
+Route::put('/booth/{id}', [DetailEventController::class, 'update_booth'])->name('booth.update');
+Route::delete('/booth/{id}', [DetailEventController::class, 'destroy_booth'])->name('booth.destroy');
+Route::get('/event/{id_event}/tambah-booth', [DetailEventController::class, 'tambah_booth'])->name('booth.create');
+
+// Route untuk menyimpan data booth yang ditambahkan
+Route::post('/event/{id_event}/store-booth', [DetailEventController::class, 'booth_store'])->name('booth.store');
+
 Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
 Route::get('/edit_profile',[ProfileController::class, 'edit_profile'])->name('edit_profile');
 Route::put('edit_profile/update',[ProfileController::class,'update_profile'])->name('update_profile');
 Route::get('/ubah_password',[ProfileController::class, 'ubah_password'])->name('ubah_password');
 Route::put('/ubah_password/update',[ProfileController::class, 'update_password'])->name('update_password');
+Route::post('/get-bank-details', [BankAccountController::class, 'getBankDetails'])->name('get.bank.details');
