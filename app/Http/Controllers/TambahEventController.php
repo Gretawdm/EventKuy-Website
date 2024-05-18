@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booth;
 use App\Models\Event;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,72 +12,80 @@ class TambahEventController extends Controller
 {
     public function index()
     {
-        return view('Backend.event.tambah_event');
+        // Membuat permintaan ke API listBank
+        $response = Http::get('https://api-rekening.lfourr.com/listBank');
+
+        // Memeriksa apakah permintaan berhasil
+        if ($response->successful()) {
+            // Mendapatkan data daftar bank dari respons JSON
+            $responseData = $response->json();
+
+            // Memeriksa apakah respons berisi data bank
+            if (isset($responseData['data'])) {
+                $banks = $responseData['data']; // Mengambil data bank dari kunci 'data'
+
+                // Mengirimkan data ke view
+                return view('Backend.event.tambah_event', compact('banks'));
+            } else {
+                return back()->withErrors('Data bank tidak tersedia dalam respons');
+            }
+        } else {
+            // Jika permintaan gagal, tindakan yang sesuai (misalnya menampilkan pesan kesalahan)
+            return back()->withErrors('Gagal mengambil daftar bank');
+        }
     }
     public function store(Request $request)
     {
-        // dd($request->all());
-        $gambar_booth = $request->file('upload_gambar_booth');
-        $id_user=auth()->user()->id;
-        $event = Event::create($request->all());
-        if ($request->hasFile('upload_ktp')) {
-            $file = $request->file('upload_ktp');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move('ktp_event/', $fileName);
-            $event->upload_ktp = $fileName;
-        }
+       // Simpan data event
+       $event = Event::create($request->all());
 
-        if ($request->hasFile('upload_denah')) {
-            $file = $request->file('upload_denah');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move('denah_event/', $fileName);
-            $event->upload_denah = $fileName;
-        }
+       // Buat folder baru untuk event berdasarkan id_event
+       $eventFolder = public_path('uploads/' . $event->id_event);
+       if (!file_exists($eventFolder)) {
+           mkdir($eventFolder, 0777, true);
+       }
 
-        if ($request->hasFile('upload_pamflet')) {
-            $file = $request->file('upload_pamflet');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move('pamflet_event/', $fileName);
-            $event->upload_pamflet = $fileName;
-        }
+       // Simpan file upload untuk event
+       if ($request->hasFile('upload_ktp')) {
+           $file = $request->file('upload_ktp');
+           $fileName = time() . '_' . $file->getClientOriginalName();
+           $file->move($eventFolder, $fileName);
+           $event->upload_ktp = $fileName;
+       }
 
-        $event->user_id = $id_user;
-        $event->save();
+       if ($request->hasFile('upload_denah')) {
+           $file = $request->file('upload_denah');
+           $fileName = time() . '_' . $file->getClientOriginalName();
+           $file->move($eventFolder, $fileName);
+           $event->upload_denah = $fileName;
+       }
 
+       if ($request->hasFile('upload_pamflet')) {
+           $file = $request->file('upload_pamflet');
+           $fileName = time() . '_' . $file->getClientOriginalName();
+           $file->move($eventFolder, $fileName);
+           $event->upload_pamflet = $fileName;
+       }
 
-        // Simpan data booth
-        foreach ($request->tipe_booth as $key => $value) {
-            $file = $gambar_booth[$key];
-            $fileName = time() . $key . '_' . $file->getClientOriginalName();
-            $file->move('foto_booth/', $fileName);
-            Booth::insert([
-                "tipe_booth" => $request->tipe_booth[$key],
-                "harga_booth" => $request->harga_booth[$key],
-                "jumlah_booth" => $request->jumlah_booth[$key],
-                "deskripsi_booth" => $request->deskripsi_booth[$key],
-                "upload_gambar_booth" => $fileName,
-                "id_event" => $event->id_event
-            ]);
-            // $booth = new Booth();
-            // $booth->tipe_booth = $boothData['tipe_booth'];
-            // $booth->harga_booth = $boothData['harga_booth'];
-            // $booth->jumlah_booth = $boothData['jumlah_booth'];
-            // $booth->deskripsi_booth = $boothData['deskripsi_booth'] ?? null;
+       $event->save();
 
-            // // Simpan file upload booth dengan waktu tersimpan dan nama aslinya
-            // if ($boothData['upload_gambar_booth']->isValid()) {
-            //     $uploadGambarBooth = $boothData['upload_gambar_booth'];
-            //     $uploadGambarBoothName = time() . '_' . $uploadGambarBooth->getClientOriginalName();
-            //     $uploadGambarBooth->move('foto_booth/', $uploadGambarBoothName);
-            //     $booth->upload_gambar_booth = $uploadGambarBoothName;
-            // }
+       // Simpan data booth
+       foreach ($request->tipe_booth as $key => $value) {
+           $file = $request->file('upload_gambar_booth')[$key];
+           $fileName = time() . $key . '_' . $file->getClientOriginalName();
+           $file->move($eventFolder, $fileName);
 
-            // $booth->event_id = $event->id_event;
-            // $booth->save();
-        }
+           Booth::create([
+               "tipe_booth" => $request->tipe_booth[$key],
+               "harga_booth" => $request->harga_booth[$key],
+               "jumlah_booth" => $request->jumlah_booth[$key],
+               "deskripsi_booth" => $request->deskripsi_booth[$key],
+               "upload_gambar_booth" => $fileName,
+               "id_event" => $event->id_event
+           ]);
+       }
 
-
-        // Redirect ke halaman yang sesuai setelah berhasil menyimpan
-        return redirect()->route('event');
-    }
+       // Redirect ke halaman dashboard setelah berhasil menyimpan
+       return redirect()->route('event');
+   }
 }
