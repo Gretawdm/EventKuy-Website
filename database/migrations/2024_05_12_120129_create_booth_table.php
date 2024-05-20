@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id_booth');
             $table->string('upload_gambar_booth')->nullable();
             $table->string('tipe_booth');
-            $table->string('harga_booth');
+            $table->integer('harga_booth');
             $table->integer('jumlah_booth');
             $table->text('deskripsi_booth');
             $table->unsignedInteger('id_event');

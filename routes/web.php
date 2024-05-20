@@ -79,7 +79,7 @@ Route::post('/verifikasi_akun/{id}', [AdminCategoryController::class, 'verifikas
 
 // Route::resource('/event', DashboardController::class)->except('show')->middleware('admin');
 // Route::get('/event', [DashboardController::class, 'index'])->name('event')->middleware('admin');
-// Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
+Route::get('/tenant', [DashboardController::class, 'tenant'])->name('tenant')->middleware('admin');
 // Route::get('/detail_tenant/{id}', [DashboardController::class, 'show'])->name('detail_tenant.show');
 
 Route::get('/event/tambah_event', [TambahEventController::class, 'index'])->name('tambah_event');

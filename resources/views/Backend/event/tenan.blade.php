@@ -1,301 +1,164 @@
-
 @extends('backend.app')
 @section('content')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <div class="tr-job-posted section-padding">
-        <div class="tr-job-posted section-padding">
-            <div class="container">
-                <div class="job-tab text-center">
-                    <ul class="nav nav-tabs justify-content-center" role="tablist">
-                        <li role="presentation" class="active">
-                            <a class="active show" href="#/semua" aria-controls="hot-jobs" role="tab" data-toggle="tab"
-                                aria-selected="true">Semua</a>
-                        </li>
-                        <li role="presentation"><a href="#recent-jobs" aria-controls="recent-jobs" role="tab"
-                                data-toggle="tab" class="" aria-selected="false">Belum Verifikasi</a></li>
-                        <li role="presentation"><a href="#recent-jobs" aria-controls="recent-jobs" role="tab"
-                                data-toggle="tab" class="" aria-selected="false">Tervrifikasi</a></li>
-                        <li role="presentation"><a href="#popular-jobs" aria-controls="popular-jobs" role="tab"
-                                data-toggle="tab" class="" aria-selected="false">Ditolak</a></li>
-                    </ul>
-                    <div class="tab-content text-left">
-                        <div role="tabpanel" class="tab-pane fade active show" id="hot-jobs">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-3">
-                                    @foreach ($tenants as $tenant)
-                                        <div class="job-item">
-                                            <div class="item-overlay">
-
-                                                <div class="job-info">
-
-                                                    <a class="btn btn-primary">Full Time</a>
-                                                    <span class="tr-title">
-                                                        {{ $tenant->nama_booth }}
-                                                        <span><a href="#">Dig File</a></span>
-                                                    </span>
-                                                    <ul class="tr-list job-meta">
-                                                        <li><i class="fa fa-map-signs" aria-hidden="true"></i>San Francisco,
-                                                            CA,
-                                                            US</li>
-                                                        <li><i class="fa fa-briefcase" aria-hidden="true"></i>Mid Level</li>
-                                                        <li><i class="fa fa-money" aria-hidden="true"></i>$5,000 - $6,000
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="job-social tr-list">
-                                                        <li><a href="#"><i class="fa fa-heart-o"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-expand"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-bookmark-o"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        {{-- <li><a href="{{ route('detail_event.show', $detailtenant->id) }}"><i
-                                                                class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                                    </li> --}}
-                                                    </ul>
-                                                </div>
+    <h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Tenan</h1>
 
 
-                                            </div>
-                                            <div class="job-info">
-                                                <div class="company-logo">
-                                                    <img src="https://www.bootdey.com/image/150x150/7B68EE/000000"
-                                                        alt="images" class="img-fluid">
-                                                </div>
-                                                <a
-                                                    style="font-weight:800; font-size:18px; color:black">{{ $tenant->nama_booth }}</a>
+    <input id="tab1" type="radio" name="tabs" checked>
+    <label for="tab1">Codepen</label>
 
-                                                <ul class="tr-list job-meta">
-                                                    <li><span>
-                                                            <i class="fa fa-map-signs"></i>
-                                                        </span>{{ $tenant->nama_pemilik }}
-                                                    </li>
-                                                    <li><span>
-                                                            <i class="fa fa-briefcase"></i>
-                                                        </span>{{ $tenant->no_telp }}
-                                                    </li>
-                                                    <li><span>
-                                                            <i class="fa fa-money"
-                                                                aria-hidden="true"></i></span>{{ $tenant->booth }}
-                                                    </li>
-                                                </ul>
-                                                <div class="time">
-                                                    <a>
-                                                        <span
-                                                            style="background-color: {{ $tenant->status_verifikasi === 'unverified' ? 'red' : 'green' }}">
-                                                            {{ $tenant->status_verifikasi }}
-                                                        </span>
-                                                    </a>
-                                                </div>
+    <input id="tab2" type="radio" name="tabs">
+    <label for="tab2">Dribbble</label>
 
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+    <input id="tab3" type="radio" name="tabs">
+    <label for="tab3">Dropbox</label>
 
+    <input id="tab4" type="radio" name="tabs">
+    <label for="tab4">Drupal</label>
 
+    <section id="content1">
+        <p>
+            Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder
+            bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+        </p>
+        <p>
+            Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs
+            pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+        </p>
+    </section>
 
-                            </div><!-- /.row -->
-                        </div><!-- /.tab-pane -->
+    <section id="content2">
+        <p>
+            Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken.
+            Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa
+            shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin
+            brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong
+            meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef
+            porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison
+            fatback spare ribs salami beef ribs.
+        </p>
+        <p>
+            Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket
+            beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef
+            kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket
+            shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+        </p>
+    </section>
 
-                        <!-- /.belum verifikasi -->
-                        <div role="tabpanel" class="tab-pane fade in" id="recent-jobs">
-                            <div class="row">
+    <section id="content3">
+        <p>
+            Bacon ipsum dolor sit amet beef venison beef ribs kielbasa. Sausage pig leberkas, t-bone sirloin shoulder
+            bresaola. Frankfurter rump porchetta ham. Pork belly prosciutto brisket meatloaf short ribs.
+        </p>
+        <p>
+            Brisket meatball turkey short loin boudin leberkas meatloaf chuck andouille pork loin pastrami spare ribs
+            pancetta rump. Frankfurter corned beef beef tenderloin short loin meatloaf swine ground round venison.
+        </p>
+    </section>
 
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="job-item">
-                                        <div class="item-overlay">
-                                            <div class="job-info">
-                                                <a href="#" class="btn btn-primary">Part Time</a>
-                                                <span class="tr-title">
-                                                    <a href="#">Design Consultant</a>
-                                                    <span><a href="#">Families</a></span>
-                                                </span>
-                                                <ul class="tr-list job-meta">
-                                                    <li><i class="fa fa-map-signs" aria-hidden="true"></i>San
-                                                        Francisco,
-                                                        CA,
-                                                        US</li>
-                                                    <li><i class="fa fa-briefcase" aria-hidden="true"></i>Mid Level
-                                                    </li>
-                                                    <li><i class="fa fa-money" aria-hidden="true"></i>$5,000 - $6,000
-                                                    </li>
-                                                </ul>
-                                                <ul class="job-social tr-list">
-                                                    <li><a href="#"><i class="fa fa-heart-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-expand"
-                                                                aria-hidden="true"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-bookmark-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-long-arrow-right"
-                                                                aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="company-logo">
-                                                <img src="https://www.bootdey.com/image/300x100/00CED1/000000"
-                                                    alt="images" class="img-fluid">
-                                            </div>
-                                            <span class="tr-title">
-                                                <a href="#">Design Consultant</a>
-                                                <span><a href="#">Families</a></span>
-                                            </span>
-                                            <ul class="tr-list job-meta">
-                                                <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
-                                                    Francisco, CA, US</li>
-                                                <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid
-                                                    Level
-                                                </li>
-                                                <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000
-                                                    -
-                                                    $6,000
-                                                </li>
-                                            </ul>
-                                            <div class="time">
-                                                <a href="#"><span class="part-time">Part Time</span></a>
-                                                <span class="pull-right">Posted Oct 09, 2017</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.row -->
-                        </div><!-- /.tab-pane -->
-
-                        <!-- /.Terverifikasi -->
-                        <div role="tabpanel" class="tab-pane fade in" id="popular-jobs">
-                            <div class="row">
+    <section id="content4">
+        <p>
+            Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken.
+            Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa
+            shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin
+            brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong
+            meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef
+            porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison
+            fatback spare ribs salami beef ribs.
+        </p>
+        <p>
+            Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket
+            beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef
+            kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket
+            shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+        </p>
+    </section>
 
 
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="job-item">
-                                        <div class="item-overlay">
-                                            <div class="job-info">
-                                                <a href="#" class="btn btn-primary">Part Time</a>
-                                                <span class="tr-title">
-                                                    <a href="#">Design Consultant</a>
-                                                    <span><a href="#">Owl</a></span>
-                                                </span>
-                                                <ul class="tr-list job-meta">
-                                                    <li><i class="fa fa-map-signs" aria-hidden="true"></i>San
-                                                        Francisco,
-                                                        CA,
-                                                        US</li>
-                                                    <li><i class="fa fa-briefcase" aria-hidden="true"></i>Mid Level
-                                                    </li>
-                                                    <li><i class="fa fa-money" aria-hidden="true"></i>$5,000 - $6,000
-                                                    </li>
-                                                </ul>
-                                                <ul class="job-social tr-list">
-                                                    <li><a href="#"><i class="fa fa-heart-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-expand"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-bookmark-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-long-arrow-right"
-                                                                aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="company-logo">
-                                                <img src="https://www.bootdey.com/image/300x100/9370DB/000000"
-                                                    alt="images" class="img-fluid">
-                                            </div>
-                                            <span class="tr-title">
-                                                <a href="#">Design Consultant</a>
-                                                <span><a href="#">Owl</a></span>
-                                            </span>
-                                            <ul class="tr-list job-meta">
-                                                <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
-                                                    Francisco, CA, US</li>
-                                                <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid
-                                                    Level
-                                                </li>
-                                                <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000
-                                                    -
-                                                    $6,000</li>
-                                            </ul>
-                                            <div class="time">
-                                                <a href="#"><span class="part-time">Part Time</span></a>
-                                                <span class="pull-right">Posted 10 day ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <style>
+        main {
+            min-width: 320px;
+            max-width: 800px;
+            padding: 50px;
+            margin: 0 auto;
+            background: #fff;
+        }
 
-                            </div><!-- /.row -->
-                        </div><!-- /.tab-pane -->
+        section {
+            display: none;
+            padding: 20px 0 0;
+            border-top: 1px solid #ddd;
+        }
 
-                        <!-- /.belum verifikasi -->
-                        <div role="tabpanel" class="tab-pane fade in" id="recent-jobs">
-                            <div class="row">
+        input {
+            display: none;
+        }
 
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="job-item">
-                                        <div class="item-overlay">
-                                            <div class="job-info">
-                                                <a href="#" class="btn btn-primary">Part Time</a>
-                                                <span class="tr-title">
-                                                    <a href="#">Design Consultant</a>
-                                                    <span><a href="#">Families</a></span>
-                                                </span>
-                                                <ul class="tr-list job-meta">
-                                                    <li><i class="fa fa-map-signs" aria-hidden="true"></i>San
-                                                        Francisco,
-                                                        CA,
-                                                        US</li>
-                                                    <li><i class="fa fa-briefcase" aria-hidden="true"></i>Mid Level
-                                                    </li>
-                                                    <li><i class="fa fa-money" aria-hidden="true"></i>$5,000 - $6,000
-                                                    </li>
-                                                </ul>
-                                                <ul class="job-social tr-list">
-                                                    <li><a href="#"><i class="fa fa-heart-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-expand"
-                                                                aria-hidden="true"></i></a>
-                                                    </li>
-                                                    <li><a href="#"><i class="fa fa-bookmark-o"
-                                                                aria-hidden="true"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-long-arrow-right"
-                                                                aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="job-info">
-                                            <div class="company-logo">
-                                                <img src="https://www.bootdey.com/image/300x100/00CED1/000000"
-                                                    alt="images" class="img-fluid">
-                                            </div>
-                                            <span class="tr-title">
-                                                <a href="#">Design Consultant</a>
-                                                <span><a href="#">Families</a></span>
-                                            </span>
-                                            <ul class="tr-list job-meta">
-                                                <li><span><i class="fa fa-map-signs" aria-hidden="true"></i></span>San
-                                                    Francisco, CA, US</li>
-                                                <li><span><i class="fa fa-briefcase" aria-hidden="true"></i></span>Mid
-                                                    Level
-                                                </li>
-                                                <li><span><i class="fa fa-money" aria-hidden="true"></i></span>$5,000
-                                                    -
-                                                    $6,000
-                                                </li>
-                                            </ul>
-                                            <div class="time">
-                                                <a href="#"><span class="part-time">Part Time</span></a>
-                                                <span class="pull-right">Posted Oct 09, 2017</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.row -->
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-conten -->
-                </div><!-- /.job-tab -->
-            </div><!-- /.container -->
-        </div>
-    @endsection
+        label {
+            display: inline-block;
+            margin: 0 0 -1px;
+            padding: 15px 25px;
+            font-weight: 600;
+            text-align: center;
+            color: #bbb;
+            border: 1px solid transparent;
+        }
+
+        label:before {
+            font-family: fontawesome;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+
+        label[for*='1']:before {
+            content: '\f1cb';
+        }
+
+        label[for*='2']:before {
+            content: '\f17d';
+        }
+
+        label[for*='3']:before {
+            content: '\f16b';
+        }
+
+        label[for*='4']:before {
+            content: '\f1a9';
+        }
+
+        label:hover {
+            color: #888;
+            cursor: pointer;
+        }
+
+        input:checked+label {
+            color: #555;
+            border: 1px solid #ddd;
+            border-top: 2px solid orange;
+            border-bottom: 1px solid #fff;
+        }
+
+        #tab1:checked~#content1,
+        #tab2:checked~#content2,
+        #tab3:checked~#content3,
+        #tab4:checked~#content4 {
+            display: block;
+        }
+
+        @media screen and (max-width: 650px) {
+            label {
+                font-size: 0;
+            }
+
+            label:before {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            label {
+                padding: 15px;
+            }
+        }
+    </style>
+@endsection

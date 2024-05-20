@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id_order');
-            $table->string('status_pembayaran');
-            $table->string('harga_bayar');
+            $table->enum('status_order', ['validasi', 'diterima', 'ditolak', 'menunggu pembayaran', 'validasi pembayaran','terverifikasi'])->default('validasi')->nullable();
+            $table->integer('harga_bayar');
             $table->string('img_bukti_transfer');
-            $table->integer('tgl_order');
-            $table->text('tgl_verifikasi');
+            $table->dateTime('tgl_order');
+            $table->dateTime('tgl_verifikasi');
             $table->unsignedBigInteger('id');
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('id_booth');
