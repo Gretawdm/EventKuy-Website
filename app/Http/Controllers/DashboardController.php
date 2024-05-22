@@ -15,7 +15,7 @@ class DashboardController extends Controller
   
     public function tenant(){
     $tenants = Tenant::all(); // Mengambil semua data penyewa
-    return view('Backend.event.tenan', ['tenants' => $tenants]); // Mengirim data penyewa ke dalam view
+    return view('Backend.tenan.semua', ['tenants' => $tenants]); // Mengirim data penyewa ke dalam view
     }
 
 }

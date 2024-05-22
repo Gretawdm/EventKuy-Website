@@ -46,21 +46,22 @@
                                                     <button style="font-weight: 800"
                                                         class="btn btn-success m-0">Terima</button>
                                                 </form>
-                                                {{-- <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST" --}}
-                                                type="button" class="btn btn-danger p-0"
-                                                onsubmit="return confirm('Tolak Akun Ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
+                                                <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
+                                                    type="button" class="btn btn-danger p-0"
+                                                    onsubmit="return confirm('Tolak Akun Ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="font-weight: 800"
+                                                        class="btn btn-danger m-0">Tolak</button>
                                                 </form>
-                                                {{-- <form action="{{ route('detail_event.destroy', $item->id) }}" --}}
-                                                method="POST" type="button" class="btn btn-secondary p-0"
-                                                onsubmit="return confirm('Apakah anda yakin ingin menghapus akun ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button style="font-weight: 800" class="btn btn-secondary m-0">
-                                                    <i class="fas fa-trash ml-2"></i>
-                                                </button>
+                                                <form action="{{ route('detail_event.destroy', $item->id) }}" method="POST"
+                                                    type="button" class="btn btn-secondary p-0"
+                                                    onsubmit="return confirm('Apakah anda yakin ingin menghapus akun ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="font-weight: 800" class="btn btn-secondary m-0">
+                                                        <i class="fas fa-trash ml-2"></i>
+                                                    </button>
                                                 </form>
                                             </div>
                                         </td>

@@ -2,9 +2,8 @@
 @section('content')
     <h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Tenan</h1>
 
-
     <input id="tab1" type="radio" name="tabs" checked>
-    <label for="tab1">Codepen</label>
+    <label for="tab1">Data Profile</label>
 
     <input id="tab2" type="radio" name="tabs">
     <label for="tab2">Dribbble</label>

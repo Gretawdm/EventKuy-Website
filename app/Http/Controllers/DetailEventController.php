@@ -17,9 +17,20 @@ class DetailEventController extends Controller
     }
 
     public function update_event(Request $request, $id_event)
+   
     {
+        
+        $request->validate([
+        'tanggal_event' => 'required|date_format:Y-m-d\TH:i',
+       
+        'tanggal_pendaftaran' => 'required|date',
+        'tanggal_penutupan' => 'required|date',
+        'upload_pamflet' => 'file|mimes:jpeg,png,jpg,gif,svg',
+    ]);
+    //  dd($request->all());
+
         $event = Event::findOrFail($id_event);
-        $event->tanggal_event = $request->input('tanggal_event');
+        $event->pelaksanaan_event = $request->input('tanggal_event');
         $event->tanggal_pendaftaran = $request->input('tanggal_pendaftaran');
         $event->tanggal_penutupan = $request->input('tanggal_penutupan');
 
@@ -34,7 +45,7 @@ class DetailEventController extends Controller
             $event->upload_pamflet = $fileName;
         }
         $event->update();
-        return redirect()->route('event_event');
+        return redirect()->route('event.show', $event->id_event)->with('succes','Berhasil Update Event');
     }
     public function edit_booth($id_booth)
     {
