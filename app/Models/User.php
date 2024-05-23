@@ -53,4 +53,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class, 'id', 'id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Tenant::class, 'id', 'id');
+    }
 }

@@ -15,9 +15,12 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nama_perusahaan')->unique();
             $table->string('alamat_perusahaan');
+            $table->string('nama_lengkap')->nullable();
             $table->string('no_telp');
             $table->string('email')->unique();
+            $table->string('username')->nullable();
             $table->string('password');
+            $table->string('deskripsi_perusahaan')->nullable();
             // $table->enum('status_verifikasi', ['unverified', 'verified'])->default('unverified')->nullable();
             $table->enum('jabatan', ['admin', 'pembuat'])->default('pembuat');
             $table->rememberToken();

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->increments('id_order');
             $table->enum('status_order', ['validasi', 'diterima', 'ditolak', 'menunggu pembayaran', 'validasi pembayaran','terverifikasi'])->default('validasi')->nullable();
             $table->string('nomor_booth');
-            $table->integer('harga_bayar');
-            $table->string('img_bukti_transfer');
+            $table->integer('harga_bayar')->nullable();
+            $table->string('img_bukti_transfer')->nullable();
             $table->dateTime('tgl_order');
-            $table->dateTime('tgl_verifikasi');
+            $table->dateTime('tgl_verifikasi')->nullable();
             $table->unsignedBigInteger('id');
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('id_booth');
