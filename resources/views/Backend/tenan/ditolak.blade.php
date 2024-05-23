@@ -19,18 +19,6 @@
                 <h5 class="no_booth" style="font-size:15px; font-weight:600;">{{ $result['nomor_booth'] }}</h5>
                 <h5 class="tanggal_pesan" style="font-size:15px; font-weight:600;">{{ $result['tgl_order'] }}</h5>
             </div>
-            <div style="display: flex; justify-content: flex-end;">
-                <form action="{{ route('tenant.terima', ['id' => $result['id_order']]) }}" method="POST" type="button"
-                    class="btn btn-success p-0" onsubmit="return confirm('Setujui Event Ini?')">
-                    @csrf
-                    <button style="font-weight: 800" class="btn btn-success m-0">Setuju</button>
-                </form>
-                <form action="{{ route('tenant.tolak', ['id' => $result['id_order']]) }}" method="POST" type="button"
-                    class="btn btn-danger p-0" onsubmit="return confirm('Tolak Event Ini?')">
-                    @csrf
-                    <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
-                </form>
-            </div>
             <div class="status mb-1" style="margin-left: auto;">
                 <!-- Konten status di sini -->
             </div>

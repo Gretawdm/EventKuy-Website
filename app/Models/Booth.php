@@ -24,4 +24,8 @@ class Booth extends Model
     {
         return $this->belongsTo(Event::class, 'id_event', 'id_event');
     }
+    public function orders()
+    {
+        return $this->hasMany(Tenant::class, 'id_booth', 'id_booth');
+    }
 }
