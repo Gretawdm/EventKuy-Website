@@ -1,24 +1,25 @@
 <?php
 
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BankAccountController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DetailEventController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-
-use App\Http\Controllers\SendEmailController;
-use App\Http\Controllers\TambahEventController;
-use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\DetailEventController;
+use App\Http\Controllers\TambahEventController;
+use App\Http\Controllers\AdminCategoryController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,12 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('forgot_password');
+
+//send otp
+
+Route::get('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->name('sendcode');
+
+
 
 Route::resource('/verifikasi_event', AdminCategoryController::class)->except('show')->middleware('admin');
 Route::delete('/verifikasi_event/{id}', [AdminCategoryController::class, 'destroy'])->name('verifikasi_event.destroy');

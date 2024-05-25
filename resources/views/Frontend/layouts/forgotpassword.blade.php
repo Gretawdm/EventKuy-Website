@@ -37,7 +37,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-12 mb-2">
-                                        <button id="next1" class="btn btn-pink w-100" type="button">Send</button>
+                                        <button onclick="sendVerificationCode()" id="next1" class="btn btn-pink w-100" type="button">Send</button>
                                     </div>
                                 </div>
 
@@ -106,6 +106,7 @@
     <script src="{{ asset('frontend/login/assets/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('frontend/login/assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('frontend/login/assets/js/main.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -175,6 +176,31 @@
                 
             }
         });
+
+        function sendVerificationCode() {
+    // Get the email value
+    var email = $('#email').val(); // Using jQuery to get the value
+    
+    // Send the email value to the controller via AJAX
+    $.ajax({
+        url: '{{ route("sendcode") }}',
+        type: 'GET', // Change the method to POST
+        dataType: 'json',
+        data: {
+            email: email, // Pass the email value to the controller
+            _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+            // Handle success response
+            alert(response.message);
+        },
+        error: function(xhr, status, error) {
+            // Handle error response
+            alert('Failed to send verification email: ' + xhr.responseText);
+        }
+    });
+}
+
     </script>
 </body>
 
