@@ -68,8 +68,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('forgot_password');
 
 //send otp
-
-Route::get('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->name('sendcode');
+Route::post ('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->name('sendcode');
+//validate OTP
+Route::post('/validate-otp', [EmailController::class, 'validateOtp'])->name('validateOtp');
+//clear otp cache
+Route::post('/clear-otp-cache', [EmailController::class, 'clearOtpCache'])->name('clearOtpCache');
 
 
 
