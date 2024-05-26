@@ -31,7 +31,7 @@ return new class extends Migration {
             $table->string('email');
             $table->string('instagram')->nullable();
             $table->string('whatsapp')->nullable();
-            $table->enum('status', ['unverified', 'verified'])->default('unverified')->nullable();
+            $table->enum('status', ['waiting','unverified', 'verified'])->default('waiting')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

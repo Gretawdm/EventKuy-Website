@@ -63,7 +63,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin keluar?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="font-weight:800; color:black">Apakah anda
+                            yakin ingin keluar?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -71,7 +72,7 @@
                     <div class="modal-body">klik "logout" untuk keluar</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="modal" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Logout</button>
+                        <button class="btn btn-purple" type="submit">Logout</button>
                     </div>
                 </div>
             </div>
@@ -85,3 +86,12 @@
 
 
 </nav>
+
+<style>
+    .dropdown-item:active {
+        background-color: #512e67;
+        /* Mengubah warna background menjadi ungu */
+        color: white;
+        /* Mengubah warna teks jika diinginkan */
+    }
+</style>

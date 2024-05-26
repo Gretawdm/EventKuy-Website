@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tenant;
+use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class TenantController extends Controller
 {
+    public function index(){
+    $id_user = auth()->user()->id;
+    $detail_event = Event::where('user_id', $id_user)->get();
+    return view('backend.tenan.all', compact('detail_event'));
+    }
+    
     public function semua()
     {
         // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan

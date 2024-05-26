@@ -4,7 +4,7 @@
 
 <form action="{{ route('booth.store', $detail_event->id_event) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="modal fade" id="tambahBoothModal{{ $detail_event->id_event }}" tabindex="-1" role="dialog"
+    <div class="modal fade" id="tambahBoothModal{{ $detail_event->id_event }}" tabindex="-1" role="dialog"z
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">

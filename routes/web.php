@@ -114,7 +114,9 @@ Route::get('/ubah_password',[ProfileController::class, 'ubah_password'])->name('
 Route::put('/ubah_password/update',[ProfileController::class, 'update_password'])->name('update_password');
 Route::post('/get-bank-details', [BankAccountController::class, 'getBankDetails'])->name('get.bank.details');
 
-Route::get('/tenant',[TenantController::class, 'semua'])->name('semua');
+
+Route::get('/tenant',[TenantController::class, 'index'])->name('index');
+Route::get('/tenant/semua',[TenantController::class, 'semua'])->name('booth.show');
 Route::get('/tenant/diterima',[TenantController::class, 'diterima'])->name('diterima');
 Route::get('/tenant/ditolak',[TenantController::class, 'ditolak'])->name('ditolak');
 Route::get('/tenant/menunggu_pembayaran',[TenantController::class, 'menunggu_pembayaran'])->name('menunggu_pembayaran');

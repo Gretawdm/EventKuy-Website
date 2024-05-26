@@ -17,8 +17,11 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $detail_event=Event::get();
-        return view ('Backend.admin_form.verifikasi_event',compact('detail_event'));
+        $unverifiedCount = Event::where('status', 'waiting')->count();
+        $verifiedCount = Event::where('status', 'verified')->count();
+        $totalCount = Event::count();
+        $detail_event=Event::all();   
+        return view ('Backend.admin_form.verifikasi_event',compact('detail_event', 'unverifiedCount', 'verifiedCount', 'totalCount' ));
         // return view('Backend.admin_form.admin');
     }
 
@@ -43,7 +46,7 @@ class AdminCategoryController extends Controller
     public function unverify($id)
     {
     $detailevent = Event::findOrFail($id);
-    $detailevent->status_verifikasi = 'unverified';
+    $detailevent->status = 'unverified';
     $detailevent->save();
     return redirect()->back()->with('success', 'Event berhasil ditolak.');
     }

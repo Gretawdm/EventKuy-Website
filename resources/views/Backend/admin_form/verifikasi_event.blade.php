@@ -1,5 +1,7 @@
 @extends('backend.app')
 @section('content')
+    <link href="{{ asset('backend/assets/css/sb-admin-2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <div class="container-fluid">
         <h1 class="h3 mb-2 text-gray-800">Verifikasi Event</h1>
         <div class="row">
@@ -10,7 +12,8 @@
                             <div class="col mr-2">
                                 <div class="text-primary" style="font-weight: 800; font-size:20px">
                                     Pendaftar Event Bulan Ini</div>
-                                <div class="h5 mb-0" style="font-weight: 700">23</div>
+                                <div id="allCount" class="h5 mb-0" style="font-weight: 700;">{{ $totalCount }}
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-solid fa-layer-group fa-2x "></i>
@@ -28,7 +31,8 @@
                             <div class="col mr-2">
                                 <div class="text-warning " style="font-weight: 800; font-size:20px">
                                     Belum Terverifikasi</div>
-                                <div class="h5 mb-0" style="font-weight: 700">10</div>
+                                <div id="unverifiedCount" class="h5 mb-0" style="font-weight: 700;">{{ $unverifiedCount }}
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x "></i>
@@ -53,7 +57,7 @@
                         <thead>
                             <tr>
                                 <th>Nama Event</th>
-                                <th>Nama Penyelenggara</th>
+                                <th>Penyelenggara</th>
                                 <th>Alamat Event</th>
                                 <th>Kategori Event</th>
                                 <th>Tanggal Event</th>
@@ -64,23 +68,15 @@
                         </thead>
                         <tbody>
                             @foreach ($detail_event as $item)
-                                @php
-                                    $tanggal_event = strtotime($item->tanggal_event);
-                                    $today = strtotime(date('Y-m-d'));
-                                    $class = $tanggal_event < $today ? 'expired-event' : '';
-
-                                    if ($item->status_verifikasi === 'waiting') {
-                                        $class .= ' waiting-event';
-                                    }
-                                @endphp
-                                <tr class="{{ $class }}">
+                                <tr>
                                     <td class="align-middle">{{ $item->nama_event }}</td>
                                     <td class="align-middle">{{ $item->penyelenggara_event }}</td>
                                     <td class="align-middle">{{ $item->alamat }}</td>
                                     <td class="align-middle">{{ $item->kategori_event }}</td>
-                                    <td class="align-middle">{{ $item->tanggal_event }}</td>
-                                    <td class="align-middle"><img src="{{ asset("ktp_event/$item->upload_ktp") }}"
-                                            alt="KTP" style="width: 100px; height: auto;"></td>
+                                    <td class="align-middle">{{ $item->pelaksanaan_event }}</td>
+                                    <td class="align-middle"><img
+                                            src="{{ asset('uploads/' . $item->id_event . '/' . $item->upload_ktp) }}"
+                                            alt="Poster" style="max-width: 100px" />
                                     <td class="align-middle">{{ $item->status }}</td>
                                     <td class="align-middle">
                                         <div class="btn-group" role="group" aria-label="Basic example">
@@ -149,12 +145,20 @@
         </div>
     </div>
 
-    <!-- DataTables CSS -->
-    <link href="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('backend/assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- DataTables JavaScript -->
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('backend/assets/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
     <script src="{{ asset('backend/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('backend/assets/js/demo/datatables-demo.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable();
@@ -164,6 +168,13 @@
 
 
     <style>
+        .dropdown-item:active {
+            background-color: #512e67;
+            /* Mengubah warna background menjadi ungu */
+            color: white;
+            /* Mengubah warna teks jika diinginkan */
+        }
+
         table.dataTable thead .sorting::after,
         table.dataTable thead .sorting_asc::after,
         table.dataTable thead .sorting_desc::after {
@@ -185,16 +196,24 @@
             top: -2px;
             padding-top: 10px;
         }
-
-        .unread-notification {
-            background-color: #606881;
-            /* Warna latar belakang untuk notifikasi yang belum dibaca */
-        }
     </style>
 
 
     <!-- JavaScript untuk menambahkan notifikasi -->
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var unverifiedCountElement = document.getElementById('unverifiedCount');
+            var unverifiedCount = parseInt(unverifiedCountElement.textContent);
+
+            // Event listener for verify buttons
+            document.querySelectorAll('.btn-success').forEach(button => {
+                button.addEventListener('click', function() {
+                    unverifiedCount -= 1;
+                    unverifiedCountElement.textContent = unverifiedCount;
+                });
+            });
+        });
+
         // Fungsi untuk menambahkan notifikasi baru ke dalam dropdown
         function addNotification(eventName, eventDescription, eventDate, isRead) {
             // Tentukan kelas CSS untuk notifikasi berdasarkan status pembacaan

@@ -129,7 +129,7 @@
                                             <h5 class="tanggal_daftar" style="font-size: 18px; font-weight: 800;">
                                                 {{ $detail_booth['harga_booth'] }}</h5>
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                @if ($detail_event['status'] == 'unverified')
+                                                @if ($detail_event['status'] == 'waiting')
                                                     <a style="font-weight: 800;" type="button" data-toggle="modal"
                                                         data-target="#tambahBoothModal{{ $detail_event->id_event }}"
                                                         class="btn btn-primary btn-sm m-0">Tambah</a>
@@ -138,7 +138,7 @@
                                                     type="button"
                                                     href="{{ route('booth.edit', ['id' => $detail_booth['id_booth']]) }}"
                                                     class="btn btn-warning btn-sm m-0">Edit</a>
-                                                @if ($detail_event['status'] == 'unverified')
+                                                @if ($detail_event['status'] == 'waiting')
                                                     <form
                                                         action="{{ route('booth.destroy', ['id' => $detail_booth['id_booth']]) }}"
                                                         method="POST" type="button" class="btn btn-danger btn-sm p-0"
@@ -191,6 +191,11 @@
         <div class="clearfix"></div>
 
     </div>
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         // Tambahkan event listener untuk tombol "Hapus"

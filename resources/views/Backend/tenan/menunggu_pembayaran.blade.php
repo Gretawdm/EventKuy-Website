@@ -21,7 +21,7 @@
             </div>
             <div style="display: flex; justify-content: flex-end;">
                 <form action="{{ route('tenant.verifikasi', ['id' => $result['id_order']]) }}" method="POST"
-                    type="button" class="btn btn-success p-0" onsubmit="return confirm('Verifikasi Event Ini?')">
+                    type="button" class="btn btn-success p-0" onsubmit="return confirm('Verifikasi Booth Ini?')">
                     @csrf
                     <button style="font-weight: 800" class="btn btn-success m-0">Verifikasi</button>
                 </form>
