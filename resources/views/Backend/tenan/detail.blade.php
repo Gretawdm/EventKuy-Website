@@ -1,9 +1,9 @@
 <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-<form action="{{ route('booth.show', ['id' => $result->id_order]) }}" method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="#detailBooth{{ $result->id_order }}" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-fade-transform" role="document">
+{{-- <form action="{{ route('booth.show', ['id' => $result->id_order]) }}" method="POST" enctype="multipart/form-data"> --}}
+    <div class="modal fade" id="#detailBooth" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fade-transform" role="dialog">
             <div class="modal-content">
                 <div class="modal-header"
                     style="background-color: #512e60 !important; color:white; font-weight:900; height:50px">
