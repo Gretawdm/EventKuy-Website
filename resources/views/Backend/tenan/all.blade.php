@@ -1,9 +1,9 @@
 @extends('backend.app')
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Tenant Booth</h1>
-    <div class="d-flex" style="gap: 10px; flex-wrap:wrap;">
-        @foreach ($detail_event as $event)
-         {{-- @if ($event['status'] == 'verified') --}}
+<h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Tenant Booth</h1>
+<div class="d-flex" style="gap: 10px; flex-wrap:wrap;">
+    @foreach ($detail_event as $event)
+        {{-- @if ($event['status'] == 'verified') --}}
             <div class="card shadow mb-4" style="width:200px; height:280px; border-radius:5px; margin-right:18pxpx">
                 <div class="card-body" style="display: flex; flex-direction: column; align-items:center; text-align:center;">
 
@@ -21,7 +21,8 @@
                                 {{ $event['tanggal_pendaftaran'] }} - {{ $event['tanggal_penutupan'] }}
                             </h5>
                         </div>
-                        <button class="card-link mb-2" type="button" style="border: none; background-color:#512e67; width:155px">
+                        <button class="card-link mb-2" type="button"
+                            style="border: none; background-color:#512e67; width:155px">
                             <a href="{{ route('booth.show', $event->id_event) }}" type="button" class="card-link"
                                 style="border:none; border-radius:20px; font-size:12px; color:white; font-weight:700; padding: 5px 10px;">Lihat
                                 Pemesan Booth</a>
@@ -29,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            {{-- @endif --}}
-        @endforeach
-    </div>
+        {{-- @endif --}}
+    @endforeach
+</div>
 @endsection
