@@ -1,7 +1,7 @@
 @extends('backend.app')
 @section('content')
 <div class="row">
-    <div class="col-xl-2 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4">
         <a href="{{route('booth.show', ['eventId' => $event->id_event])}}"
             class="card border-bottom-primary shadow h-100 py-2">
             <div class="card-body">
@@ -85,14 +85,14 @@
     </div>
 
 
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-2 col-md-6 mb-4">
         <a href="{{route('terverifikasi', ['eventId' => $event->id_event])}}"
             class="card border-bottom-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs text-success text-uppercase mb-1" style="font-weight: 900;">
-                            Terverifikasi
+                            Done
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             {{$verifiedOrdersCount}}

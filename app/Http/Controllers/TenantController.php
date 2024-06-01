@@ -22,6 +22,7 @@ class TenantController extends Controller
         return view('backend.tenan.all', compact('detail_event'));
     }
 
+    
     public function semua($eventId)
     {
         // Temukan event berdasarkan ID

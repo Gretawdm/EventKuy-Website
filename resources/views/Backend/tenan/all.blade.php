@@ -3,7 +3,7 @@
 <h1 class="h3 mb-2 text-gray-800" style="font-size: 25px">Tenant Booth</h1>
 <div class="d-flex" style="gap: 10px; flex-wrap:wrap;">
     @foreach ($detail_event as $event)
-        {{-- @if ($event['status'] == 'verified') --}}
+        @if ($event['status'] == 'verified')
             <div class="card shadow mb-4" style="width:200px; height:280px; border-radius:5px; margin-right:18pxpx">
                 <div class="card-body" style="display: flex; flex-direction: column; align-items:center; text-align:center;">
 
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-        {{-- @endif --}}
+        @endif
     @endforeach
 </div>
 @endsection

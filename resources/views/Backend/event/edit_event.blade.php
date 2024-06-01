@@ -4,7 +4,7 @@
 <form action="{{ route('event.update', ['id' => $detail_event->id_event]) }}" method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="editEventModal{{ $detail_event->id_event }}" tabindex="-1" role="dialog"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-fade-transform" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header"
                     style="background-color: #512e60 !important; color:white; font-weight:900; height:50px">
@@ -23,7 +23,6 @@
                                 <img src="{{ asset('uploads/' . $detail_event->id_event . '/' . $detail_event->upload_pamflet) }}"
                                     alt="Pamflet Event" width="200px" style="margin-bottom:10px">
                             @endif
-
                             <label for="penyelenggara_event" class="form-label" style="color: black">Upload
                                 Pamflet</label>
                             <div class="col-sm-12">

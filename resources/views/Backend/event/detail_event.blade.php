@@ -26,17 +26,16 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-sm-6 col-form-label">Contact Person :</div>
+                            <div class="col-sm-4 col-form-label">Contact Person :</div>
                             <div class="col-sm-10">
-                                {{ $detail_event['email'] }}
+                                <i class="fas fa-envelope"></i> {{ $detail_event['email'] }}
                             </div>
                             <div class="col-sm-10">
-                                {{ $detail_event['instagram'] }}
+                                <i class="fab fa-instagram"></i> {{ $detail_event['instagram'] }}
                             </div>
                             <div class="col-sm-10">
-                                {{ $detail_event['whatsapp'] }}
+                                <i class="fab fa-whatsapp"></i> {{ $detail_event['whatsapp'] }}
                             </div>
-
                         </div>
 
                         <div class="row mb-3">
@@ -135,9 +134,9 @@
                                                         class="btn btn-primary btn-sm m-0">Tambah</a>
                                                 @endif
                                                 <a style="font-weight: 800; display: flex; align-items: center; justify-content: center;"
-                                                    type="button"
-                                                    href="{{ route('booth.edit', ['id' => $detail_booth['id_booth']]) }}"
-                                                    class="btn btn-warning btn-sm m-0">Edit</a>
+                                                    type="button" data-toggle="modal"
+                                                    data-target="#editBoothModal{{ $detail_booth->id_booth }}"
+                                                    href="#" class="btn btn-warning btn-sm m-0">Edit</a>
                                                 @if ($detail_event['status'] == 'waiting')
                                                     <form
                                                         action="{{ route('booth.destroy', ['id' => $detail_booth['id_booth']]) }}"
@@ -177,6 +176,8 @@
                     </div>
 
                     @include('backend.event.edit_event')
+                    @include('backend.event.edit_booth')
+                    @include('backend.event.tambah_booth')
 
 
 
@@ -191,7 +192,7 @@
         <div class="clearfix"></div>
 
     </div>
-   
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -233,9 +234,10 @@
             a.click();
         }
     </script>
+@endsection
 
 
-    {{-- <link
+{{-- <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <style>
@@ -326,4 +328,3 @@
             /* Atur properti lain sesuai kebutuhan */
         }
     </style> --}}
-@endsection

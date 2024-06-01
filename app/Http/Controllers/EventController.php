@@ -17,13 +17,14 @@ class EventController extends Controller
     return view('Backend.event.event', compact('detail_event'));
 }
 
+
     public function show($id_event)
-    {
-        // $id_user = Auth::id();
-        $detail_event = Event::findOrFail($id_event);
-        $url = route('event.show', ['id_event' => $id_event]); // Mendapatkan URL route
-        $qrCodes['simple'] = QrCode::size(150)->generate($url);
-        $booths = Booth::where('id_event', $id_event)->get();
-        return view('Backend.event.detail_event', compact('detail_event', 'qrCodes', 'booths'));
-    }
+{
+    $detail_event = Event::findOrFail($id_event);
+    $url = route('event.show', ['id_event' => $id_event]); 
+    $qrCodes['simple'] = QrCode::size(150)->generate($url);
+    $booths = Booth::where('id_event', $id_event)->get();
+ return view('Backend.event.detail_event', compact('detail_event', 'qrCodes', 'booths'));
+}
+
 }

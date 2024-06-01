@@ -120,6 +120,7 @@ Route::post('/get-bank-details', [BankAccountController::class, 'getBankDetails'
 // Route::get('/tenant2', [TenantController::class, 'index2'])->name('tenant.index');
 Route::get('/tenant', [TenantController::class, 'index'])->name('index');
 Route::get('/tenant/semua/{eventId}', [TenantController::class, 'semua'])->name('booth.show');
+Route::get('/tenant/detail/{eventId}', [TenantController::class, 'detail'])->name('booth.detail');
 Route::get('/tenant/diterima/{eventId}', [TenantController::class, 'diterima'])->name('diterima');
 Route::get('/tenant/ditolak/{eventId}', [TenantController::class, 'ditolak'])->name('ditolak');
 Route::get('/tenant/menunggu_pembayaran/{eventId}', [TenantController::class, 'menunggu_pembayaran'])->name('menunggu_pembayaran');

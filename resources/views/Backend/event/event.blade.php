@@ -6,20 +6,22 @@
 
     <div class="d-flex" style="gap: 10px; flex-wrap:wrap;">
         @foreach ($detail_event as $event)
-            <div class="card shadow mb-4" style="width:380px; height:180px; border-radius:5px; margin-right:18px;">
+            <div class="card shadow mb-4" style="width:380px; height:200px; border-radius:5px; margin-right:18px;">
+                <div class="verification-bar {{ $event->status == 'waiting' ? 'ribbon-yellow' : ($event->status == 'unverified' ? 'ribbon-red' : 'ribbon-green') }}"
+                    style="height: 30px; border-radius: 5px 5px 0px 0px; display: flex; justify-content: space-between; align-items: center; padding: 0 15px;">
+                    <div style="color:white; font-weight:700; font-size:12px; margin-left:9px">ID Event: {{ $event['id_event'] }}</div>
+                    <div style="color:white; font-weight:700; font-size:12px; margin-right:9px">{{ $event['status'] }}</div>
+                </div>
+
                 <div class="card-body" style="display: flex; align-items:center;">
-                    <div
-                        class="corner-ribbon {{ $event->status == 'waiting' ? 'ribbon-yellow' : ($event->status == 'unverified' ? 'ribbon-red' : 'ribbon-green') }}">
-                        {{ $event->status }}
-                    </div>
                     <div style="flex: 0 0 100px; margin-right: 15px;">
                         <img src="{{ asset('uploads/' . $event->id_event . '/' . $event->upload_pamflet) }}" alt="Gambar"
                             style="width: 100px; height:140px">
                     </div>
+
                     <div style="display: flex; flex-direction: column;">
                         <div class="detail mb-1">
-                            <h5 class="event"
-                                style="font-size:20px; text-align:center ;font-weight:900;margin-bottom: 5px;">
+                            <h5 class="event" style="font-size:20px;font-weight:900;margin-bottom: 5px;">
                                 {{ $event['nama_event'] }}
                             </h5>
                             <h5 class="tanggal_daftar" style="font-size:15px; font-weight:600;">
@@ -29,7 +31,7 @@
                             <h5 class="event" style="font-size:15px; font-weight:600;">{{ $event['penyelenggara_event'] }}
                             </h5>
                         </div>
-                        <button class="card-link mb-2" type="button"
+                        <button class="card-link mb-2 {{ $event->status == 'waiting' ? 'ribbon-yellow' : ($event->status == 'unverified' ? 'ribbon-red' : 'ribbon-green') }}"" type="button"
                             style="border: none; width:220px; background-color:#512e67">
                             <a href="{{ route('event.show', $event->id_event) }}" type="button" class="card-link"
                                 style="border:none; border-radius:20px; font-size:15px; color:white; font-weight:600">Detail</a>
@@ -46,6 +48,11 @@
 @endsection
 
 <style>
+    .verification-bar {
+        margin-top: -5px;
+        /* Menggeser ke atas agar bertumpu di bawah card */
+    }
+
     .corner-ribbon {
         position: absolute;
         top: 10px;
@@ -60,17 +67,20 @@
     }
 
     .ribbon-red {
-        background: #e74c3c;
+        background: linear-gradient(to right, #FF3D3D, #992424);
         color: white;
     }
 
     .ribbon-yellow {
-        background: yellow;
+        background: linear-gradient(to right, #FFC107, #997404);
+        /* Gradasi dari kuning ke oranye */
         color: black;
+        /* Warna teks */
     }
 
+
     .ribbon-green {
-        background: #2ecc71;
+        background: linear-gradient(to right, #35AE24, #16480F);
         color: white;
     }
 </style>
