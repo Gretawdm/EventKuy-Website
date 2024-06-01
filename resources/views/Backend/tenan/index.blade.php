@@ -1,5 +1,4 @@
 <div class="row">
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4">
         <a href="/tenant/semua" class="card border-bottom-primary shadow h-100 py-2">
             <div class="card-body">
@@ -19,8 +18,6 @@
             </div>
         </a>
     </div>
-
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4">
         <a href="/tenant/diterima" class="card border-bottom-info shadow h-100 py-2">
             <div class="card-body">
@@ -40,8 +37,6 @@
             </div>
         </a>
     </div>
-
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-2 col-md-6 mb-4">
         <a href="/tenant/ditolak" class="card border-bottom-danger shadow h-100 py-2">
             <div class="card-body">
@@ -108,26 +103,25 @@
 
 
 <style>
-    .text-gray-300 {
-        color: #dddfeb !important
-    }
+.text-gray-300 {
+    color: #dddfeb !important
+}
 
-    .text-xs {
-        font-size: .9rem
-    }
+.text-xs {
+    font-size: .9rem
+}
 </style>
 
-  <script src="{{ asset('backend/assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('backend/assets/js/sb-admin-2.min.js') }}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('backend/assets/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ asset('backend/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ asset('backend/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('backend/assets/js/demo/datatables-demo.js') }}"></script>
-
+<!-- Page level custom scripts -->
+<script src="{{ asset('backend/assets/js/demo/datatables-demo.js') }}"></script>

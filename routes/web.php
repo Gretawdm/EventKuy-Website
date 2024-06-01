@@ -68,7 +68,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/forgot_password', [LoginController::class, 'forgot_pw'])->name('forgot_password');
 
 //send otp
-Route::post ('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->name('sendcode');
+Route::post('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->name('sendcode');
 //validate OTP
 Route::post('/validate-otp', [EmailController::class, 'validateOtp'])->name('validateOtp');
 //clear otp cache
@@ -110,20 +110,20 @@ Route::get('/event/{id_event}/tambah-booth', [DetailEventController::class, 'tam
 // Route untuk menyimpan data booth yang ditambahkan
 Route::post('/event/{id_event}/store-booth', [DetailEventController::class, 'booth_store'])->name('booth.store');
 
-Route::get('/profile',[ProfileController::class, 'profile'])->name('profile');
-Route::get('/edit_profile',[ProfileController::class, 'edit_profile'])->name('edit_profile');
-Route::put('edit_profile/update',[ProfileController::class,'update_profile'])->name('update_profile');
-Route::get('/ubah_password',[ProfileController::class, 'ubah_password'])->name('ubah_password');
-Route::put('/ubah_password/update',[ProfileController::class, 'update_password'])->name('update_password');
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/edit_profile', [ProfileController::class, 'edit_profile'])->name('edit_profile');
+Route::put('edit_profile/update', [ProfileController::class, 'update_profile'])->name('update_profile');
+Route::get('/ubah_password', [ProfileController::class, 'ubah_password'])->name('ubah_password');
+Route::put('/ubah_password/update', [ProfileController::class, 'update_password'])->name('update_password');
 Route::post('/get-bank-details', [BankAccountController::class, 'getBankDetails'])->name('get.bank.details');
 
-
-Route::get('/tenant',[TenantController::class, 'index'])->name('index');
-Route::get('/tenant/semua',[TenantController::class, 'semua'])->name('booth.show');
-Route::get('/tenant/diterima',[TenantController::class, 'diterima'])->name('diterima');
-Route::get('/tenant/ditolak',[TenantController::class, 'ditolak'])->name('ditolak');
-Route::get('/tenant/menunggu_pembayaran',[TenantController::class, 'menunggu_pembayaran'])->name('menunggu_pembayaran');
-Route::get('/tenant/terverifikasi',[TenantController::class, 'terverifikasi'])->name('terverifikasi');
+// Route::get('/tenant2', [TenantController::class, 'index2'])->name('tenant.index');
+Route::get('/tenant', [TenantController::class, 'index'])->name('index');
+Route::get('/tenant/semua/{eventId}', [TenantController::class, 'semua'])->name('booth.show');
+Route::get('/tenant/diterima/{eventId}', [TenantController::class, 'diterima'])->name('diterima');
+Route::get('/tenant/ditolak/{eventId}', [TenantController::class, 'ditolak'])->name('ditolak');
+Route::get('/tenant/menunggu_pembayaran/{eventId}', [TenantController::class, 'menunggu_pembayaran'])->name('menunggu_pembayaran');
+Route::get('/tenant/terverifikasi/{eventId}', [TenantController::class, 'terverifikasi'])->name('terverifikasi');
 
 Route::post('/tenant/{id}/terima', [TenantController::class, 'terima'])->name('tenant.terima');
 Route::post('/tenant/{id}/tolak', [TenantController::class, 'tolak'])->name('tenant.tolak');

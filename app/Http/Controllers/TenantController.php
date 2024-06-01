@@ -6,162 +6,258 @@ use App\Models\Tenant;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TenantController extends Controller
 {
-    public function index(){
-    $id_user = auth()->user()->id;
-    $detail_event = Event::where('user_id', $id_user)->get();
-    return view('backend.tenan.all', compact('detail_event'));
-    }
-    
-    public function semua()
+    // public function index2()
+    // {
+    //     $eventId = 1; // contoh nilai eventId, sesuaikan dengan logika bisnis Anda
+    //     return view('Backend.tenan.index', compact('eventId'));
+    // }
+    public function index()
     {
-        // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan
-        $orders = Tenant::where('status_order', 'validasi')
-            ->with(['user', 'booth.event'])
+        $id_user = auth()->user()->id;
+        $detail_event = Event::where('user_id', $id_user)->get();
+        return view('backend.tenan.all', compact('detail_event'));
+    }
+
+    public function semua($eventId)
+    {
+        // Temukan event berdasarkan ID
+        $event = Event::findOrFail($eventId);
+
+        $order = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->with('user')->get();
+
+        // Ambil semua pesanan booth yang terkait dengan event ini dan muat pengguna terkait
+        $orders = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->where('status_order', 'validasi')
+            ->with('user')
             ->get();
+        // Hitung jumlah orders berdasarkan status
+        $allOrdersCount = $order->where('status_order', 'validasi')->count();
+        $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
+        $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
-        // Transformasi data order menjadi bentuk yang diinginkan
-        $results = $orders->map(function ($order) {
-            return [
-                'nama_perusahaan' => $order->user->nama_perusahaan,
-                'nama_lengkap' => $order->user->nama_lengkap,
-                'deskripsi_perusahaan' => $order->user->deskripsi_perusahaan,
-                'alamat_perusahaan' => $order->user->alamat_perusahaan,
-                'id_order' => $order->id_order,
-                'tgl_order' => $order->tgl_order,
-                'nomor_booth' => $order->nomor_booth,
-                'tipe_booth' => $order->booth->tipe_booth,
-                'nama_event' => $order->booth->event->nama_event,
-            ];
-        });
-        return view('Backend.tenan.semua', ['results' => $results]);
+        return view(
+            'Backend.tenan.semua',
+            compact(
+                'event',
+                'order',
+                'allOrdersCount',
+                'acceptedOrdersCount',
+                'rejectedOrdersCount',
+                'pendingPaymentOrdersCount',
+                'verifiedOrdersCount',
+                'orders'
+            )
+        );
     }
-    public function verifikasi($id_order)
+    public function verifikasi(Request $request, $id_order)
     {
-        // Temukan user berdasarkan ID
-        $detailorder = Tenant::findOrFail($id_order);
-        $detailorder->status_order = 'terverifikasi';
-        $detailorder->save();
-        return redirect()->back()->with('succes', 'Tenant berhasil diverifikasi.');
+        // Set timezone default untuk PHP
+        date_default_timezone_set('Asia/Jakarta'); // Atur timezone sesuai dengan lokasi Anda
+        // Temukan pesanan berdasarkan ID
+        $order = Tenant::findOrFail($id_order);
+
+        // Lakukan validasi atau operasi lain yang diperlukan
+        $order->status_order = 'terverifikasi'; // Update status pemesanan menjadi 'terverifikasi'
+        // Tambahkan tanggal verifikasi dengan waktu saat ini
+        $order->tgl_verifikasi = Carbon::now();
+        $order->save();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Pemesanan telah disetujui.');
     }
 
-    public function terima($id_order)
+    public function terima(Request $request, $id_order)
     {
-        // Temukan user berdasarkan ID
-        $detailorder = Tenant::findOrFail($id_order);
-        $detailorder->status_order = 'diterima';
-        $detailorder->save();
-        return redirect()->back()->with('succes', 'Tenant berhasil disetujui.');
+        // Temukan pesanan berdasarkan ID
+        $order = Tenant::findOrFail($id_order);
+
+        // Lakukan validasi atau operasi lain yang diperlukan
+        $order->status_order = 'diterima'; // Update status pemesanan menjadi 'diterima'
+        $order->save();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Pemesanan telah disetujui.');
     }
-    public function tolak($id_order)
+
+    public function tolak(Request $request, $id_order)
     {
-        // Temukan user berdasarkan ID
-        $detailorder = Tenant::findOrFail($id_order);
-        $detailorder->status_order = 'ditolak';
-        $detailorder->save();
-        return redirect()->back()->with('succes', 'Tenant berhasil ditolak.');
+        // Temukan pesanan berdasarkan ID
+        $order = Tenant::findOrFail($id_order);
+
+        // Lakukan validasi atau operasi lain yang diperlukan
+        $order->status_order = 'ditolak'; // Update status pemesanan menjadi 'ditolak'
+        $order->save();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->back()->with('success', 'Pemesanan telah ditolak.');
     }
-    public function diterima()
+    public function diterima($eventId)
     {
-        // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan
-        $orders = Tenant::where('status_order', 'diterima')
-            ->with(['user', 'booth.event'])
+        // Temukan event berdasarkan ID
+        $event = Event::findOrFail($eventId);
+
+        $order = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->with('user')->get();
+
+        // Ambil semua pesanan booth yang terkait dengan event ini dan muat pengguna terkait
+        $orders = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->where('status_order', 'diterima')
+            ->with('user')
             ->get();
+        // Hitung jumlah orders berdasarkan status
+        $allOrdersCount = $order->where('status_order', 'validasi')->count();
+        $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
+        $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
-        // Transformasi data order menjadi bentuk yang diinginkan
-        $results = $orders->map(function ($order) {
-            return [
-                'nama_perusahaan' => $order->user->nama_perusahaan,
-                'nama_lengkap' => $order->user->nama_lengkap,
-                'deskripsi_perusahaan' => $order->user->deskripsi_perusahaan,
-                'alamat_perusahaan' => $order->user->alamat_perusahaan,
-                'id_order' => $order->id_order,
-                'tgl_order' => $order->tgl_order,
-                'nomor_booth' => $order->nomor_booth,
-                'tipe_booth' => $order->booth->tipe_booth,
-                'nama_event' => $order->booth->event->nama_event,
-            ];
-        });
-
-        // Return view dengan data yang sudah diolah
-        return view('Backend.tenan.diterima', ['results' => $results]);
+        return view(
+            'Backend.tenan.diterima',
+            compact(
+                'event',
+                'order',
+                'allOrdersCount',
+                'acceptedOrdersCount',
+                'rejectedOrdersCount',
+                'pendingPaymentOrdersCount',
+                'verifiedOrdersCount',
+                'orders'
+            )
+        );
     }
 
-    public function ditolak()
+    public function ditolak($eventId)
     {
-        // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan
-        $orders = Tenant::where('status_order', 'ditolak')
-            ->with(['user', 'booth.event'])
+        // Temukan event berdasarkan ID
+        $event = Event::findOrFail($eventId);
+
+        $order = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->with('user')->get();
+
+        // Ambil semua pesanan booth yang terkait dengan event ini dan muat pengguna terkait
+        $orders = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->where('status_order', 'ditolak')
+            ->with('user')
             ->get();
+        // Hitung jumlah orders berdasarkan status
+        $allOrdersCount = $order->where('status_order', 'validasi')->count();
+        $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
+        $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
-        // Transformasi data order menjadi bentuk yang diinginkan
-        $results = $orders->map(function ($order) {
-            return [
-                'nama_perusahaan' => $order->user->nama_perusahaan,
-                'nama_lengkap' => $order->user->nama_lengkap,
-                'deskripsi_perusahaan' => $order->user->deskripsi_perusahaan,
-                'alamat_perusahaan' => $order->user->alamat_perusahaan,
-                'id_order' => $order->id_order,
-                'tgl_order' => $order->tgl_order,
-                'nomor_booth' => $order->nomor_booth,
-                'tipe_booth' => $order->booth->tipe_booth,
-                'nama_event' => $order->booth->event->nama_event,
-            ];
-        });
-
-        // Return view dengan data yang sudah diolah
-        return view('Backend.tenan.ditolak', ['results' => $results]);
+        return view(
+            'Backend.tenan.ditolak',
+            compact(
+                'event',
+                'order',
+                'allOrdersCount',
+                'acceptedOrdersCount',
+                'rejectedOrdersCount',
+                'pendingPaymentOrdersCount',
+                'verifiedOrdersCount',
+                'orders'
+            )
+        );
     }
-    public function menunggu_pembayaran()
+
+    public function menunggu_pembayaran($eventId)
     {
+        // Temukan event berdasarkan ID
+        $event = Event::findOrFail($eventId);
+
+        $order = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->with('user')->get();
+
         // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan
         $orders = Tenant::where('status_order', 'menunggu pembayaran')
             ->with(['user', 'booth.event'])
             ->get();
 
-        // Transformasi data order menjadi bentuk yang diinginkan
-        $results = $orders->map(function ($order) {
-            return [
-                'nama_perusahaan' => $order->user->nama_perusahaan,
-                'nama_lengkap' => $order->user->nama_lengkap,
-                'deskripsi_perusahaan' => $order->user->deskripsi_perusahaan,
-                'alamat_perusahaan' => $order->user->alamat_perusahaan,
-                'id_order' => $order->id_order,
-                'tgl_order' => $order->tgl_order,
-                'nomor_booth' => $order->nomor_booth,
-                'tipe_booth' => $order->booth->tipe_booth,
-                'nama_event' => $order->booth->event->nama_event,
-            ];
-        });
+        // Ambil semua pesanan booth yang terkait dengan event ini dan muat pengguna terkait
+        $orders = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->where('status_order', 'menunggu pembayaran')
+            ->with('user')
+            ->get();
+
+        // Hitung jumlah orders berdasarkan status
+        $allOrdersCount = $order->where('status_order', 'validasi')->count();
+        $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
+        $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         // Return view dengan data yang sudah diolah
-        return view('Backend.tenan.menunggu_pembayaran', ['results' => $results]);
+        return view(
+            'Backend.tenan.menunggu_pembayaran',
+            compact(
+                'event',
+                'order',
+                'allOrdersCount',
+                'acceptedOrdersCount',
+                'rejectedOrdersCount',
+                'pendingPaymentOrdersCount',
+                'verifiedOrdersCount',
+                'orders'
+            )
+        );
     }
-    public function terverifikasi()
+    public function terverifikasi($eventId)
     {
+        // Temukan event berdasarkan ID
+        $event = Event::findOrFail($eventId);
+
+        $order = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->with('user')->get();
+
         // Ambil semua orders dengan status 'diterima' untuk user yang sedang login dan load relasi yang diperlukan
         $orders = Tenant::where('status_order', 'terverifikasi')
             ->with(['user', 'booth.event'])
             ->get();
 
-        // Transformasi data order menjadi bentuk yang diinginkan
-        $results = $orders->map(function ($order) {
-            return [
-                'nama_perusahaan' => $order->user->nama_perusahaan,
-                'nama_lengkap' => $order->user->nama_lengkap,
-                'deskripsi_perusahaan' => $order->user->deskripsi_perusahaan,
-                'alamat_perusahaan' => $order->user->alamat_perusahaan,
-                'id_order' => $order->id_order,
-                'tgl_order' => $order->tgl_order,
-                'nomor_booth' => $order->nomor_booth,
-                'tipe_booth' => $order->booth->tipe_booth,
-                'nama_event' => $order->booth->event->nama_event,
-            ];
-        });
+        // Ambil semua pesanan booth yang terkait dengan event ini dan muat pengguna terkait
+        $orders = Tenant::whereHas('booth', function ($query) use ($event) {
+            $query->where('id_event', $event->id_event);
+        })->where('status_order', 'terverifikasi')
+            ->with('user')
+            ->get();
+
+        // Hitung jumlah orders berdasarkan status
+        $allOrdersCount = $order->where('status_order', 'validasi')->count();
+        $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
+        $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         // Return view dengan data yang sudah diolah
-        return view('Backend.tenan.terverifikasi', ['results' => $results]);
+        return view(
+            'Backend.tenan.terverifikasi',
+            compact(
+                'event',
+                'order',
+                'allOrdersCount',
+                'acceptedOrdersCount',
+                'rejectedOrdersCount',
+                'pendingPaymentOrdersCount',
+                'verifiedOrdersCount',
+                'orders'
+            )
+        );
     }
 }
