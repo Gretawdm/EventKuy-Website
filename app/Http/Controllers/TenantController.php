@@ -10,11 +10,13 @@ use Carbon\Carbon;
 
 class TenantController extends Controller
 {
-    // public function index2()
-    // {
-    //     $eventId = 1; // contoh nilai eventId, sesuaikan dengan logika bisnis Anda
-    //     return view('Backend.tenan.index', compact('eventId'));
-    // }
+    public function detail($orderId)
+    {
+        // Temukan order berdasarkan ID order
+        $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
+        return view('backend.detail', compact('orders_detail'));
+    }
+
     public function index()
     {
         $id_user = auth()->user()->id;
@@ -22,7 +24,7 @@ class TenantController extends Controller
         return view('backend.tenan.all', compact('detail_event'));
     }
 
-    
+
     public function semua($eventId)
     {
         // Temukan event berdasarkan ID
@@ -42,7 +44,7 @@ class TenantController extends Controller
         $allOrdersCount = $order->where('status_order', 'validasi')->count();
         $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
         $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
-        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu pembayaran')->count();
         $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         return view(
@@ -120,7 +122,7 @@ class TenantController extends Controller
         $allOrdersCount = $order->where('status_order', 'validasi')->count();
         $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
         $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
-        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu pembayaran')->count();
         $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         return view(
@@ -157,7 +159,7 @@ class TenantController extends Controller
         $allOrdersCount = $order->where('status_order', 'validasi')->count();
         $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
         $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
-        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu pembayaran')->count();
         $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         return view(
@@ -200,7 +202,7 @@ class TenantController extends Controller
         $allOrdersCount = $order->where('status_order', 'validasi')->count();
         $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
         $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
-        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu pembayaran')->count();
         $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         // Return view dengan data yang sudah diolah
@@ -243,7 +245,7 @@ class TenantController extends Controller
         $allOrdersCount = $order->where('status_order', 'validasi')->count();
         $acceptedOrdersCount = $order->where('status_order', 'diterima')->count();
         $rejectedOrdersCount = $order->where('status_order', 'ditolak')->count();
-        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu_pembayaran')->count();
+        $pendingPaymentOrdersCount = $order->where('status_order', 'menunggu pembayaran')->count();
         $verifiedOrdersCount = $order->where('status_order', 'terverifikasi')->count();
 
         // Return view dengan data yang sudah diolah
