@@ -605,7 +605,7 @@
             }
 
             .btn-danger {
-                background-color: #e74a3;
+                background-color: #e74a3b;
                 width: 150px;
                 color: white;
                 border: none;

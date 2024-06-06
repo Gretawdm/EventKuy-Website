@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
         <img src="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" alt="" width="50px;">
-        <div class="sidebar-brand-text mx-3" style="color: #512e67;">Eventkuy</div>
+        <div class="sidebar-brand-text mx-3" style="color: #512e67;">MYEVENT</div>
     </a>
 
     <div class="sidebar-heading" style="color: #512e67;">
