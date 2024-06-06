@@ -80,11 +80,15 @@ class TenantController extends Controller
 
     public function terima(Request $request, $id_order)
     {
+        // Set timezone default untuk PHP
+        date_default_timezone_set('Asia/Jakarta'); // Atur timezone sesuai dengan lokasi Anda
         // Temukan pesanan berdasarkan ID
         $order = Tenant::findOrFail($id_order);
 
         // Lakukan validasi atau operasi lain yang diperlukan
         $order->status_order = 'diterima'; // Update status pemesanan menjadi 'diterima'
+        // Tambahkan tanggal verifikasi dengan waktu saat ini
+        $order->tgl_diterima = Carbon::now();
         $order->save();
 
         // Redirect kembali dengan pesan sukses
@@ -93,11 +97,15 @@ class TenantController extends Controller
 
     public function tolak(Request $request, $id_order)
     {
+        // Set timezone default untuk PHP
+        date_default_timezone_set('Asia/Jakarta'); // Atur timezone sesuai dengan lokasi Anda
         // Temukan pesanan berdasarkan ID
         $order = Tenant::findOrFail($id_order);
 
         // Lakukan validasi atau operasi lain yang diperlukan
         $order->status_order = 'ditolak'; // Update status pemesanan menjadi 'ditolak'
+        // Tambahkan tanggal verifikasi dengan waktu saat ini
+        $order->tgl_ditolak = Carbon::now();
         $order->save();
 
         // Redirect kembali dengan pesan sukses

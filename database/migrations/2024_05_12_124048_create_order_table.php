@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('harga_bayar')->nullable();
             $table->string('img_bukti_transfer')->nullable();
             $table->dateTime('tgl_order');
+            $table->dateTime('tgl_diterima')->nullable();
+            $table->dateTime('tgl_ditolak')->nullable();
             $table->dateTime('tgl_bayar')->nullable();
             $table->dateTime('tgl_verifikasi')->nullable();
             $table->unsignedBigInteger('id');

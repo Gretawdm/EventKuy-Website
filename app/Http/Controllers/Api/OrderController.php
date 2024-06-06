@@ -100,7 +100,7 @@ class OrderController extends Controller
         $imageData = $request->image_data;
         // $imageName = $request->image_name;
         $imageType = $request->image_type;
-
+        date_default_timezone_set('Asia/Jakarta');
         $time = now();
         $order = Order::with('booth.event')->find($idOrder);
 
