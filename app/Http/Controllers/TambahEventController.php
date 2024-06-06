@@ -50,21 +50,21 @@ class TambahEventController extends Controller
            $file = $request->file('upload_ktp');
            $fileName = time() . '_' . $file->getClientOriginalName();
            $file->move($eventFolder, $fileName);
-           $event->upload_ktp = $fileName;
+           $event->upload_ktp = 'uploads/'.$event->id_event .'/' .$fileName;
        }
 
        if ($request->hasFile('upload_denah')) {
            $file = $request->file('upload_denah');
            $fileName = time() . '_' . $file->getClientOriginalName();
            $file->move($eventFolder, $fileName);
-           $event->upload_denah = $fileName;
+           $event->upload_denah = 'uploads/'.$event->id_event .'/' .$fileName;
        }
 
        if ($request->hasFile('upload_pamflet')) {
            $file = $request->file('upload_pamflet');
            $fileName = time() . '_' . $file->getClientOriginalName();
            $file->move($eventFolder, $fileName);
-           $event->upload_pamflet = $fileName;
+           $event->upload_pamflet = 'uploads/'.$event->id_event .'/' .$fileName;
        }
 
        $event->save();
@@ -80,7 +80,7 @@ class TambahEventController extends Controller
                "harga_booth" => $request->harga_booth[$key],
                "jumlah_booth" => $request->jumlah_booth[$key],
                "deskripsi_booth" => $request->deskripsi_booth[$key],
-               "upload_gambar_booth" => $fileName,
+               "upload_gambar_booth" => 'uploads/'.$event->id_event .'/' .$fileName,
                "id_event" => $event->id_event
            ]);
        }

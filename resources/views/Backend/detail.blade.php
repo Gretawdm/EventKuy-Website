@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Detail Order</div>
                 <div class="card-body">
-                    <p><strong>Nama Produk:</strong> {{ $orders_detail['user']['nama_perusahaan'] }}</p>
+                    <p><strong>Nama Perusahaan:</strong> {{ $orders_detail['user']['nama_perusahaan'] }}</p>
                     <p><strong>Nama Lengkap:</strong> {{ $orders_detail['user']['nama_lengkap'] }}</p>
                     <p><strong>Alamat:</strong> {{ $orders_detail['user']['alamat_perusahaan'] }}</p>
                     <p><strong>Tanggal Order:</strong> {{ $orders_detail->tgl_order }}</p>

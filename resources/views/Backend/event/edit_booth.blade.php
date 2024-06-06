@@ -22,7 +22,7 @@
                         <div class="col-sm-12 d-flex flex-column align-items-center">
                             <!-- Menampilkan gambar dari database jika tersedia -->
                             @if ($detail_booth->upload_gambar_booth)
-                                <img src="{{ asset('uploads/' . $detail_booth->id_event . '/' . $detail_booth->upload_gambar_booth) }}"
+                                <img src="{{ asset($detail_booth->upload_gambar_booth) }}"
                                     alt="Denah Event" width="100">
                             @endif
                             <label for="penyelenggara_event" class="form-label" style="color: black">Upload

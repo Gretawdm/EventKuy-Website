@@ -15,7 +15,7 @@
 
                 <div class="card-body" style="display: flex; align-items:center;">
                     <div style="flex: 0 0 100px; margin-right: 15px;">
-                        <img src="{{ asset('uploads/' . $event->id_event . '/' . $event->upload_pamflet) }}" alt="Gambar"
+                        <img src="{{ asset($event->upload_pamflet) }}" alt="Gambar"
                             style="width: 100px; height:140px">
                     </div>
 

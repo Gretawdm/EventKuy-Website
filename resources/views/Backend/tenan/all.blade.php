@@ -8,7 +8,7 @@
                 <div class="card-body" style="display: flex; flex-direction: column; align-items:center; text-align:center;">
 
                     <div style="margin-bottom: 15px;">
-                        <img src="{{ asset('uploads/' . $event->id_event . '/' . $event->upload_pamflet) }}" alt="Gambar"
+                        <img src="{{ asset($event->upload_pamflet) }}" alt="Gambar"
                             style="width: 100px; height:140px;">
                     </div>
 

@@ -129,7 +129,7 @@
                         <td class="align-middle ">{{ $order['user']['nama_perusahaan'] }}</td>
                         <td class="align-middle">{{ $order['user']['nama_lengkap'] }}</td>
                         <td class="align-middle">@if ($order->img_bukti_transfer)
-                            <img src="{{ asset('uploads/' . $order->booth->event->id_event . '/' . $order->img_bukti_transfer) }}"
+                            <img src="{{ asset( $order->img_bukti_transfer) }}"
                                 alt="Bukti Transfer" style="max-width: 100px;" />
                             @else
                             <p>Gambar tidak tersedia</p>

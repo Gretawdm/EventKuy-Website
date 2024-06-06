@@ -20,7 +20,7 @@
                         <div class="col-sm-12 d-flex flex-column align-items-center">
                             <!-- Display the image from the database if available -->
                             @if ($detail_event->upload_pamflet)
-                                <img src="{{ asset('uploads/' . $detail_event->id_event . '/' . $detail_event->upload_pamflet) }}"
+                                <img src="{{ asset($detail_event->upload_pamflet) }}"
                                     alt="Pamflet Event" width="200px" style="margin-bottom:10px">
                             @endif
                             <label for="penyelenggara_event" class="form-label" style="color: black">Upload
