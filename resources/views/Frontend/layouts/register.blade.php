@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>EventKuy - Login</title>
+    <title>My Event - Register</title>
 
-    <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="icon">
-    <link href="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" rel="logo">
+    <link href="{{ asset('frontend/assets/img/MyEvent-logo.png') }}" rel="icon">
+    <link href="{{ asset('frontend/assets/img/MyEvent-logo.png') }}" rel="logo">
 
     <link href="{{ asset('frontend/login/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"

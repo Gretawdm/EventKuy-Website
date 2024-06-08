@@ -9,8 +9,8 @@
                        <h2 data-aos="fade-up"
                            style="font-weight:1000; font-size:42px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
                            Booking Event
-                           dengan mudah melalui <span style="color: #FF6699;text-decoration: underline;">Event</span><span
-                               style="color: #2d2828; text-decoration: underline;">Kuy</span></h2>
+                           dengan mudah melalui <span style="color: #FF6699;text-decoration: underline;">My</span><span
+                               style="color: #C54C82; text-decoration: underline;">Event</span></h2>
                        <style>
                            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
                        </style>
@@ -60,8 +60,8 @@
                            <div class="content ps-0 ps-lg-5" style="font-size: 18px; font-weight: 400;">
                                <p>
                                    <span style="font-weight: 1000; font-size:36px">Mengapa Harus Menggunakan
-                                       EventKuy?</span>
-                                   <br style="font-weight: 600;">Di EventKuy, kami berkomitmen untuk menyediakan platform
+                                       My Event?</span>
+                                   <br style="font-weight: 600;">Di My Event, kami berkomitmen untuk menyediakan platform
                                    pendaftaran booth tenant
                                    yang
                                    efisien dan mudah diakses melalui Mobile. Kami memahami pentingnya memfasilitasi
@@ -110,7 +110,7 @@
                                </div>
                                <h3 style="font-weight: 1000;">Pendaftaran Booth Tenant
                                </h3>
-                               <p style="color: #000000; font-weight: 600;">Pada EventKuy Application,kami menyediakan
+                               <p style="color: #000000; font-weight: 600;">Pada My Event Application,kami menyediakan
                                    layanan pendaftaran
                                    Tenant pada Event
                                    diseluruh indonesia yang terdaftar diwebsite kami.</p>

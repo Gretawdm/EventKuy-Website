@@ -20,20 +20,30 @@
                         <div class="col-sm-12 d-flex flex-column align-items-center">
                             <!-- Display the image from the database if available -->
                             @if ($detail_event->upload_pamflet)
-                                <img src="{{ asset($detail_event->upload_pamflet) }}"
-                                    alt="Pamflet Event" width="200px" style="margin-bottom:10px">
+                                <img src="{{ asset($detail_event->upload_pamflet) }}" alt="Pamflet Event" width="200px"
+                                    style="margin-bottom:10px">
                             @endif
                             <label for="penyelenggara_event" class="form-label" style="color: black">Upload
                                 Pamflet</label>
                             <div class="col-sm-12">
                                 <div class="image-upload-wrap form-control">
-                                    <input class="file-upload-input form-control" type="file"
-                                        onchange="previewFile(this);" accept="image/*" id="upload_pamflet"
-                                        name="upload_pamflet" required>
+                                    <input class="file-upload-input-pamflet" type='file'
+                                        onchange="readURLPamflet(this);" accept="image/*" name="upload_pamflet"
+                                        required />
                                     <span
                                         id="selectedFileName">{{ $detail_event->upload_pamflet ? $detail_event->upload_pamflet : 'No file chosen' }}</span>
                                 </div>
+                                <div class="file-upload-content-pamflet">
+                                    <img class="file-upload-image-pamflet" src="#" alt="your image" />
+                                    <div class="image-title-wrap-pamflet">
+                                        <button type="button" onclick="removeUploadPamflet()"
+                                            class="remove-image-pamflet">Remove
+                                            <span class="image-title-pamflet">Uploaded
+                                                Image</span></button>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -65,7 +75,8 @@
 
                     <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-purple" style="font-weight: 800; font-size:16px">Simpan
+                            <button type="submit" class="btn btn-purple"
+                                style="font-weight: 800; font-size:16px">Simpan
                                 Perubahan</button>
                         </div>
                     </div>
@@ -113,5 +124,24 @@
 
         // Update the name of the selected file
         document.getElementById('selectedFileName').textContent = file.name;
+    }
+
+    function readURLPamflet(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".image-upload-wrap-pamflet").hide();
+
+                $(".file-upload-image-pamflet").attr("src", e.target.result);
+                $(".file-upload-content-pamflet").show();
+
+                $(".image-title-pamflet").html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            removeUpload();
+        }
     }
 </script>

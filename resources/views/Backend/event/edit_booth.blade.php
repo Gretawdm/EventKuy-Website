@@ -22,18 +22,27 @@
                         <div class="col-sm-12 d-flex flex-column align-items-center">
                             <!-- Menampilkan gambar dari database jika tersedia -->
                             @if ($detail_booth->upload_gambar_booth)
-                                <img src="{{ asset($detail_booth->upload_gambar_booth) }}"
-                                    alt="Denah Event" width="100">
+                                <img src="{{ asset($detail_booth->upload_gambar_booth) }}" alt="Denah Event"
+                                    width="100">
                             @endif
                             <label for="penyelenggara_event" class="form-label" style="color: black">Upload
-                                Foto Booth</label>
+                                Foto
+                                Booth</label>
                             <div class="col-sm-12">
                                 <div class="image-upload-wrap form-control">
-                                    <input class="file-upload-input form-control" type="file"
-                                        onchange="previewFile(this);" accept="image/*" id="upload_gambar_booth"
-                                        name="upload_gambar_booth" required>
+                                    <input class="file-upload-input-booth" type='file' onchange="readURLBooth(this);"
+                                        accept="image/*" name="upload_booth" required />
                                     <span
                                         id="selectedFileName">{{ $detail_booth->upload_gambar_booth ? $detail_booth->upload_gambar_booth : 'No file chosen' }}</span>
+                                </div>
+                                <div class="file-upload-content-booth">
+                                    <img class="file-upload-image-booth" src="#" alt="your image" />
+                                    <div class="image-title-wrap-booth">
+                                        <button type="button" onclick="removeUploadBooth()"
+                                            class="remove-image-booth">Remove
+                                            <span class="image-title-booth">Uploaded
+                                                Image</span></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -83,6 +92,33 @@
 
 
     }
+
+    .remove-image-booth {
+        width: 200px;
+        margin: 0;
+        color: #fff;
+        background: #cd4535;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        border-bottom: 4px solid #b02818;
+        transition: all .2s ease;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .remove-image-booth:hover {
+        background: #c13b2a;
+        color: #ffffff;
+        transition: all .2s ease;
+        cursor: pointer;
+    }
+
+    .remove-image-booth:active {
+        border: 0;
+        transition: all .2s ease;
+    }
 </style>
 
 <script>
@@ -108,4 +144,37 @@
         // Update nama file yang dipilih
         document.getElementById('selectedFileName').textContent = file.name;
     }
+
+    function readURLBooth(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(".image-upload-wrap-booth").hide();
+
+                $(".file-upload-image-booth").attr("src", e.target.result);
+                $(".file-upload-content-booth").show();
+
+                $(".image-title-booth").html(input.files[0].name);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            removeUpload();
+        }
+    }
+
+    function removeUploadBooth() {
+        $(".file-upload-input-booth").replaceWith(
+            $(".file-upload-input-booth").clone()
+        );
+        $(".file-upload-content-booth").hide();
+        $(".image-upload-wrap-booth").show();
+    }
+    $(".image-upload-wrap-booth").bind("dragover", function() {
+        $(".image-upload-wrap-booth").addClass("image-dropping");
+    });
+    $(".image-upload-wrap-booth").bind("dragleave", function() {
+        $(".image-upload-wrap-booth").removeClass("image-dropping");
+    });
 </script>

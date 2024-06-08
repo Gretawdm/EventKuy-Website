@@ -5,11 +5,11 @@
          <div class="row gy-4">
              <div class="col-lg-5 col-md-12 footer-info">
                  <a href="index.html" class="logo d-flex align-items-center">
-                     <img src="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}">
+                     <img src="{{ asset('frontend/assets/img/MyEvent-logo.png') }}">
                  </a>
                  <p style="color: white; font-weight: 600">Kami Menghadirkan Inovasi Modern yang
                      Memungkinkan Pengguna untuk Menemukan Peluang dan Mengembangkan Potensi Mereka. Dengan Platform
-                     yang Mudah Digunakan dan Berorientasi Pengguna, EventKuy Memberdayakan Komunitas untuk Meraih
+                     yang Mudah Digunakan dan Berorientasi Pengguna, My Event Memberdayakan Komunitas untuk Meraih
                      Sukses dalam Era Digital. Bergabunglah dengan Kami dalam Mewujudkan Visi Kemakmuran Bersama!"</p>
              </div>
              <div class="col-lg-2 col-6 footer-links">

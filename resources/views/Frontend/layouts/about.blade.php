@@ -9,7 +9,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center">
                             <h2 style="font-weight: 1000">About Us</h2>
-                            <p style="font-weight: 600">EventKuy Merupakan Sebuah Platform Yang Dibangun Guna Mendorong
+                            <p style="font-weight: 600">My Event Merupakan Sebuah Platform Yang Dibangun Guna Mendorong
                                 Peningkatan Ekonomi. Kami
                                 Menghadirkan Inovasi Modern Yang Memungkinkan Pengguna untuk Menemukan Peluang dan
                                 Mengembangkan Tenant Yang Di Miliki.
@@ -41,7 +41,7 @@
                     <div class="col-lg-6 content order-last  order-lg-first">
                         <h3 style="font-weight: 1000">About Us</h3>
                         <p style="font-weight: 600">
-                            Dengan Platform yang Mudah Digunakan dan Berorientasi Pengguna, EventKuy Memberdayakan Komunitas
+                            Dengan Platform yang Mudah Digunakan dan Berorientasi Pengguna, My Event Memberdayakan Komunitas
                             untuk Para Pemilik Tenant Dapat Dengan Mudah Menemukan Event Di Sekitar Mereka dan Meraih Sukses
                             dalam Era Digital.
                         </p>
@@ -53,7 +53,7 @@
                                     <h5 style="font-weight: 900">Perekonomian</h5>
                                     <p style="font-weight: 600">Melalui platform kami, masyarakat dapat menemukan
                                         event-event menarik, termasuk acara-acara perekonomian, festival budaya, seminar,
-                                        dan lainnya. Dengan begitu, EventKuy tidak hanya memudahkan akses informasi, tetapi
+                                        dan lainnya. Dengan begitu, My Event tidak hanya memudahkan akses informasi, tetapi
                                         juga membantu masyarakat untuk terlibat dalam berbagai kegiatan yang dapat
                                         memperkaya pengalaman dan memperluas jaringan sosial serta profesional mereka.</p>
                                 </div>
@@ -65,7 +65,7 @@
                                     <p style="font-weight: 600">Saat ini, EventKuy hadir sebagai solusi yang memudahkan
                                         masyarakat untuk menemukan event terdekat di sekitar mereka. Tidak lagi perlu
                                         khawatir tentang ketinggalan informasi tentang rekrutmen tenant pada event besar.
-                                        Dengan EventKuy, Anda dapat dengan mudah mengetahui event-event yang sedang
+                                        Dengan My Event, Anda dapat dengan mudah mengetahui event-event yang sedang
                                         berlangsung dan memiliki kesempatan untuk bergabung sebagai tenant. </p>
                                 </div>
                             </li>
@@ -120,7 +120,7 @@
                                 <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body" style="font-weight: 600">
                                         jika anda ingin mendaftar sebagai tenant,maka anda harus mendowload aplikasi
-                                        EventKuy yang tersedia di playstore. Disana anda bisa melakukan pendaftaran booth
+                                        My Event yang tersedia di playstore. Disana anda bisa melakukan pendaftaran booth
                                         tenant serta mencari event-event terdekat disekitar anda.
                                     </div>
                                 </div>

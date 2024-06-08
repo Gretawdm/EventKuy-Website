@@ -34,7 +34,7 @@
                 <div class="row gy-4">
 
                     <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
-                        <div class="icon flex-shrink-0"><i class="fa-solid fa-cart-flatbed"></i></div>
+                        <div class="icon flex-shrink-0"><i class="fa-solid fas fa-calendar-alt"></i></div>
                         <div>
                             <h4 class="title" style="font-weight: 900">Public Event</h4>
                             <p class="description" style="font-weight: 600">Mempublikasikan Acara Anda Kepada Layanan

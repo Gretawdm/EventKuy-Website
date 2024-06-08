@@ -483,6 +483,18 @@ m-btn {
     border: 4px dashed #512E67;
 }
 
+.image-upload-booth {
+    margin-top: 20px;
+    border: 4px dashed #512E67;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.image-dropping,
+.image-upload-booth:hover {
+    border: 4px dashed #512E67;
+}
+
 .image-title-wrap {
     padding: 0 15px 15px 15px;
     color: #222;
@@ -543,7 +555,29 @@ m-btn {
     padding: 20px;
 }
 
+.file-upload-booth {
+    background-color: #ffffff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .file-upload-pamflet-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #512E67;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #512E67;
+    transition: all .2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.file-upload-booth-btn {
     width: 100%;
     margin: 0;
     color: #fff;
@@ -565,7 +599,19 @@ m-btn {
     cursor: pointer;
 }
 
+.file-upload-booth-btn:hover {
+    background: #512E67;
+    color: #ffffff;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
 .file-upload-pamflet-btn:active {
+    border: 0;
+    transition: all .2s ease;
+}
+
+.file-upload-booth-btn:active {
     border: 0;
     transition: all .2s ease;
 }
@@ -574,6 +620,24 @@ m-btn {
     display: none;
     text-align: center;
     margin-bottom: 20px;
+}
+
+
+.file-upload-content-booth {
+    display: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.file-upload-input-booth {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .file-upload-input-pamflet {
@@ -588,6 +652,18 @@ m-btn {
 }
 
 .image-upload-wrap-pamflet {
+    margin-top: 5px;
+    border: 4px dashed #512E67;
+    position: relative;
+    margin-bottom: 20px;
+    height: 300px;
+    /* Tetapkan tinggi sesuai kebutuhan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-upload-wrap-booth {
     margin-top: 5px;
     border: 4px dashed #512E67;
     position: relative;
@@ -621,6 +697,13 @@ m-btn {
 
 }
 
+.image-dropping,
+.image-upload-wrap-booth:hover {
+
+    border: 4px dashed #512E67;
+
+}
+
 .image-title-wrap-pamflet {
     padding: 0 15px 15px 15px;
     color: #222;
@@ -643,6 +726,16 @@ m-btn {
     margin: auto;
     padding: 20px;
 }
+
+
+.file-upload-image-booth {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+}
+
+
 
 .remove-image-pamflet {
     width: 200px;

@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
-        <a href="{{route('booth.show', ['eventId' => $event->id_event])}}"
+        <a href="{{ route('booth.show', ['eventId' => $event->id_event]) }}"
             class="card border-bottom-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -22,7 +22,7 @@
         </a>
     </div>
     <div class="col-xl-2 col-md-6 mb-4">
-        <a href="{{route('diterima', ['eventId' => $event->id_event])}}"
+        <a href="{{ route('diterima', ['eventId' => $event->id_event]) }}"
             class="card border-bottom-info shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -42,7 +42,7 @@
         </a>
     </div>
     <div class="col-xl-2 col-md-6 mb-4">
-        <a href="{{route('ditolak', ['eventId' => $event->id_event])}}"
+        <a href="{{ route('ditolak', ['eventId' => $event->id_event]) }}"
             class="card border-bottom-danger shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -64,7 +64,7 @@
 
     <!-- Pending Requests Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-        <a href="{{route('menunggu_pembayaran', ['eventId' => $event->id_event])}}"
+        <a href="{{ route('menunggu_pembayaran', ['eventId' => $event->id_event]) }}"
             class="card border-bottom-warning shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -73,7 +73,7 @@
                             Menunggu Pembayaran
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{$pendingPaymentOrdersCount}}
+                            {{ $pendingPaymentOrdersCount }}
                         </div>
                     </div>
                     <div class="col-auto">
@@ -86,7 +86,7 @@
 
 
     <div class="col-xl-2 col-md-6 mb-4">
-        <a href="{{route('terverifikasi', ['eventId' => $event->id_event])}}"
+        <a href="{{ route('terverifikasi', ['eventId' => $event->id_event]) }}"
             class="card border-bottom-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -95,7 +95,7 @@
                             Done
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{$verifiedOrdersCount}}
+                            {{ $verifiedOrdersCount }}
                         </div>
                     </div>
                     <div class="col-auto">
@@ -154,6 +154,14 @@
 
 <style>
 .text-danger {
+    font-weight: 800;
+}
+
+.text-xs {
+    font-size: .9rem
+}
+
+.text-primary {
     font-weight: 800;
 }
 </style>

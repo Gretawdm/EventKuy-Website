@@ -4,7 +4,7 @@
 
         <!-- <a href="index.html" class="logo d-flex align-items-center"> -->
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('frontend/assets/img/logo-eventkuynew.png') }}" alt="" width="75">
+        <img src="{{ asset('frontend/assets/img/MyEvent-logo.png') }}" alt="" width="75">
 
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
