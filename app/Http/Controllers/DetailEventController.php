@@ -17,17 +17,16 @@ class DetailEventController extends Controller
     }
 
     public function update_event(Request $request, $id_event)
-   
     {
-        
+
         $request->validate([
-        'tanggal_event' => 'required|date_format:Y-m-d\TH:i',
-       
-        'tanggal_pendaftaran' => 'required|date',
-        'tanggal_penutupan' => 'required|date',
-        'upload_pamflet' => 'file|mimes:jpeg,png,jpg,gif,svg',
-    ]);
-    //  dd($request->all());
+            'tanggal_event' => 'required|date_format:Y-m-d\TH:i',
+
+            'tanggal_pendaftaran' => 'required|date',
+            'tanggal_penutupan' => 'required|date',
+            'upload_pamflet' => 'file|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        //  dd($request->all());
 
         $event = Event::findOrFail($id_event);
         $event->pelaksanaan_event = $request->input('tanggal_event');
@@ -42,10 +41,10 @@ class DetailEventController extends Controller
             $file = $request->file('upload_pamflet');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move($folder, $fileName);
-            $event->upload_pamflet = $fileName;
+            $event->upload_pamflet = 'uploads/' . $event->id_event . '/' . $fileName;
         }
         $event->update();
-        return redirect()->route('event.show', $event->id_event)->with('succes','Berhasil Update Event');
+        return redirect()->route('event.show', $event->id_event)->with('succes', 'Berhasil Update Event');
     }
     public function edit_booth($id_booth)
     {
@@ -69,7 +68,7 @@ class DetailEventController extends Controller
             $file = $request->file('upload_gambar_booth');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move($folder, $fileName);
-            $booth->upload_gambar_booth = $fileName;
+            $booth->upload_gambar_booth = 'uploads/' . $booth->id_event . '/' . $fileName;
         }
         $booth->update();
         return redirect()->route('event');
@@ -86,11 +85,11 @@ class DetailEventController extends Controller
     {
         // Temukan event berdasarkan id_event
         $detail_event = Event::findOrFail($id_event);
-        
+
         // Kirimkan data event ke halaman tambah booth
         return view('Backend.event.tambah_booth', compact('detail_event'));
     }
-    
+
     // Metode untuk menyimpan booth baru
     public function booth_store(Request $request, $id_event)
     {
@@ -107,7 +106,7 @@ class DetailEventController extends Controller
             $image = $request->file('upload_gambar_booth');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/' . $id_event), $imageName);
-            $booth->upload_gambar_booth = $imageName;
+            $booth->upload_gambar_booth = 'uploads/' . $id_event . '/' . $imageName;
         }
 
         $booth->save();

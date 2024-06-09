@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderAccepted;
 use App\Models\Tenant;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class TenantController extends Controller
 {
@@ -90,6 +92,9 @@ class TenantController extends Controller
         // Tambahkan tanggal verifikasi dengan waktu saat ini
         $order->tgl_diterima = Carbon::now();
         $order->save();
+
+        // Mengirim email ke pelanggan
+        Mail::to($order->user->email)->send(new OrderAccepted($order));
 
         // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Pemesanan telah disetujui.');

@@ -16,6 +16,8 @@ class Tenant extends Model
         'harga_bayar',
         'img_bukti_transfer',
         'tgl_order',
+        'tgl_diterima',
+        'tgl_ditolak',
         'tgl_verifikasi',
         'id',
         'id_booth'
