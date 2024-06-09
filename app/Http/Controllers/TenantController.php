@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\OrderAccepted;
+use App\Mail\OrderTolak;
+use App\Mail\OrderVerifikasi;
 use App\Models\Tenant;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;
@@ -76,6 +78,9 @@ class TenantController extends Controller
         $order->tgl_verifikasi = Carbon::now();
         $order->save();
 
+        // Mengirim email ke pelanggan
+        Mail::to($order->user->email)->send(new OrderVerifikasi($order));
+
         // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Pemesanan telah disetujui.');
     }
@@ -112,6 +117,9 @@ class TenantController extends Controller
         // Tambahkan tanggal verifikasi dengan waktu saat ini
         $order->tgl_ditolak = Carbon::now();
         $order->save();
+
+         // Mengirim email ke pelanggan
+         Mail::to($order->user->email)->send(new OrderTolak($order));
 
         // Redirect kembali dengan pesan sukses
         return redirect()->back()->with('success', 'Pemesanan telah ditolak.');
