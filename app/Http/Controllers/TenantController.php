@@ -18,7 +18,31 @@ class TenantController extends Controller
     {
         // Temukan order berdasarkan ID order
         $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
-        return view('backend.detail', compact('orders_detail'));
+        return view('backend.tenan.detail', compact('orders_detail'));
+    }
+    public function detailTerima($orderId)
+    {
+        // Temukan order berdasarkan ID order
+        $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
+        return view('backend.tenan.detailterima', compact('orders_detail'));
+    }
+    public function detailTolak($orderId)
+    {
+        // Temukan order berdasarkan ID order
+        $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
+        return view('backend.tenan.detailtolak', compact('orders_detail'));
+    }
+    public function detailMenungguPembayaran($orderId)
+    {
+        // Temukan order berdasarkan ID order
+        $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
+        return view('backend.tenan.detailtunggu', compact('orders_detail'));
+    }
+    public function detailVerifikasi($orderId)
+    {
+        // Temukan order berdasarkan ID order
+        $orders_detail = Tenant::with(['user', 'booth.event'])->findOrFail($orderId);
+        return view('backend.tenan.detaildone', compact('orders_detail'));
     }
 
     public function index()

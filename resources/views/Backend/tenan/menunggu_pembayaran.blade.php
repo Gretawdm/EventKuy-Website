@@ -118,7 +118,6 @@
                     <tr>
                         <th class="text-center">Nama Produk</th>
                         <th class="text-center">Nama Lengkap</th>
-                        <th class="text-center">Bukti Transfer</th>
                         <th class="text-center">Status Verifikasi</th>
                         <th class="text-center">Action</th>
                     </tr>
@@ -128,20 +127,13 @@
                     <tr class="">
                         <td class="align-middle ">{{ $order['user']['nama_perusahaan'] }}</td>
                         <td class="align-middle">{{ $order['user']['nama_lengkap'] }}</td>
-                        <td class="align-middle">@if ($order->img_bukti_transfer)
-                            <img src="{{ asset( $order->img_bukti_transfer) }}"
-                                alt="Bukti Transfer" style="max-width: 100px;" />
-                            @else
-                            <p>Gambar tidak tersedia</p>
-                            @endif
-                        </td>
                         <td class="align-middle text-center">
                             <p class="btn-color">{{ $order->status_order }}</p>
                         </td>
                         <td class="align-middle text-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a style="font-weight: 800;" data-toggle="modal" data-target="#detailBooth"
-                                    type="button" class="btn btn-warning">Detail</a>
+                                <a href="{{ route('detailmenunggu', ['orderId' => $order['id_order']]) }}"
+                                    class="btn btn-warning" style="font-weight: 800;">Detail</a>
                                 <form action="{{ route('tenant.verifikasi', ['id' => $order['id_order']]) }}"
                                     method="POST" type="button" class="btn btn-success p-0"
                                     onsubmit="return confirm('Setujui Booth Ini?')">

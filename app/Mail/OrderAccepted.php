@@ -24,12 +24,13 @@ class OrderAccepted extends Mailable
         $booth = $this->order->booth;
         $event = $booth->event;
 
-        return $this->subject('Pemesanan Booth Anda Telah Diterima')
-                    ->view('emails.orderAccepted', [
-                        'name' => $this->order->user->nama_lengkap,
-                        'booth_name' => $booth->nama_booth,
-                        'booth_type' => $booth->tipe_booth,
-                        'event_name' => $event->nama_event,
-                    ]);
+        return $this->from('eventkuy5@gmail.com', 'MyEvent')
+            ->subject('Pemesanan Booth Anda Telah Diterima')
+            ->view('emails.orderAccepted', [
+                'name' => $this->order->user->nama_lengkap,
+                'booth_name' => $booth->nama_booth,
+                'booth_type' => $booth->tipe_booth,
+                'event_name' => $event->nama_event,
+            ]);
     }
 }

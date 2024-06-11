@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'status_verifikasi',
         'jabatan',
+        'otp',
     ];
 
     /**
