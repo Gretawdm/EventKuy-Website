@@ -134,13 +134,8 @@
                         </td>
                         <td class="align-middle text-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a style="font-weight: 800;" data-toggle="modal" data-target="#detailBooth"
-                                    type="button" class="btn btn-warning">Detail</a>
-                                <form action="" method="POST" type="button" class="btn btn-danger p-0"
-                                    onsubmit="return confirm('Tolak Booth Ini?')">
-                                    @csrf
-                                    <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
-                                </form>
+                                <a href="{{ route('detailterima', ['orderId' => $order['id_order']]) }}"
+                                    class="btn btn-warning" style="font-weight: 800;">Detail</a>
                             </div>
                         </td>
 
@@ -156,6 +151,7 @@
 .text-info {
     font-weight: 800;
 }
+
 .text-xs {
     font-size: .9rem
 }

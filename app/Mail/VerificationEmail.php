@@ -43,7 +43,8 @@ class VerificationEmail extends Mailable
 
     public function build()
     {
-        return $this->view('verification')
+        return $this->from('eventkuy5@gmail.com', 'MyEvent')
+            ->view('verification')
             ->with(['code' => $this->code]);
     }
 

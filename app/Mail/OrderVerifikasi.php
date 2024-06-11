@@ -26,13 +26,14 @@ class OrderVerifikasi extends Mailable
         $booth = $this->order->booth;
         $event = $booth->event;
 
-        return $this->subject('Pemesanan Booth Anda Telah Diterima')
-                    ->view('emails.orderVerifikasi', [
-                        'name' => $this->order->user->nama_lengkap,
-                        'booth_name' => $booth->nama_booth,
-                        'booth_type' => $booth->tipe_booth,
-                        'event_name' => $event->nama_event,
-                        'whatsapp_group_link' => $event->whatsapp
-                    ]);
+        return $this->from('eventkuy5@gmail.com', 'MyEvent')
+            ->subject('Pemesanan Booth Anda Telah Diterima')
+            ->view('emails.orderVerifikasi', [
+                'name' => $this->order->user->nama_lengkap,
+                'booth_name' => $booth->nama_booth,
+                'booth_type' => $booth->tipe_booth,
+                'event_name' => $event->nama_event,
+                'whatsapp_group_link' => $event->whatsapp
+            ]);
     }
 }

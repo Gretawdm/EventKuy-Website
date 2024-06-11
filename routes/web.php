@@ -73,6 +73,8 @@ Route::post('/forgot_password/sendcode', [EmailController::class, 'sendcode'])->
 Route::post('/validate-otp', [EmailController::class, 'validateOtp'])->name('validateOtp');
 //clear otp cache
 Route::post('/clear-otp-cache', [EmailController::class, 'clearOtpCache'])->name('clearOtpCache');
+//reset password
+Route::put('/respass', [EmailController::class, 'respass'])->name('resetpassword');
 
 
 
@@ -121,6 +123,10 @@ Route::post('/get-bank-details', [BankAccountController::class, 'getBankDetails'
 Route::get('/tenant', [TenantController::class, 'index'])->name('index');
 Route::get('/tenant/semua/{eventId}', [TenantController::class, 'semua'])->name('booth.show');
 Route::get('/detail/{orderId}', [TenantController::class, 'detail'])->name('detail');
+Route::get('/detail_terima/{orderId}', [TenantController::class, 'detailTerima'])->name('detailterima');
+Route::get('/detail_tolak/{orderId}', [TenantController::class, 'detailTolak'])->name('detailtolak');
+Route::get('/detail_tunggupem/{orderId}', [TenantController::class, 'detailMenungguPembayaran'])->name('detailmenunggu');
+Route::get('/detail_verifikasi/{orderId}', [TenantController::class, 'detailVerifikasi'])->name('detailverif');
 Route::get('/tenant/diterima/{eventId}', [TenantController::class, 'diterima'])->name('diterima');
 Route::get('/tenant/ditolak/{eventId}', [TenantController::class, 'ditolak'])->name('ditolak');
 Route::get('/tenant/menunggu_pembayaran/{eventId}', [TenantController::class, 'menunggu_pembayaran'])->name('menunggu_pembayaran');

@@ -134,13 +134,8 @@
                         </td>
                         <td class="align-middle text-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a style="font-weight: 800;" data-toggle="modal" data-target="#detailBooth"
-                                    type="button" class="btn btn-warning">Detail</a>
-                                <form action="" method="POST" type="button" class="btn btn-success p-0"
-                                    onsubmit="return confirm('Setujui Booth Ini?')">
-                                    @csrf
-                                    <button style="font-weight: 800" class="btn btn-success m-0">Setuju</button>
-                                </form>
+                                <a href="{{ route('detailtolak', ['orderId' => $order['id_order']]) }}"
+                                    class="btn btn-warning" style="font-weight: 800;">Detail</a>
                             </div>
                         </td>
 
