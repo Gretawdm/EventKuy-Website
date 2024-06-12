@@ -1,239 +1,258 @@
 @extends('backend.app')
 @section('content')
-<div class="container-fluid">
-    <div class="card mb-5 shadow" style="padding: 2% 0% 0% 5%;">
-        <div class="row">
-            <div class="col-lg-6">
-                <!-- General Form Elements -->
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-sm-4 col-form-label">Poster :</div>
-                        <div class="col-sm-10">
-                            <img src="{{ asset($detail_event->upload_pamflet) }}" alt="Poster"
-                                style="max-width: 300px" />
+    <div class="container-fluid">
+        <div class="card mb-5 shadow" style="padding: 2% 0% 0% 5%;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- General Form Elements -->
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 col-form-label">Poster :</div>
+                            <div class="col-sm-10">
+                                <img src="{{ asset($detail_event->upload_pamflet) }}" alt="Poster"
+                                    style="max-width: 300px" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-5 col-form-label">Nama Event :</div>
-                        <div class="col-sm-10">
-                            {{ $detail_event['nama_event'] }}
+                        <div class="row mb-3">
+                            <div class="col-sm-5 col-form-label">Nama Event :</div>
+                            <div class="col-sm-10">
+                                {{ $detail_event['nama_event'] }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-6 col-form-label">Deskripsi Event :</div>
-                        <div class="col-sm-10">
-                            {{ $detail_event['deskripsi'] }}
+                        <div class="row mb-3">
+                            <div class="col-sm-6 col-form-label">Deskripsi Event :</div>
+                            <div class="col-sm-10">
+                                {{ $detail_event['deskripsi'] }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4 col-form-label">Contact Person :</div>
-                        <div class="col-sm-10">
-                            <i class="fas fa-envelope"></i> {{ $detail_event['email'] }}
-                        </div>
-                        <div class="col-sm-10">
-                            <i class="fab fa-instagram"></i> {{ $detail_event['instagram'] }}
-                        </div>
-                        <div class="col-sm-10">
-                            <i class="fab fa-whatsapp"></i> {{ $detail_event['whatsapp'] }}
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-sm-6 col-form-label">QR Code :
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <a href="" id="container">{!! $qrCodes['simple']->toHtml() !!}</a><br />
-                                    <button id="download" class="mt-2 btn btn-info text-light"
-                                        style="width: 175px; font-size:15px; font-weight:800"
-                                        onclick="downloadSVG()">Download QR
-                                        Code</button>
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 col-form-label">Contact Person :</div>
+                            <div class="col-sm-10">
+                                <i class="fas fa-envelope"></i> {{ $detail_event['email'] }}
+                            </div>
+                            <div class="col-sm-10">
+                                <i class="fab fa-instagram"></i> <a
+                                    href="{{ $detail_event['instagram'] }}">{{ $detail_event['instagram'] }}</a>
+                            </div>
+                            <div class="col-sm-10">
+                                <i class="fab fa-whatsapp"></i> <a
+                                    href="{{ str_replace('https://wa.me/', '', $detail_event['whatsapp']) }}">{{ $detail_event['whatsapp'] }}</a>
                             </div>
                         </div>
 
-                    </div>
-                    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+                        <div class="row mb-3">
+                            <div class="col-sm-6 col-form-label">QR Code :
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <a href="" id="container">{!! $qrCodes['simple']->toHtml() !!}</a><br />
+                                        <button id="download" class="mt-2 btn btn-info text-light"
+                                            style="width: 175px; font-size:15px; font-weight:800"
+                                            onclick="unduhPNG()">Download QR
+                                            Code</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
                             rel="stylesheet"
                             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
                             crossorigin="anonymous">
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-                </form>
+                    </form>
+                    <!-- End General Form Elements -->
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-form-label">Penyelenggara Event :</div>
+                        <div class="col-sm-10">
+                            {{ $detail_event['penyelenggara_event'] }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-form-label">Tanggal Event :</div>
+                        <div class="col-sm-10">
+                            {{ $detail_event['pelaksanaan_event'] }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-form-label">No Rekening :</div>
+                        <div class="col-sm-10">
+                            {{ $detail_event['no_rekening'] }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-form-label">Nama Rekening :</div>
+                        <div class="col-sm-10">
+
+                            {{ $detail_event['nama_rekening'] }}
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-form-label">Alamat Event :</div>
+                        <div class="col-sm-10">
+
+                            {{ $detail_event['alamat'] }}
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-8 col-form-label">Tanggal Pendaftaran Booth Tenant :</div>
+                        <div class="col-sm-10">
+
+                            {{ $detail_event['tanggal_pendaftaran'] }} sd {{ $detail_event['tanggal_penutupan'] }}
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-7 col-form-label">Booth Yang Tersedia :</div>
+                        <div class="col-sm-6">
+                            @foreach ($booths as $detail_booth)
+                                <div class="card mb-3"
+                                    style="border-radius:10px; border:none; width:400px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1)">
+                                    <div class="card-body" style="display: flex; ">
+                                        <div style="flex: 0 0 100px; margin-right:20px">
+                                            <img src="{{ asset($detail_booth->upload_gambar_booth) }}" alt="Gambar"
+                                                style="max-width: 150px; height:100px;">
+                                        </div>
+                                        <div style="display: flex; flex-direction: column;">
+                                            <h5 class="event" style="font-size: 15px; font-weight: 800;">Tipe Booth :
+                                                {{ $detail_booth['tipe_booth'] }}</h5>
+                                            <h5 class="tanggal_daftar" style="font-size: 15px; font-weight: 800;">Jumlah
+                                                Booth : {{ $detail_booth['jumlah_booth'] }}</h5>
+                                            <h5 class="tanggal_daftar" style="font-size: 18px; font-weight: 800;">
+                                                Rp {{ number_format($detail_booth['harga_booth'], 0, ',', '.') }}
+                                            </h5>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+
+                                                <a style="font-weight: 800; display: flex; align-items: center; justify-content: center;"
+                                                    type="button" data-toggle="modal"
+                                                    data-target="#editBoothModal{{ $detail_booth->id_booth }}"
+                                                    href="#" class="btn btn-warning btn-sm m-0">Edit</a>
+                                                @if ($detail_event['status'] == 'waiting')
+                                                    <form
+                                                        action="{{ route('booth.destroy', ['id' => $detail_booth['id_booth']]) }}"
+                                                        method="POST" type="button" class="btn btn-danger btn-sm p-0"
+                                                        onsubmit="return confirm('Apakah anda yakin ingin menghapus booth ini?')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button
+                                                            style="font-weight: 800; display: flex; align-items: center; justify-content: center;"
+                                                            class="btn btn-danger btn-sm ">
+                                                            Hapus
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @include('backend.event.edit_booth')
+                            @endforeach
+                            @if ($detail_event['status'] == 'waiting')
+                                <a style="font-weight: 800;" type="button" data-toggle="modal"
+                                    data-target="#tambahBoothModal{{ $detail_event->id_event }}"
+                                    class="btn btn-primary btn-sm m-0">Tambah Booth</a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-8 col-form-label">Denah Event :</div>
+                        <div class="col-sm-10">
+                            <img src="{{ asset($detail_event->upload_denah) }}" alt="Poster" style="max-width: 300px" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-11 d-flex justify-content-end">
+                            <a data-toggle="modal" data-target="#editEventModal{{ $detail_event->id_event }}"
+                                href="#" class="btn btn-purple" style="font-weight: 800">Edit
+                                Event</a>
+                        </div>
+                    </div>
+
+                    @include('backend.event.edit_event')
+
+                    @include('backend.event.tambah_booth')
+
+
+
+
+
+
+                </div>
                 <!-- End General Form Elements -->
             </div>
 
-            <div class="col-lg-6">
-
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-form-label">Penyelenggara Event :</div>
-                    <div class="col-sm-10">
-                        {{ $detail_event['penyelenggara_event'] }}
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-form-label">Tanggal Event :</div>
-                    <div class="col-sm-10">
-                        {{ $detail_event['pelaksanaan_event'] }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-form-label">No Rekening :</div>
-                    <div class="col-sm-10">
-                        {{ $detail_event['no_rekening'] }}
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-form-label">Nama Rekening :</div>
-                    <div class="col-sm-10">
-
-                        {{ $detail_event['nama_rekening'] }}
-
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm-6 col-form-label">Alamat Event :</div>
-                    <div class="col-sm-10">
-
-                        {{ $detail_event['alamat'] }}
-
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-sm-8 col-form-label">Tanggal Pendaftaran Booth Tenant :</div>
-                    <div class="col-sm-10">
-
-                        {{ $detail_event['tanggal_pendaftaran'] }} sd {{ $detail_event['tanggal_penutupan'] }}
-
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-sm-7 col-form-label">Booth Yang Tersedia :</div>
-                    <div class="col-sm-6">
-                        @foreach ($booths as $detail_booth)
-                        <div class="card mb-3"
-                            style="border-radius:10px; border:none; width:400px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1)">
-                            <div class="card-body" style="display: flex; ">
-                                <div style="flex: 0 0 100px; margin-right:20px">
-                                    <img src="{{ asset($detail_booth->upload_gambar_booth) }}" alt="Gambar"
-                                        style="max-width: 150px; height:100px;">
-                                </div>
-                                <div style="display: flex; flex-direction: column;">
-                                    <h5 class="event" style="font-size: 15px; font-weight: 800;">Tipe Booth :
-                                        {{ $detail_booth['tipe_booth'] }}</h5>
-                                    <h5 class="tanggal_daftar" style="font-size: 15px; font-weight: 800;">Jumlah
-                                        Booth : {{ $detail_booth['jumlah_booth'] }}</h5>
-                                    <h5 class="tanggal_daftar" style="font-size: 18px; font-weight: 800;">
-                                        {{ $detail_booth['harga_booth'] }}</h5>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-
-                                        <a style="font-weight: 800; display: flex; align-items: center; justify-content: center;"
-                                            type="button" data-toggle="modal"
-                                            data-target="#editBoothModal{{ $detail_booth->id_booth }}" href="#"
-                                            class="btn btn-warning btn-sm m-0">Edit</a>
-                                        @if ($detail_event['status'] == 'waiting')
-                                        <form action="{{ route('booth.destroy', ['id' => $detail_booth['id_booth']]) }}"
-                                            method="POST" type="button" class="btn btn-danger btn-sm p-0"
-                                            onsubmit="return confirm('Apakah anda yakin ingin menghapus booth ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button
-                                                style="font-weight: 800; display: flex; align-items: center; justify-content: center;"
-                                                class="btn btn-danger btn-sm ">
-                                                Hapus
-                                            </button>
-                                        </form>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @include('backend.event.edit_booth')
-                        @endforeach
-                        @if ($detail_event['status'] == 'waiting')
-                        <a style="font-weight: 800;" type="button" data-toggle="modal"
-                            data-target="#tambahBoothModal{{ $detail_event->id_event }}"
-                            class="btn btn-primary btn-sm m-0">Tambah Booth</a>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-sm-8 col-form-label">Denah Event :</div>
-                    <div class="col-sm-10">
-                        <img src="{{ asset($detail_event->upload_denah) }}" alt="Poster" style="max-width: 300px" />
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-sm-11 d-flex justify-content-end">
-                        <a data-toggle="modal" data-target="#editEventModal{{ $detail_event->id_event }}" href="#"
-                            class="btn btn-purple" style="font-weight: 800">Edit
-                            Event</a>
-                    </div>
-                </div>
-
-                @include('backend.event.edit_event')
-
-                @include('backend.event.tambah_booth')
-
-
-
-
-
-
-            </div>
-            <!-- End General Form Elements -->
         </div>
+        <div class="clearfix"></div>
 
     </div>
-    <div class="clearfix"></div>
 
-</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // Tambahkan event listener untuk tombol "Hapus"
+        document.querySelectorAll('.delete-btn').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault(); // Untuk mencegah pengiriman form secara otomatis
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-// Tambahkan event listener untuk tombol "Hapus"
-document.querySelectorAll('.delete-btn').forEach(item => {
-    item.addEventListener('click', function(event) {
-        event.preventDefault(); // Untuk mencegah pengiriman form secara otomatis
-
-        // Tampilkan SweetAlert untuk konfirmasi penghapusan
-        swal({
-                title: "Apakah Anda yakin?",
-                text: "Data ini akan dihapus secara permanen!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    // Jika pengguna mengonfirmasi penghapusan, submit form
-                    event.target.closest('form').submit();
-                }
+                // Tampilkan SweetAlert untuk konfirmasi penghapusan
+                swal({
+                        title: "Apakah Anda yakin?",
+                        text: "Data ini akan dihapus secara permanen!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            // Jika pengguna mengonfirmasi penghapusan, submit form
+                            event.target.closest('form').submit();
+                        }
+                    });
             });
-    });
-});
-// Fungsi untuk mengunduh SVG
-function downloadSVG() {
-    var svg = document.getElementById('container').querySelector('svg');
-    var svgData = new XMLSerializer().serializeToString(svg);
-    var blob = new Blob([svgData], {
-        type: "image/svg+xml;charset=utf-8"
-    });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.download = 'qrcode.svg';
-    a.href = url;
-    a.click();
-}
-</script>
+        });
+
+        function unduhPNG() {
+            const svg = document.getElementById('container').innerHTML;
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            const svgBlob = new Blob([svg], {
+                type: 'image/svg+xml;charset=utf-8'
+            });
+            const url = URL.createObjectURL(svgBlob);
+
+            const image = new Image();
+            image.onload = function() {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0);
+                URL.revokeObjectURL(url);
+
+                const pngUrl = canvas.toDataURL('image/png');
+
+                const element = document.createElement('a');
+                element.download = "QRCode.png";
+                element.href = pngUrl;
+                element.click();
+                element.remove();
+            };
+            image.src = url;
+        }
+    </script>
 @endsection
 
 

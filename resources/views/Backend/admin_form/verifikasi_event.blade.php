@@ -75,7 +75,7 @@
                                     <td class="align-middle">{{ $item->kategori_event }}</td>
                                     <td class="align-middle">{{ $item->pelaksanaan_event }}</td>
                                     <td class="align-middle"><img
-                                            src="{{ asset('uploads/' . $item->id_event . '/' . $item->upload_ktp) }}"
+                                            src="{{ asset($item->upload_ktp) }}"
                                             alt="Poster" style="max-width: 100px" />
                                     <td class="align-middle">{{ $item->status }}</td>
                                     <td class="align-middle">
