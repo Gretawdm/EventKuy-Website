@@ -64,7 +64,48 @@ class UserController extends Controller
             return response()->json(['message' => 'unknown eror while creating user'], 406);
         }
     }
+    public function updateuser(Request $request)
+    {
+        if ($request->has('id')) {
+            $user = User::find($request->id);
+            if (!$user) {
+                return response()->json(['message' => 'User not found'], 404);
+            }
 
+            $usernameExists = User::where('username', $request->username)->whereNot('id', $request->id)->exists();
+            if ($usernameExists) {
+                return response()->json(['message' => 'Username already exists'], 403);
+            }
+
+            // Check if the email is valid and not already used
+            if (!str_contains($request->email, '@')) {
+                return response()->json(['message' => 'Email not valid'], 403);
+            }
+
+            $emailExists = User::where('email', $request->email)->whereNot('id', $request->id)->exists();
+            if ($emailExists) {
+                return response()->json(['message' => 'Email already used'], 403);
+            }
+
+            if (strlen($request->password) <= 6) {
+                return response()->json(['message' => 'password to short'], 403);
+            }
+            $user->nama_lengkap = $request->nama_lengkap;
+            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->password = $request->password;
+            $user->no_telp = $request->no_telp;
+            $user->nama_perusahaan = $request->nama_perusahaan;
+            $user->alamat_perusahaan = $request->alamat_perusahaan;
+            $user->deskripsi_perusahaan = $request->deskripsi_perusahaan;
+
+            if ($user->save()) {
+                return response()->json(['message' => 'ok'], 200);
+            } else {
+                return response()->json(['message' => 'unknown eror while updating user'], 406);
+            }
+        }
+    }
     public function login(Request $request)
     {
         if (str_contains($request->login, '@')) {
@@ -81,8 +122,8 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if($user)
-            return response()->json(['user' => $user], 200);
+            if ($user)
+                return response()->json(['user' => $user], 200);
         }
 
         return response()->json(['message' => 'Unauthorized'], 401);

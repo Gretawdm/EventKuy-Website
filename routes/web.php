@@ -142,6 +142,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('api/continuegoogle', 'UserController@continueGoogle');
     Route::get('api/getalluser', 'UserController@getAllUser');
     Route::post('api/register', 'UserController@register');
+    Route::post('api/update_user', 'UserController@updateUser');
     Route::post('api/update_password', 'UserController@updatePassword');
     Route::get('api/sendcode', 'UserController@sendCode'); //kurang
     
