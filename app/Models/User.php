@@ -61,4 +61,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tenant::class, 'id', 'id');
     }
+    public function totalOrders()
+    {
+        return $this->orders()->count();
+    }
+
+    public function thisMonthOrders()
+    {
+        return $this->orders()
+            ->whereYear('created_at', date('Y'))
+            ->whereMonth('created_at', date('m'))
+            ->count();
+    }
 }
