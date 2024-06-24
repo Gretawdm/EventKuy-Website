@@ -144,7 +144,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::post('api/register', 'UserController@register');
     Route::post('api/update_user', 'UserController@updateUser');
     Route::post('api/update_password', 'UserController@updatePassword');
-    Route::get('api/sendcode', 'UserController@sendCode'); //kurang
+    Route::get('api/sendCode', 'UserController@sendCode');
+    Route::get('api/validateCode', 'UserController@validateCode');
+    Route::get('api/resetPassword', 'UserController@resetPassword');
     
     
     Route::get('api/event', 'EventController@getAllEvent');

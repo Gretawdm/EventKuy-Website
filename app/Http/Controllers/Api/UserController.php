@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\VerificationEmail;
 use Illuminate\Support\Facades\Mail;
+use App\Models\codeVerifikasi;
 
 class UserController extends Controller
 {
@@ -100,7 +101,7 @@ class UserController extends Controller
             $user->deskripsi_perusahaan = $request->deskripsi_perusahaan;
 
             if ($user->save()) {
-                return response()->json(['message' => 'ok', 'user'=>$user], 200);
+                return response()->json(['message' => 'ok', 'user' => $user], 200);
             } else {
                 return response()->json(['message' => 'unknown eror while updating user'], 406);
             }
@@ -189,14 +190,76 @@ class UserController extends Controller
 
     public function sendCode(Request $requests)
     {
-        $verificationCode = rand(100000, 999999);
         $address = $requests->email;
 
+        $user = User::where('email', $address)->first();
+        if (!$user) {
+            return response()->json(['message' => 'user not found'], 406);
+        }
+
+        $verificationCode = rand(100000, 999999);
         // Create a new instance of VerificationEmail and pass the verification code to it
         $email = new VerificationEmail($verificationCode);
-
         // Send the email using Laravel's Mail facade
         Mail::to($address)->send($email);
+
+        date_default_timezone_set('Asia/Jakarta');
+        $time = now();
+
+        codeVerifikasi::where('email', $address)->delete();
+        $data = codeVerifikasi::create([
+            'email' => $address,
+            'kode_verifikasi' => $verificationCode,
+            'waktu' => $time
+        ]);
+
+        if (!$data) {
+            return response()->json(['message' => 'unknown error'], 406);
+        }
         return response()->json(['message' => 'ok'], 200);
+    }
+
+    public function validateCode(Request $request)
+    {
+        $address = $request->email;
+        $inputCode = $request->code;
+
+        date_default_timezone_set('Asia/Jakarta');
+        $time = now();
+        $time->subMinutes(15);
+        $results = codeVerifikasi::where('email', $address)->where('kode_verifikasi', $inputCode)->where('waktu', '>', $time)->first();
+
+        if ($inputCode == $results->kode_verifikasi) {
+            return response()->json(['message' => 'ok'], 200);
+        } else {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+    }
+    public function resetPassword(Request $request)
+    {
+        $email = $request->email;
+        $inputCode = $request->code;
+        $newPassword = $request->new_password;
+
+        if (strlen($newPassword) <= 6) {
+            return response()->json(['message' => 'password to short'], 403);
+        }
+
+        date_default_timezone_set('Asia/Jakarta');
+        $time = now();
+        $time->subMinutes(15);
+        $results = codeVerifikasi::where('email', $email)->where('kode_verifikasi', $inputCode)->where('waktu', '>', $time)->first();
+
+        if ($inputCode == $results->kode_verifikasi) {
+            $user = User::where('email', $email)->first();
+            if ($user) {
+                $user->password = bcrypt($newPassword);
+                $user->save();
+                return response()->json(['message' => 'ok'], 200);
+            } else {
+                return response()->json(['message' => 'user not found'], 406);
+            }
+            return response()->json(['message' => 'unknown error'], 406);
+        }
     }
 }
