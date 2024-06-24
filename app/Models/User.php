@@ -61,16 +61,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tenant::class, 'id', 'id');
     }
-    public function totalOrders()
+    public function countOrders()
     {
         return $this->orders()->count();
     }
 
-    public function thisMonthOrders()
+    public function countOrdersByStatus($status)
     {
-        return $this->orders()
-            ->whereYear('created_at', date('Y'))
-            ->whereMonth('created_at', date('m'))
-            ->count();
+        return $this->orders()->where('status_order', $status)->count();
+    }
+
+    public function countOrdersThisMonth()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        return $this->orders()->whereYear('tgl_order', now()->year)
+                              ->whereMonth('tgl_order', now()->month)
+                              ->count();
     }
 }
