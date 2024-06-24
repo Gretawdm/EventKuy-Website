@@ -87,20 +87,20 @@ class UserController extends Controller
                 return response()->json(['message' => 'Email already used'], 403);
             }
 
-            if (strlen($request->password) <= 6) {
-                return response()->json(['message' => 'password to short'], 403);
-            }
+            // if (strlen($request->password) <= 6) {
+            //     return response()->json(['message' => 'password to short'], 403);
+            // }
             $user->nama_lengkap = $request->nama_lengkap;
             $user->email = $request->email;
             $user->username = $request->username;
-            $user->password = $request->password;
+            // $user->password = $request->password;
             $user->no_telp = $request->no_telp;
             $user->nama_perusahaan = $request->nama_perusahaan;
             $user->alamat_perusahaan = $request->alamat_perusahaan;
             $user->deskripsi_perusahaan = $request->deskripsi_perusahaan;
 
             if ($user->save()) {
-                return response()->json(['message' => 'ok'], 200);
+                return response()->json(['message' => 'ok', 'user'=>$user], 200);
             } else {
                 return response()->json(['message' => 'unknown eror while updating user'], 406);
             }
@@ -141,7 +141,7 @@ class UserController extends Controller
         $currentPassword = $request->current_password;
         $newPassword = $request->new_password;
 
-        if (strlen($newPassword) <= 8) {
+        if (strlen($newPassword) <= 6) {
             return response()->json(['message' => 'password to short'], 403);
         }
 
