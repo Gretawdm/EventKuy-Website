@@ -229,7 +229,7 @@ class UserController extends Controller
         $time->subMinutes(15);
         $results = codeVerifikasi::where('email', $address)->where('kode_verifikasi', $inputCode)->where('waktu', '>', $time)->first();
 
-        if ($inputCode == $results->kode_verifikasi) {
+        if ($results) {
             return response()->json(['message' => 'ok'], 200);
         } else {
             return response()->json(['message' => 'Unauthorized'], 401);
@@ -250,7 +250,7 @@ class UserController extends Controller
         $time->subMinutes(15);
         $results = codeVerifikasi::where('email', $email)->where('kode_verifikasi', $inputCode)->where('waktu', '>', $time)->first();
 
-        if ($inputCode == $results->kode_verifikasi) {
+        if ($results) {
             $user = User::where('email', $email)->first();
             if ($user) {
                 $user->password = bcrypt($newPassword);
