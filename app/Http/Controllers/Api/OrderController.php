@@ -66,6 +66,7 @@ class OrderController extends Controller
     {
         $nomorBooth = $request->nomor_booth;
         $hargabayar = $request->harga_bayar;
+        date_default_timezone_set('Asia/Jakarta');
         $tglOrder = now();
         $idUser = $request->id;
         $idBooth = $request->id_booth;
