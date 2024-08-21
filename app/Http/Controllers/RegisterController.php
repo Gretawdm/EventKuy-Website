@@ -13,16 +13,18 @@ class RegisterController extends Controller
 
     public function register(Request $request){
         $request->validate([
-            'nama_perusahaan' => 'required|string|unique:users,nama_perusahaan',
+            'nama_perusahaan' => 'required|string|unique:users,nama_perusahaan|regex:/^[\pL\s\pP]+$/u',
             'alamat_perusahaan' => 'required|string',
-            'no_telp' => 'required',
+            'no_telp' => 'required|numeric',
             'email'=> 'required|string|unique:users,email',
             'password'=>'required|string|min:6|confirmed',
         ],[
             'nama_perusahaan.required' => 'Nama perusahaan wajib diisi',
             'nama_perusahaan.unique' => 'Nama perusahaan sudah digunakan',
+            'nama_perusahaan.regex' => 'Nama perusahaan tidak boleh mengandung angka',
             'alamat_perusahaan.required' => 'Alamat perusahaan wajib diisi',
             'no_telp.required' => 'Nomor telepon wajib diisi',
+            'no_telp.numeric' => "Nomor telepon tidak boleh selain angka",
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Email harus berformat email yang valid',
             'email.unique' => 'Email sudah digunakan',
@@ -30,6 +32,8 @@ class RegisterController extends Controller
             'password.confirmed' => 'Konfirmasi password tidak sama',
             'password.min' => 'Password harus terdiri dari minimal 6 karakter',
         ]);
+        
+        
 
       
     //    $fileName = '';
