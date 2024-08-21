@@ -10,7 +10,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-4 col-form-label">Poster :</div>
                             <div class="col-sm-10">
-                                <img src="{{ asset('uploads/' . $detail_event->id_event . '/' . $detail_event->upload_pamflet) }}"
+                                <img src="{{ asset($detail_event->upload_pamflet) }}"
                                     alt="Poster" style="max-width: 300px" />
                             </div>
                         </div>
@@ -32,10 +32,11 @@
                                 <i class="fas fa-envelope"></i> {{ $detail_event['email'] }}
                             </div>
                             <div class="col-sm-10">
-                                <i class="fab fa-instagram"></i> {{ $detail_event['instagram'] }}
+                                <i class="fab fa-instagram"></i> <a href="{{ $detail_event['instagram'] }}">{{ $detail_event['instagram'] }}</a>
                             </div>
                             <div class="col-sm-10">
-                                <i class="fab fa-whatsapp"></i> {{ $detail_event['whatsapp'] }}
+                                <i class="fab fa-whatsapp"></i> <a
+                                    href="{{ str_replace('https://wa.me/', '', $detail_event['whatsapp']) }}">{{ $detail_event['whatsapp'] }}</a>
                             </div>
                         </div>
 
@@ -67,7 +68,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-4 col-form-label">KTP :</div>
                             <div class="col-sm-10" style="width: 300px; height: auto;">
-                                <img src="{{ asset('uploads/' . $detail_event->id_event . '/' . $detail_event->upload_ktp) }}"
+                                <img src="{{ asset($detail_event->upload_ktp) }}"
                                     alt="Poster" style="max-width: 300px" />
                             </div>
                         </div>
@@ -107,7 +108,7 @@
                                         style="border-radius:10px; border:none; width:350px; height:150px;box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1)">
                                         <div class="card-body" style="display: flex; ">
                                             <div style="flex: 0 0 100px; margin-right:20px">
-                                                <img src="{{ asset('uploads/' . $detail_booth->id_event . '/' . $detail_booth->upload_gambar_booth) }}"
+                                                <img src="{{ asset($detail_booth->upload_gambar_booth) }}"
                                                     alt="Gambar" style="max-width: 150px; height:100px;">
                                             </div>
                                             <div style="display: flex; flex-direction: column;">
@@ -130,7 +131,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-8 col-form-label">Denah Event :</div>
                             <div class="col-sm-10">
-                                <img src="{{ asset('uploads/' . $detail_event->id_event . '/' . $detail_event->upload_denah) }}"
+                                <img src="{{ asset($detail_event->upload_denah) }}"
                                     alt="Poster" style="max-width: 300px" />
                             </div>
                         </div>

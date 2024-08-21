@@ -109,9 +109,60 @@
                                 </td>
 
                             </tr>
+<<<<<<< HEAD
                         @endforeach
                     </tbody>
                 </table>
+=======
+                        </thead>
+                        <tbody>
+                            @foreach ($detail_event as $item)
+                                <tr>
+                                    <td class="align-middle">{{ $item->nama_event }}</td>
+                                    <td class="align-middle">{{ $item->penyelenggara_event }}</td>
+                                    <td class="align-middle">{{ $item->alamat }}</td>
+                                    <td class="align-middle">{{ $item->kategori_event }}</td>
+                                    <td class="align-middle">{{ $item->pelaksanaan_event }}</td>
+                                    <td class="align-middle"><img
+                                            src="{{ asset($item->upload_ktp) }}"
+                                            alt="Poster" style="max-width: 100px" />
+                                    <td class="align-middle">{{ $item->status }}</td>
+                                    <td class="align-middle">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a style="font-weight: 800;"
+                                                href="{{ route('detail_event.show', $item->id_event) }}" type="button"
+                                                class="btn btn-warning">Detail</a>
+                                            <form action="{{ route('verifikasi_event.verify', $item->id_event) }}"
+                                                method="POST" type="button" class="btn btn-success p-0"
+                                                onsubmit="return confirm('Setujui Event Ini?')">
+                                                @csrf
+                                                <button style="font-weight: 800" class="btn btn-success m-0">Setuju</button>
+                                            </form>
+                                            <form action="{{ route('verifikasi_event.unverify', $item->id_event) }}"
+                                                method="POST" type="button" class="btn btn-danger p-0"
+                                                onsubmit="return confirm('Tolak Event Ini?')">
+                                                @csrf
+                                                <button style="font-weight: 800" class="btn btn-danger m-0">Tolak</button>
+                                            </form>
+                                            <form action="{{ route('verifikasi_event.destroy', $item->id_event) }}"
+                                                method="POST" class="btn btn-secondary p-0"
+                                                onsubmit="return confirm('Apakah anda yakin ingin menghapus event ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button style="font-weight: 800" class="btn btn-secondary m-0">
+                                                    <i class="fas fa-trash ml-2"></i>
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+>>>>>>> dd04c74efae5a4659b5974b140a8a31387d4b2f6
             </div>
         </div>
     </div>

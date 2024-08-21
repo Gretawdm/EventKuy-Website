@@ -50,21 +50,23 @@ class OrderController extends Controller
         $user_id = $request->user_id;
         $user = User::findOrFail($user_id);
 
-        // Get total orders and this month's orders
-        $totalOrders = $user->totalOrders();
-        $thisMonthOrders = $user->thisMonthOrders();
+        $totalOrders = $user->countOrders();
+        $validasiOrders = $user->countOrdersByStatus('terverifikasi');
+        $ordersThisMonth = $user->countOrdersThisMonth();
 
         return response()->json([
-            'code' => '200',
+            'message' => 'ok',
             'total_orders' => $totalOrders,
-            'this_month_orders' => $thisMonthOrders,
-        ]);
+            'terverifikasi_orders' => $validasiOrders,
+            'orders_this_month' => $ordersThisMonth,
+        ],200);
     }
 
     public function makeOrder(Request $request)
     {
         $nomorBooth = $request->nomor_booth;
         $hargabayar = $request->harga_bayar;
+        date_default_timezone_set('Asia/Jakarta');
         $tglOrder = now();
         $idUser = $request->id;
         $idBooth = $request->id_booth;
